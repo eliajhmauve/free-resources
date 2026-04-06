@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Gemma 4 vs 雲端 AI：成本與性能對比</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<style>
+body { background: #0a0a0a; margin: 0; padding: 20px; font-family: -apple-system, sans-serif; }
+h1 { color: #f0f0f0; text-align: center; font-size: 20px; margin: 20px 0; }
+.charts { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
+.chart-box { background: #111; border-radius: 12px; padding: 10px; }
+</style>
+</head>
+<body>
+<h1>Gemma 4 本地推理 vs 雲端 AI：你需要知道的數據</h1>
+<div class="charts">
+  <div class="chart-box"><div id="cost" style="width:400px;height:350px;"></div></div>
+  <div class="chart-box"><div id="benchmark" style="width:400px;height:350px;"></div></div>
+  <div class="chart-box"><div id="routing" style="width:400px;height:350px;"></div></div>
+  <div class="chart-box"><div id="memory" style="width:400px;height:350px;"></div></div>
+</div>
+<script>
+// 1. Cost comparison
+echarts.init(document.getElementById('cost')).setOption({
+  title: { text: '月費比較（美元）', left: 'center', textStyle: { color: '#ccc', fontSize: 14 } },
+  tooltip: { trigger: 'axis' },
+  xAxis: { data: ['Gemma 4\n本地', 'ChatGPT\nPlus', 'Claude\nPro', 'Claude\nMax'], axisLabel: { color: '#888' } },
+  yAxis: { axisLabel: { color: '#888' } },
+  series: [{ type: 'bar', data: [
+    { value: 0, itemStyle: { color: '#4ade80' } },
+    { value: 20, itemStyle: { color: '#f87171' } },
+    { value: 17, itemStyle: { color: '#f87171' } },
+    { value: 100, itemStyle: { color: '#f87171' } }
+  ], label: { show: true, position: 'top', color: '#ccc', formatter: '${c}' },
+    itemStyle: { borderRadius: [6,6,0,0] } }]
+});
+
+// 2. Benchmark
+echarts.init(document.getElementById('benchmark')).setOption({
+  title: { text: 'MMLU Pro 分數比較', left: 'center', textStyle: { color: '#ccc', fontSize: 14 } },
+  tooltip: { trigger: 'axis' },
+  xAxis: { data: ['Gemma 4\n26B-A4B', 'Gemma 4\n31B Dense', 'GPT-4', 'Claude\nOpus'], axisLabel: { color: '#888' } },
+  yAxis: { min: 75, max: 90, axisLabel: { color: '#888' } },
+  series: [{ type: 'bar', data: [
+    { value: 82.6, itemStyle: { color: '#4ade80' } },
+    { value: 85.2, itemStyle: { color: '#60a5fa' } },
+    { value: 85, itemStyle: { color: '#f87171' } },
+    { value: 87, itemStyle: { color: '#f87171' } }
+  ], label: { show: true, position: 'top', color: '#ccc', formatter: '{c}%' },
+    itemStyle: { borderRadius: [6,6,0,0] } }]
+});
+
+// 3. Task routing
+echarts.init(document.getElementById('routing')).setOption({
+  title: { text: '智慧路由：任務分配比例', left: 'center', textStyle: { color: '#ccc', fontSize: 14 } },
+  tooltip: { trigger: 'item' },
+  series: [{ type: 'pie', radius: ['40%', '70%'], data: [
+    { value: 60, name: '本地 Gemma 4\n（免費）', itemStyle: { color: '#4ade80' } },
+    { value: 30, name: 'Claude Sonnet\n（中等）', itemStyle: { color: '#60a5fa' } },
+    { value: 10, name: 'Claude Opus\n（全力）', itemStyle: { color: '#f59e0b' } }
+  ], label: { color: '#ccc', fontSize: 12 } }]
+});
+
+// 4. Memory requirements
+echarts.init(document.getElementById('memory')).setOption({
+  title: { text: '記憶體需求 vs 品質', left: 'center', textStyle: { color: '#ccc', fontSize: 14 } },
+  tooltip: { trigger: 'axis' },
+  xAxis: { data: ['E2B\n(2B)', 'E4B\n(4B)', '26B-A4B\n(MoE)', '31B\n(Dense)'], axisLabel: { color: '#888' } },
+  yAxis: [
+    { name: 'RAM (GB)', nameTextStyle: { color: '#888' }, axisLabel: { color: '#888' } },
+    { name: 'MMLU Pro %', nameTextStyle: { color: '#888' }, axisLabel: { color: '#888' }, min: 60, max: 90 }
+  ],
+  series: [
+    { name: 'RAM', type: 'bar', data: [2, 4, 20, 35],
+      itemStyle: { color: '#60a5fa', borderRadius: [6,6,0,0] },
+      label: { show: true, position: 'top', color: '#ccc', formatter: '{c}GB' } },
+    { name: 'MMLU Pro', type: 'line', yAxisIndex: 1, data: [65, 72, 82.6, 85.2],
+      lineStyle: { color: '#f59e0b' }, itemStyle: { color: '#f59e0b' },
+      label: { show: true, color: '#f59e0b', formatter: '{c}%' } }
+  ]
+});
+</script>
+</body>
+</html>
