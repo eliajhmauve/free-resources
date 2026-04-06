@@ -5,21 +5,21 @@
 <title>Claude Code AI 行銷團隊架構心智圖</title>
 <style>
 * { margin: 0; padding: 0; }
-body { background: #0a0a0a; }
-#mindmap { width: 100vw; height: 100vh; }
+body { background: #fff; }
+.markmap { width: 100vw; height: 100vh; }
 </style>
-<script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
-<script src="https://cdn.jsdelivr.net/npm/markmap-view@0.17"></script>
-<script src="https://cdn.jsdelivr.net/npm/markmap-lib@0.17/dist/browser/index.js"></script>
 </head>
 <body>
-<svg id="mindmap"></svg>
-<script>
-const { Transformer } = window.markmap;
-const { Markmap, loadCSS, loadJS } = window.markmap;
-const transformer = new Transformer();
+<svg class="markmap"></svg>
+<script src="https://cdn.jsdelivr.net/npm/markmap-autoloader@0.17"></script>
+<script type="text/template" class="markmap-data">
+---
+markmap:
+  colorFreezeLevel: 2
+  maxWidth: 280
+  initialExpandLevel: 3
+---
 
-const markdown = `
 # Claude Code AI 行銷團隊
 
 ## 三層架構
@@ -74,19 +74,6 @@ const markdown = `
 - Notion 派任務
 - AI 自動執行
 - 多角色協作
-`;
-
-const { root, features } = transformer.transform(markdown);
-const { styles, scripts } = transformer.getUsedAssets(features);
-if (styles) loadCSS(styles);
-if (scripts) loadJS(scripts, { getMarkmap: () => window.markmap });
-
-const mm = Markmap.create('#mindmap', {
-  colorFreezeLevel: 2,
-  duration: 500,
-  maxWidth: 300,
-  initialExpandLevel: 2
-}, root);
 </script>
 </body>
 </html>
