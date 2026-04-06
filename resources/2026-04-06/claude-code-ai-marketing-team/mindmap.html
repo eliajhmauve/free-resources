@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Claude Code AI 行銷團隊架構心智圖</title>
+<style>
+* { margin: 0; padding: 0; }
+body { background: #0a0a0a; }
+#mindmap { width: 100vw; height: 100vh; }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+<script src="https://cdn.jsdelivr.net/npm/markmap-view@0.17"></script>
+<script src="https://cdn.jsdelivr.net/npm/markmap-lib@0.17/dist/browser/index.js"></script>
+</head>
+<body>
+<svg id="mindmap"></svg>
+<script>
+const { Transformer } = window.markmap;
+const { Markmap, loadCSS, loadJS } = window.markmap;
+const transformer = new Transformer();
+
+const markdown = `
+# Claude Code AI 行銷團隊
+
+## 三層架構
+### CLAUDE.md（記憶層）
+- 品牌指南
+- 語氣風格
+- 工作規則
+- 受眾定義
+### Skills（SOP 層）
+- 社群貼文 Skill
+- 品牌簡報 Skill
+- 電子報 Skill
+- 數據報告 Skill
+- 圖片生成 Skill
+### Agents（執行層）
+- 內容創作者
+- 社群設計師
+- 數據分析師
+- 市場研究員
+- 活動策略師
+
+## 關鍵技術
+### MCP 整合
+- 圖片生成（nano banana）
+- CRM 連接（GoHighLevel）
+- Notion 任務板
+### 遠端操控
+- /remote-control
+- 手機派任務
+- 結果存本地
+
+## 建立順序
+### Week 1
+- 裝 VS Code + Claude Code
+- 建第一個 Skill
+### Week 2
+- 調整 Skill 到滿意
+- 建第二個 Skill
+### Week 3
+- 建第一個 Agent
+- 測試 MCP 整合
+### Week 4
+- Notion 看板
+- 自動任務流程
+
+## 適用場景
+### 個人品牌
+- 每週社群貼文
+- 電子報產出
+- 數據分析
+### 行銷團隊
+- Notion 派任務
+- AI 自動執行
+- 多角色協作
+`;
+
+const { root, features } = transformer.transform(markdown);
+const { styles, scripts } = transformer.getUsedAssets(features);
+if (styles) loadCSS(styles);
+if (scripts) loadJS(scripts, { getMarkmap: () => window.markmap });
+
+const mm = Markmap.create('#mindmap', {
+  colorFreezeLevel: 2,
+  duration: 500,
+  maxWidth: 300,
+  initialExpandLevel: 2
+}, root);
+</script>
+</body>
+</html>
