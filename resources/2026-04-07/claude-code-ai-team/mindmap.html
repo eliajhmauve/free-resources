@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Claude Code AI 團隊架構心智圖</title>
+<style>
+* { margin: 0; padding: 0; }
+body { background: #fafafa; }
+#mindmap { width: 100vw; height: 100vh; }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+<script src="https://cdn.jsdelivr.net/npm/markmap-view@0.17"></script>
+<script src="https://cdn.jsdelivr.net/npm/markmap-lib@0.17"></script>
+</head>
+<body>
+<svg id="mindmap"></svg>
+<script>
+const md = `
+# Claude Code AI 團隊
+
+## Skill（食譜）
+### 什麼是 Skill
+- 可重複執行的工作流程
+- 寫在 SKILL.md 裡面
+- 越多 context 品質越好
+### 怎麼建
+- 找出重複工作
+- 拆解成步驟
+- 加入品牌風格 + 禁忌清單
+- 放範例文章（2-3 篇）
+### 範例
+- 社群貼文產生器
+- 電子報撰寫器
+- 數據報表分析
+- 素材蒐集器
+
+## Agent（廚師）
+### 什麼是 Agent
+- 配了多個 Skill 的角色
+- 自己判斷用哪個 Skill
+- 每個 Agent 專注一個領域
+### 行銷團隊版（影片）
+- Data Analyst（數據分析）
+- Content Creator（內容創作）
+- Market Researcher（市場調查）
+- Creative Designer（設計）
+- Campaign Strategist（策略）
+### 內容創作版（Elijah）
+- 資訊雷達（素材蒐集）
+- 內容工作室（產文）
+- 品質控制（AI 去味）
+- 資源產出（乾貨）
+- 發布管理（Notion）
+
+## 品質控制
+### 5 層檢查
+- DNA 命中驗證（≥5/11）
+- AI 黑名單詞掃描
+- 禁用句型攔截
+- 格式驗證
+- 版面純粹性
+### 關鍵 Context
+- 品牌風格指南
+- 禁忌清單
+- 範例文章
+- AI 黑名單詞庫
+
+## 中控台（Notion）
+### 任務管理
+- 待辦 → 執行中 → 完成
+- Agent 自動抓任務
+### 素材管理
+- info-radar 推送素材
+- 評分 + 篩選
+### 發布排程
+- 每篇文章追蹤狀態
+- 多平台發布管理
+
+## 從哪開始
+### 第一週
+- 找 1 個重複工作
+- 建第一個 SKILL.md
+- 試跑 + 迭代 3-5 次
+### 第二週
+- 建第 2-3 個 Skill
+- 加入品質控制層
+### 第三週
+- 打包成第一個 Agent
+- 串接 Notion 任務板
+`;
+
+const { Transformer } = window.markmap;
+const transformer = new Transformer();
+const { root } = transformer.transform(md);
+const { Markmap } = window.markmap;
+Markmap.create('#mindmap', {
+  colorFreezeLevel: 2,
+  duration: 500,
+  maxWidth: 300,
+  initialExpandLevel: 2
+}, root);
+</script>
+</body>
+</html>
