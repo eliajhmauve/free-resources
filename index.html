@@ -3,30 +3,111 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Elijah Sensei — 免費資源庫</title>
-<style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body {
-  font-family: -apple-system, 'PingFang TC', 'Noto Sans TC', sans-serif;
-  background: #0a0a0a;
-  color: #f0f0f0;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-.container { max-width: 600px; padding: 40px; }
-h1 { font-size: 28px; margin-bottom: 16px; font-weight: 600; }
-p { font-size: 16px; color: #888; line-height: 1.6; }
-a { color: #e0c96e; text-decoration: none; }
-a:hover { text-decoration: underline; }
-</style>
+<title>Elijah Sensei — AI 自動化教學</title>
+<meta name="description" content="用 AI 幫你把想法變成產品。AI 自動化教學、Claude Code、個人品牌。">
+<meta property="og:title" content="Elijah Sensei — AI 自動化教學">
+<meta property="og:description" content="用 AI 幫你把想法變成產品">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<div class="container">
-  <h1>Elijah Sensei 免費資源庫</h1>
-  <p>這裡存放文章搭配的互動資源：流程圖、心智圖、數據圖表、互動工具等。</p>
-</div>
+
+<!-- Nav -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand">Elijah Sensei</a>
+    <div class="nav-links">
+      <a href="resources.html">資源</a>
+      <a href="about.html">關於</a>
+      <a href="links.html">連結</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-inner">
+    <p class="hero-name">Elijah Sensei</p>
+    <h1 class="hero-title">用 AI 幫你把想法變成產品</h1>
+    <p class="hero-subtitle">AI 自動化教學 · Claude Code · 個人品牌</p>
+    <a href="resources.html" class="btn btn-primary">免費資源 →</a>
+  </div>
+</section>
+
+<!-- Latest Resources -->
+<section class="section section-alt">
+  <div class="section-inner">
+    <h2 class="section-title">最新免費資源</h2>
+    <p class="section-subtitle">每篇文章搭配的互動工具，拿走直接用</p>
+    <div id="latest-resources"></div>
+    <div style="text-align:center;margin-top:24px">
+      <a href="resources.html" class="btn btn-ghost btn-sm">瀏覽全部資源 →</a>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section class="section">
+  <div class="section-inner">
+    <h2 class="section-title">關於我</h2>
+    <p style="font-size:16px;color:#ccc;line-height:1.8;margin-bottom:24px">
+      文科生，用 Claude Code 建了一整套自動化產文系統。<br>
+      每天產出 AI 教學內容，幫非技術人用 AI 做事。
+    </p>
+    <a href="about.html" class="btn btn-ghost btn-sm">更多 →</a>
+  </div>
+</section>
+
+<!-- CTA Banner -->
+<section class="cta-banner">
+  <div class="cta-banner-inner">
+    <p class="cta-banner-title">追蹤 Threads，每天收到 AI 工具教學</p>
+    <a href="https://www.threads.net/@elijah.shi.sensei" class="cta-banner-btn" target="_blank" rel="noopener">@elijah.shi.sensei →</a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="https://www.threads.net/@elijah.shi.sensei" target="_blank" rel="noopener">Threads</a>
+      <a href="resources.html">免費資源</a>
+      <a href="about.html">關於</a>
+    </div>
+    <p class="footer-copy">&copy; 2026 Elijah Sensei</p>
+  </div>
+</footer>
+
+<script>
+(async function() {
+  try {
+    const resp = await fetch('manifest.json');
+    const data = await resp.json();
+    const container = document.getElementById('latest-resources');
+    const typeLabels = {mindmap:'心智圖',chart:'數據圖表',flowchart:'流程圖',tool:'互動工具'};
+    const latest = data.resources.slice(0, 3);
+
+    if (latest.length === 0) {
+      container.innerHTML = '<div class="empty-state"><p>資源庫持續更新中</p></div>';
+      return;
+    }
+
+    container.innerHTML = latest.map(r => `
+      <a class="resource-card" href="resources/${r.date}/${r.slug}/${r.file}">
+        <div class="resource-card-meta">
+          <span class="resource-type">${typeLabels[r.type] || r.type}</span>
+          <span class="resource-date">${r.date}</span>
+        </div>
+        <div class="resource-card-title">${r.title}</div>
+        <div class="resource-card-desc">${r.description}</div>
+        <div class="resource-card-arrow">→</div>
+      </a>
+    `).join('');
+  } catch(e) {
+    console.error('Failed to load resources:', e);
+  }
+})();
+</script>
+
 </body>
 </html>

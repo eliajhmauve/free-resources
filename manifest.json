@@ -1,0 +1,44 @@
+{
+  "resources": [
+    {
+      "date": "2026-04-13",
+      "slug": "ai-coding-tools-2026",
+      "title": "AI 寫程式工具選擇器",
+      "type": "tool",
+      "file": "tool.html",
+      "description": "互動式工具"
+    },
+    {
+      "date": "2026-04-13",
+      "slug": "claude-beginner-5-tips",
+      "title": "Claude 新手 5 大技巧心智圖",
+      "type": "mindmap",
+      "file": "mindmap.html",
+      "description": "互動式心智圖，展開收合自由探索"
+    },
+    {
+      "date": "2026-04-07",
+      "slug": "claude-code-ai-team",
+      "title": "Claude Code AI 團隊架構心智圖",
+      "type": "mindmap",
+      "file": "mindmap.html",
+      "description": "互動式心智圖，展開收合自由探索"
+    },
+    {
+      "date": "2026-04-06",
+      "slug": "claude-code-ai-marketing-team",
+      "title": "Claude Code AI 行銷團隊架構心智圖",
+      "type": "mindmap",
+      "file": "mindmap.html",
+      "description": "互動式心智圖，展開收合自由探索"
+    },
+    {
+      "date": "2026-04-06",
+      "slug": "gemma4-local-claude-code",
+      "title": "Gemma 4 vs 雲端 AI 數據對比",
+      "type": "chart",
+      "file": "chart.html",
+      "description": "數據視覺化圖表"
+    }
+  ]
+}
