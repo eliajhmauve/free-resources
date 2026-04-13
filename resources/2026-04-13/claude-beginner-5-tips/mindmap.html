@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Claude 新手 5 大技巧心智圖</title>
+<style>
+* { margin: 0; padding: 0; }
+body { background: #0a0a0a; }
+#mindmap { width: 100vw; height: 100vh; }
+.brand-bar {
+  position: fixed; top: 0; left: 0; right: 0;
+  background: #111; padding: 12px 24px;
+  display: flex; justify-content: space-between; align-items: center;
+  z-index: 100; border-bottom: 1px solid #222;
+}
+.brand-bar .name { color: #f5f5f5; font-size: 14px; font-weight: 600; font-family: -apple-system, sans-serif; }
+.brand-bar .tag { color: #e0c96e; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; }
+.footer-cta {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  background: #111; padding: 14px 24px;
+  text-align: center; z-index: 100; border-top: 1px solid #222;
+  font-family: -apple-system, sans-serif;
+}
+.footer-cta a { color: #e0c96e; text-decoration: none; font-size: 13px; }
+.footer-cta span { color: #555; font-size: 12px; }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+<script src="https://cdn.jsdelivr.net/npm/markmap-view@0.17"></script>
+<script src="https://cdn.jsdelivr.net/npm/markmap-lib@0.17"></script>
+</head>
+<body>
+<div class="brand-bar">
+  <span class="name">Elijah Sensei</span>
+  <span class="tag">Free Resource</span>
+</div>
+<svg id="mindmap" style="margin-top: 44px; margin-bottom: 44px;"></svg>
+<div class="footer-cta">
+  <a href="https://www.threads.net/@elijah.shi.sensei">追蹤 @elijah.shi.sensei 取得更多 AI 教學</a>
+  <br><span>Threads | AI 自動化 | 個人品牌</span>
+</div>
+<script>
+window.addEventListener('DOMContentLoaded', () => {
+  const md = `
+# Claude 新手 5 大技巧
+
+## 1. ICC 提問公式
+### I - Instructions
+- 你要 Claude 做什麼？
+- 動詞要具體（列清單/分析/比較）
+### C - Context
+- 你的角色、產業、目標
+- 寧多勿少，全寫上去
+### C - Constraints
+- 字數、格式、語氣
+- 附範例效果更好
+
+## 2. Context Interview
+### 怎麼用
+- prompt 結尾加：「先問我你需要的資訊」
+- Claude 會反問 3-5 個問題
+### 為什麼有用
+- 你常常遺漏關鍵背景
+- Claude 知道自己需要什麼
+- 搭配 ICC 第一次就能用
+
+## 3. Ground First, Ask Second
+### 先研究
+- 「幫我研究 XX 的最新方法」
+- 讓 Claude 用 web search 更新知識
+### 再提問
+- 「根據你剛才的研究，幫我做 XX」
+- 兩步比一步強 3 倍
+
+## 4. Projects
+### 取代全域 custom instructions
+- 全域設定 = 每道菜加一樣的醬
+- Projects = 每個情境一套設定
+### 怎麼用
+- 每個工作類型建一個 Project
+- 上傳品牌指南、範例、SOP
+- Claude 每次自動參考
+
+## 5. Skills
+### 最被低估的功能
+- 把重複流程打包成一鍵觸發
+- 從簡單兩步驟開始
+### 進階玩法
+- 多個 Skill 串成產線
+- Projects = 記憶 / Skills = 能力
+`;
+
+  const transformer = new window.markmap.Transformer();
+  const { root } = transformer.transform(md);
+  const mm = window.markmap.Markmap.create('#mindmap', {
+    colorFreezeLevel: 2,
+    duration: 500,
+    maxWidth: 300,
+    initialExpandLevel: 2
+  }, root);
+});
+</script>
+</body>
+</html>
