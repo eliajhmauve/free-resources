@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>AI 內容同質化全景圖</title>
+<style>
+* { margin: 0; padding: 0; }
+body { background: #0a0a0a; }
+#mindmap { width: 100vw; height: 100vh; }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+<script src="https://cdn.jsdelivr.net/npm/markmap-view@0.17"></script>
+<script src="https://cdn.jsdelivr.net/npm/markmap-lib@0.17"></script>
+</head>
+<body>
+<svg id="mindmap"></svg>
+<script>
+window.addEventListener('DOMContentLoaded', () => {
+  const { Transformer } = window.markmap;
+  const transformer = new Transformer();
+  const markdown = `
+# AI 內容同質化：為什麼全都長一樣
+
+## 機制
+### LLM 向統計平均值收斂
+- 訓練於相同資料集
+- 輸出偏向最安全的回應
+- 「專業但無感，清楚但無個性」
+### 遞迴污染
+- 人類→訓練AI→AI生成→流入網路
+- 下一代模型學更多 AI 產出
+- 多樣性越來越低
+### 視覺電梯音樂
+- Rutgers 循環實驗
+- 圖片收斂到相同場景
+
+## 數據（2023-2026）
+### 消費者偏好崩跌
+- 60%（2023）→ 26%（2025）
+- 52% 懷疑 AI 就不看
+- 留存率差 2.7 倍
+### AI slop 爆發
+- 2025 年度詞彙
+- 提及量年增 9 倍
+### AI 疲勞
+- 54% 美國人感到疲倦
+- 52% 自由工作者失去客戶
+
+## 社群反撲
+### 平台
+- r/programming 禁 AI 貼文（690萬人）
+- Linux kernel AI 政策（4/12）
+- Pinterest/YouTube 過濾功能
+- Google 2026/2 降權 AI slop
+### 品牌
+- 轉向「真實感」
+- 「沒鋪好的床、不完美的頭髮」
+### 義大利天然實驗
+- 封禁 ChatGPT 期間
+- IG 多樣性上升、按讚+3.5%
+
+## 差異化策略
+### 原創數據
+- 含 3+ 原創數據 → AI 引用率高 2.5 倍
+### 個人故事
+- 失敗經歷 > 成功故事
+### 有立場的觀點
+- 不要「各有優缺點」
+### Persona 調校
+- 11 維度 taste profile
+- 4 類禁用句型
+- 專屬口語彈藥庫
+- 5 層品質檢查
+`;
+  const { root } = transformer.transform(markdown);
+  window.markmap.Markmap.create('#mindmap', { colorFreezeLevel: 2, duration: 500, maxWidth: 280, initialExpandLevel: 3 }, root);
+});
+</script>
+</body>
+</html>
