@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Claude 降智事件完整拆解</title>
+<style>
+* { margin: 0; padding: 0; }
+body { background: #0a0a0a; }
+#mindmap { width: 100vw; height: 100vh; }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+<script src="https://cdn.jsdelivr.net/npm/markmap-view@0.17"></script>
+<script src="https://cdn.jsdelivr.net/npm/markmap-lib@0.17"></script>
+</head>
+<body>
+<svg id="mindmap"></svg>
+<script>
+window.addEventListener('DOMContentLoaded', () => {
+  const { Transformer } = window.markmap;
+  const transformer = new Transformer();
+  const markdown = `
+# Claude 降智？完整事件拆解
+
+## 你感覺到的
+### 回答變短
+### 邏輯變虛
+### 額度消耗異常快
+### 原本能做的事突然做不到
+
+## 系統層面的證據
+### System Prompt 比例
+- 15-20 條 "be minimal"
+- 3-4 條 "be thorough"
+- 比例 5:1
+### Cache Bug
+- v2.1.100+ 版本
+- 每次多吃 ~20K token
+### Prompt Patcher（267 stars）
+- 社群自製修改工具
+
+## 事件時間線（2026 年 4 月）
+### 4/4 第三方工具被切
+- OpenClaw 等 harness
+- API 存取停止
+### 4/6-8 大規模當機
+- 登入失敗
+- 語音模式中斷
+- 對話斷線
+### 同期：額度再平衡
+- burst → steady
+- 不能一次燒完
+
+## 商業邏輯
+### 用量暴增
+- Claude Code 讓用量從「偶爾問」→「整天跑」
+- 重度用戶算力消耗 10x+
+### 算力跟不上
+- 成本暴增
+- 融資速度 < 燒錢速度
+### 三招並用
+- 漲價（推 Max 方案）
+- 限量（burst→steady）
+- 壓品質（minimal 指令）
+
+## 行業規律
+### 品質吸客 → 用量暴增
+### 算力扛不住 → 調整品質
+### 用戶罵 → 推更貴方案
+### GPT 走過、Gemini 走過
+### 老用戶的體驗換新用戶的門票
+
+## 自保策略
+### 短期
+- 查版本（claude --version）
+- 看 usage dashboard
+- 追蹤 isitnerfed.vercel.app
+- 基準測試（同題每週問一次）
+### 中長期
+- 不要 all in 單一模型
+- 保留替代工具帳號
+- 你的能力 > 你選的工具
+`;
+  const { root } = transformer.transform(markdown);
+  window.markmap.Markmap.create('#mindmap', { colorFreezeLevel: 2, duration: 500, maxWidth: 280, initialExpandLevel: 3 }, root);
+});
+</script>
+</body>
+</html>

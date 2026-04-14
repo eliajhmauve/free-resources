@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Claude 降智自查流程圖</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #0a0a0a; color: #f0f0f0; font-family: -apple-system, 'PingFang TC', 'Noto Sans TC', sans-serif; display: flex; justify-content: center; padding: 40px 20px; min-height: 100vh; }
+.container { max-width: 700px; width: 100%; }
+h1 { font-size: 24px; margin-bottom: 8px; color: #f5f5f5; }
+.subtitle { font-size: 13px; color: #666; margin-bottom: 40px; letter-spacing: 1px; }
+.step { position: relative; padding: 24px 28px; margin-bottom: 0; background: #141414; border: 1px solid #222; border-radius: 12px; }
+.step-num { position: absolute; top: -12px; left: 24px; background: #e0c96e; color: #0a0a0a; font-size: 11px; font-weight: 700; padding: 2px 10px; border-radius: 10px; letter-spacing: 1px; }
+.step h3 { font-size: 17px; margin-bottom: 8px; color: #f5f5f5; }
+.step p { font-size: 14px; color: #999; line-height: 1.6; }
+.step .tool { display: inline-block; margin-top: 8px; background: #1a1a1a; border: 1px solid #333; padding: 4px 12px; border-radius: 6px; font-size: 12px; color: #e0c96e; }
+.arrow { text-align: center; padding: 12px 0; color: #333; font-size: 20px; }
+.result { padding: 20px 28px; background: #1a1a0a; border: 1px solid #3a3a1a; border-radius: 12px; margin-top: 0; }
+.result h3 { color: #e0c96e; font-size: 15px; margin-bottom: 6px; }
+.result p { font-size: 13px; color: #888; line-height: 1.6; }
+.footer { margin-top: 40px; text-align: center; font-size: 12px; color: #333; letter-spacing: 2px; }
+</style>
+</head>
+<body>
+<div class="container">
+<h1>Claude 降智自查流程</h1>
+<p class="subtitle">6 步驟，20 分鐘，不用猜</p>
+
+<div class="step"><span class="step-num">STEP 1</span><h3>社群校準</h3><p>看今天社群投票，確認是個人現象還是普遍問題</p><span class="tool">isitnerfed.vercel.app</span></div>
+<div class="arrow">↓</div>
+<div class="step"><span class="step-num">STEP 2</span><h3>查隱藏 Prompt</h3><p>比對 "be minimal" vs "be thorough" 指令數量比例</p><span class="tool">Claude Code Prompt Patcher</span></div>
+<div class="arrow">↓</div>
+<div class="step"><span class="step-num">STEP 3</span><h3>查 Token 消耗</h3><p>v2.1.100+ 有 cache bug，每次多吃 20K token</p><span class="tool">console.anthropic.com → Usage</span></div>
+<div class="arrow">↓</div>
+<div class="step"><span class="step-num">STEP 4</span><h3>理解流控機制</h3><p>Plus 額度從 burst 改 steady，大任務分批跑</p><span class="tool">策略調整，無需工具</span></div>
+<div class="arrow">↓</div>
+<div class="step"><span class="step-num">STEP 5</span><h3>驗證工具鏈</h3><p>4/4 後第三方工具可能已失效，用官方介面測試</p><span class="tool">claude.ai 官方</span></div>
+<div class="arrow">↓</div>
+<div class="step"><span class="step-num">STEP 6</span><h3>基準測試</h3><p>固定問題每週問一次，記錄趨勢，3 次以上才算訊號</p><span class="tool">任何筆記工具</span></div>
+<div class="arrow">↓</div>
+<div class="result"><h3>判斷結果</h3><p>如果多數步驟指向異常 → 分散風險，保留替代工具<br>如果只有體感差異 → 可能是流控或時段問題，調整使用節奏</p></div>
+
+<div class="footer">@elijah.shi.sensei</div>
+</div>
+</body>
+</html>
