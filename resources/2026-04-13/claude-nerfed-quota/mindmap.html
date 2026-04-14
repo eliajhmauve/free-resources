@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Claude 降智事件全景圖</title>
+<style>
+* { margin: 0; padding: 0; }
+body { background: #0a0a0a; }
+#mindmap { width: 100vw; height: 100vh; }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+<script src="https://cdn.jsdelivr.net/npm/markmap-view@0.17"></script>
+<script src="https://cdn.jsdelivr.net/npm/markmap-lib@0.17"></script>
+</head>
+<body>
+<svg id="mindmap"></svg>
+<script>
+window.addEventListener('DOMContentLoaded', () => {
+  const { Transformer } = window.markmap;
+  const transformer = new Transformer();
+  const markdown = `
+# Claude 降智？完整事件拆解
+
+## 社群證據
+### Is Claude Nerfed Today?
+- isitnerfed.vercel.app
+- 267 GitHub stars
+- 每日投票追蹤
+### Reddit r/ClaudeAI
+- 每隔幾天一篇「got dumber」
+### Claude Code 隱藏問題分析
+- ArkNill repo（85 stars）
+- 15-20 條 be minimal
+- 3-4 條 be thorough
+
+## 實際事件（2026 年 4 月）
+### 4/4 第三方工具被切
+- OpenClaw 等 harness 停止支援
+- 用戶需自付 API 費用
+### 4/6-8 大規模當機
+- 登入失敗
+- 語音模式壞掉
+- 對話中斷
+### Plus 額度再平衡
+- burst → steady 模式
+- 每天平均分配
+
+## 技術問題
+### Cache Bug
+- v2.1.100+ 版本
+- 每次多吃 ~20K token
+- 額度消耗異常快
+### System Prompt 壓縮
+- minimal 指令遠多於 thorough
+- Prompt Patcher 工具（267 stars）
+
+## 商業邏輯（四階段循環）
+### 階段一：品質吸客
+### 階段二：用量暴增，算力不夠
+### 階段三：漲價 + 限量 + 降品質
+### 階段四：推更貴方案
+
+## 自保策略
+### 短期
+- 檢查版本號
+- 看 usage dashboard
+- 追蹤 isitnerfed
+### 中長期
+- 不要 all in 單一模型
+- 保留 ChatGPT / Gemini 帳號
+- 建立自己的基準測試
+`;
+  const { root } = transformer.transform(markdown);
+  window.markmap.Markmap.create('#mindmap', { colorFreezeLevel: 2, duration: 500, maxWidth: 280, initialExpandLevel: 3 }, root);
+});
+</script>
+</body>
+</html>
