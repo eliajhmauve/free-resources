@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Claude 怎麼用？完整全景圖</title>
+<style>
+* { margin: 0; padding: 0; }
+body { background: #ffffff; }
+#mindmap { width: 100vw; height: 100vh; }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+<script src="https://cdn.jsdelivr.net/npm/markmap-view@0.17"></script>
+<script src="https://cdn.jsdelivr.net/npm/markmap-lib@0.17"></script>
+</head>
+<body>
+<svg id="mindmap"></svg>
+<script>
+window.addEventListener('DOMContentLoaded', () => {
+  const { Transformer } = window.markmap;
+  const transformer = new Transformer();
+  const markdown = `
+# Claude 怎麼用？
+
+## 方案選擇
+### Free（$0）
+- Sonnet 模型
+- 每日額度限制
+- Projects 可用
+### Pro（$20/月）
+- Opus 4.6 可用
+- 5 倍額度
+- 完整功能
+### Max（$100/月）
+- 20 倍額度
+- Claude Code 無限
+- 適合工程師/重度用戶
+### Team（$25-30/人）
+- 跨成員 Projects
+- 資料不被用於訓練
+
+## 五大功能
+### Projects
+- 存背景資料
+- 每次對話帶記憶
+- 最關鍵的設定
+### 上傳檔案
+- PDF / Word / CSV
+- 分析、找重點、標風險
+### Artifacts
+- 即時預覽程式碼
+- 生成互動式工具
+### Claude Code
+- CLI 工具
+- 讀 codebase / 修 bug / 寫測試
+- npm install -g @anthropic-ai/claude-code
+### Memory
+- 跨 Projects 長期記憶
+- 2026/3 開始推出
+
+## 上手步驟
+### ① 建帳號（claude.ai）
+### ② 建 Project + 貼背景
+### ③ 上傳常用文件
+### ④ 寫帶 context 的 prompt
+### ⑤ 養成每日使用節奏
+
+## 好 Prompt 的四要素
+### 任務：要它做什麼
+### 背景：為什麼做、給誰
+### 限制：字數、語氣、格式
+### 範例：參考的例子
+
+## 常見踩坑
+### prompt 太短
+### 免費額度用完就放棄
+### 沒用 Projects
+### 把 Claude 當 Google 用
+### 不敢說「重來」
+`;
+  const { root } = transformer.transform(markdown);
+  window.markmap.Markmap.create('#mindmap', { colorFreezeLevel: 2, duration: 500, maxWidth: 280, initialExpandLevel: 3 }, root);
+});
+</script>
+</body>
+</html>
