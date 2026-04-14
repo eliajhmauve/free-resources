@@ -1,6 +1,14 @@
 {
   "resources": [
     {
+      "date": "2026-04-14",
+      "slug": "claude-code-beginner-setup",
+      "title": "Claude Code 新手設定指南",
+      "type": "guide",
+      "file": "guide.html",
+      "description": "互動式步驟教學，5 分鐘從零開始設定 Claude Code"
+    },
+    {
       "date": "2026-04-13",
       "slug": "ai-coding-tools-2026",
       "title": "AI 寫程式工具選擇器",
