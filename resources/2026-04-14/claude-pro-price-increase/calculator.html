@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI 訂閱值不值？算一下你的時薪就知道 — Elijah Sensei</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, 'PingFang TC', 'Noto Sans TC', sans-serif;
+      background: #fafafa;
+      color: #2a2a2a;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    .brand-bar {
+      background: #1a1a1a;
+      color: #f5f5f5;
+      padding: 12px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 14px;
+    }
+
+    .brand-bar .name {
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    .brand-bar .tag {
+      background: #e0c96e;
+      color: #1a1a1a;
+      padding: 2px 10px;
+      border-radius: 12px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+
+    .container {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 40px 20px 40px;
+    }
+
+    h1 {
+      font-size: 26px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+
+    .subtitle {
+      color: #666;
+      font-size: 15px;
+      margin-bottom: 36px;
+    }
+
+    /* Calculator */
+    .calc-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 32px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+      margin-bottom: 24px;
+    }
+
+    .calc-card h2 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: #1a1a1a;
+    }
+
+    .input-group {
+      margin-bottom: 20px;
+    }
+
+    .input-group label {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      color: #444;
+      margin-bottom: 6px;
+    }
+
+    .input-group .hint {
+      font-size: 12px;
+      color: #999;
+      margin-bottom: 8px;
+    }
+
+    .input-group input[type="range"] {
+      width: 100%;
+      height: 6px;
+      -webkit-appearance: none;
+      background: #e0e0e0;
+      border-radius: 3px;
+      outline: none;
+    }
+
+    .input-group input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #1a1a1a;
+      cursor: pointer;
+    }
+
+    .range-value {
+      text-align: right;
+      font-size: 24px;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-top: 4px;
+    }
+
+    .range-value span {
+      font-size: 14px;
+      font-weight: 400;
+      color: #999;
+    }
+
+    /* Result */
+    .result-card {
+      background: #1a1a1a;
+      border-radius: 16px;
+      padding: 32px;
+      color: #fff;
+      margin-bottom: 24px;
+      display: none;
+    }
+
+    .result-card.show {
+      display: block;
+      animation: fadeIn 0.4s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .result-header {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.5);
+      letter-spacing: 2px;
+      margin-bottom: 16px;
+    }
+
+    .result-main {
+      font-size: 48px;
+      font-weight: 900;
+      margin-bottom: 4px;
+    }
+
+    .result-main.worth {
+      color: #4ecdc4;
+    }
+
+    .result-main.not-worth {
+      color: #ff6b6b;
+    }
+
+    .result-sub {
+      font-size: 16px;
+      color: rgba(255, 255, 255, 0.6);
+      margin-bottom: 24px;
+    }
+
+    .result-breakdown {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 20px;
+    }
+
+    .breakdown-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+
+    .breakdown-row .label {
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .breakdown-row .value {
+      font-weight: 600;
+    }
+
+    .verdict {
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 20px;
+      margin-top: 20px;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    /* Comparison table */
+    .compare-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 32px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+      margin-bottom: 24px;
+    }
+
+    .compare-card h2 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    .compare-table th {
+      text-align: left;
+      padding: 10px 8px;
+      border-bottom: 2px solid #1a1a1a;
+      font-weight: 700;
+      font-size: 12px;
+      color: #666;
+      letter-spacing: 1px;
+    }
+
+    .compare-table td {
+      padding: 10px 8px;
+      border-bottom: 1px solid #f0f0f0;
+      vertical-align: top;
+    }
+
+    .compare-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .plan-name {
+      font-weight: 700;
+    }
+
+    .price-cell {
+      font-weight: 700;
+      font-size: 15px;
+    }
+
+    .highlight-row {
+      background: rgba(217, 119, 87, 0.06);
+    }
+
+    .new-badge {
+      background: #d97757;
+      color: #fff;
+      font-size: 10px;
+      padding: 1px 6px;
+      border-radius: 4px;
+      font-weight: 700;
+      margin-left: 4px;
+    }
+
+    /* CTA */
+    .cta-section {
+      background: #fff;
+      border-radius: 16px;
+      padding: 32px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .cta-section p {
+      font-size: 15px;
+      color: #666;
+      margin-bottom: 16px;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      background: #1a1a1a;
+      color: #fff;
+      padding: 12px 32px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 15px;
+    }
+
+    .cta-btn:hover {
+      background: #333;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 12px;
+      color: #bbb;
+    }
+
+    .footer a {
+      color: #999;
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="brand-bar">
+    <span class="name">ELIJAH SENSEI</span>
+    <span class="tag">FREE RESOURCE</span>
+  </div>
+
+  <div class="container">
+    <h1>AI 訂閱值不值？<br>算一下就知道</h1>
+    <p class="subtitle">Claude Pro 漲到 $40/月了。到底該不該續？輸入你的使用習慣，幫你算清楚</p>
+
+    <div class="calc-card">
+      <h2>你的使用情況</h2>
+
+      <div class="input-group">
+        <label>每天用 AI 工具幾小時？</label>
+        <div class="hint">包含 Claude、ChatGPT、Gemini 等所有 AI 工具</div>
+        <input type="range" id="hours" min="0.5" max="8" step="0.5" value="2">
+        <div class="range-value"><span id="hours-val">2</span> <span>小時 / 天</span></div>
+      </div>
+
+      <div class="input-group">
+        <label>你的時薪大約多少？（台幣）</label>
+        <div class="hint">月薪 ÷ 176 小時。不確定就抓個大概</div>
+        <input type="range" id="hourly" min="200" max="3000" step="50" value="500">
+        <div class="range-value">NT$ <span id="hourly-val">500</span> <span>/ 小時</span></div>
+      </div>
+
+      <div class="input-group">
+        <label>AI 幫你省下多少比例的工作時間？</label>
+        <div class="hint">以前要 4 小時的工作，現在用 AI 只要 2 小時 = 省 50%</div>
+        <input type="range" id="save" min="10" max="80" step="5" value="30">
+        <div class="range-value"><span id="save-val">30</span><span>%</span></div>
+      </div>
+    </div>
+
+    <div class="result-card" id="result">
+      <div class="result-header">計算結果</div>
+      <div class="result-main" id="result-verdict"></div>
+      <div class="result-sub" id="result-sub"></div>
+      <div class="result-breakdown">
+        <div class="breakdown-row">
+          <span class="label">AI 幫你省下的月時數</span>
+          <span class="value" id="saved-hours">—</span>
+        </div>
+        <div class="breakdown-row">
+          <span class="label">省下時間的價值（台幣）</span>
+          <span class="value" id="saved-value">—</span>
+        </div>
+        <div class="breakdown-row">
+          <span class="label">Claude Pro 月費（台幣）</span>
+          <span class="value" id="cost-twd">—</span>
+        </div>
+        <div class="breakdown-row">
+          <span class="label">ROI</span>
+          <span class="value" id="roi">—</span>
+        </div>
+      </div>
+      <div class="verdict" id="verdict-text"></div>
+    </div>
+
+    <div class="compare-card">
+      <h2>2026 AI 訂閱方案比較（4 月更新）</h2>
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>方案</th>
+            <th>月費</th>
+            <th>適合誰</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="plan-name">ChatGPT Plus</td>
+            <td class="price-cell">$20</td>
+            <td>日常問答、圖片生成、GPTs 生態系</td>
+          </tr>
+          <tr class="highlight-row">
+            <td class="plan-name">Claude Pro <span class="new-badge">漲價</span></td>
+            <td class="price-cell">$40</td>
+            <td>寫程式、Claude Code、深度推理、長文</td>
+          </tr>
+          <tr>
+            <td class="plan-name">Google AI Pro</td>
+            <td class="price-cell">$20</td>
+            <td>Gemini 2.5、Google 生態整合</td>
+          </tr>
+          <tr>
+            <td class="plan-name">Claude Max 5x</td>
+            <td class="price-cell">$100</td>
+            <td>重度 Claude Code 用戶、高產出團隊</td>
+          </tr>
+          <tr>
+            <td class="plan-name">Claude Max 20x</td>
+            <td class="price-cell">$200</td>
+            <td>全天候 Agent 運算、自動化流水線</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="cta-section">
+      <p>更多 AI 工具實戰教學和自動化心得</p>
+      <a href="https://www.threads.net/@elijah.shi.sensei" class="cta-btn" target="_blank">追蹤 Threads
+        @elijah.shi.sensei</a>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>Elijah Sensei — AI 自動化 × 創業實戰</p>
+  </div>
+
+  <script>
+    const hoursEl = document.getElementById('hours');
+    const hourlyEl = document.getElementById('hourly');
+    const saveEl = document.getElementById('save');
+    const resultEl = document.getElementById('result');
+
+    function calc() {
+      const hours = parseFloat(hoursEl.value);
+      const hourly = parseInt(hourlyEl.value);
+      const savePct = parseInt(saveEl.value) / 100;
+
+      document.getElementById('hours-val').textContent = hours;
+      document.getElementById('hourly-val').textContent = hourly.toLocaleString();
+      document.getElementById('save-val').textContent = Math.round(savePct * 100);
+
+      const workDays = 22;
+      const savedHours = hours * savePct * workDays;
+      const savedValue = savedHours * hourly;
+      const costTWD = 40 * 32.5;
+      const roi = ((savedValue - costTWD) / costTWD * 100);
+
+      document.getElementById('saved-hours').textContent = savedHours.toFixed(1) + ' 小時';
+      document.getElementById('saved-value').textContent = 'NT$ ' + Math.round(savedValue).toLocaleString();
+      document.getElementById('cost-twd').textContent = 'NT$ ' + Math.round(costTWD).toLocaleString();
+      document.getElementById('roi').textContent = roi.toFixed(0) + '%';
+
+      const verdictEl = document.getElementById('result-verdict');
+      const subEl = document.getElementById('result-sub');
+      const textEl = document.getElementById('verdict-text');
+
+      if (roi > 200) {
+        verdictEl.textContent = '超級划算';
+        verdictEl.className = 'result-main worth';
+        subEl.textContent = '你省下的時間價值是訂閱費的 ' + (savedValue / costTWD).toFixed(1) + ' 倍';
+        textEl.textContent = 'AI 對你來說是高槓桿工具。$40 美金的月費換回 NT$ ' + Math.round(savedValue).toLocaleString() + ' 的時間價值，閉眼續訂。';
+      } else if (roi > 50) {
+        verdictEl.textContent = '值得';
+        verdictEl.className = 'result-main worth';
+        subEl.textContent = '省下的時間價值超過訂閱費 ' + (savedValue / costTWD).toFixed(1) + ' 倍';
+        textEl.textContent = '以你的使用量來看，$40/月的投資回報是正的。但可以想想是否有更便宜的替代方案能達到類似效果。';
+      } else if (roi > 0) {
+        verdictEl.textContent = '勉強';
+        verdictEl.className = 'result-main not-worth';
+        subEl.textContent = '省下的價值只比訂閱費多一點';
+        textEl.textContent = '以你目前的使用量，$40/月剛好打平。建議先試試免費方案或 ChatGPT Plus ($20)，等用量提升再升級。';
+      } else {
+        verdictEl.textContent = '不划算';
+        verdictEl.className = 'result-main not-worth';
+        subEl.textContent = '訂閱費超過你省下的時間價值';
+        textEl.textContent = '以你的使用頻率，$40/月太貴了。建議用免費版或 ChatGPT Plus ($20) 就夠。等你每天使用超過 2 小時再考慮。';
+      }
+
+      resultEl.classList.add('show');
+    }
+
+    hoursEl.addEventListener('input', calc);
+    hourlyEl.addEventListener('input', calc);
+    saveEl.addEventListener('input', calc);
+    calc();
+  </script>
+</body>
+
+</html>
