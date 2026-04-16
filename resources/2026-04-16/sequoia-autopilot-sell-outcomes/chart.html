@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Copilot vs Autopilot 機會地圖</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #ffffff; font-family: 'Noto Sans TC', sans-serif; padding: 20px; }
+.chart-container { max-width: 900px; margin: 0 auto; }
+h1 { text-align: center; color: #2a2a2a; font-size: 20px; margin-bottom: 8px; }
+.subtitle { text-align: center; color: #666; font-size: 14px; margin-bottom: 30px; }
+.source { text-align: center; color: #999; font-size: 12px; margin-top: 20px; }
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+</head>
+<body>
+<div class="chart-container">
+  <h1>紅杉十大萬億級 AI Autopilot 機會</h1>
+  <p class="subtitle">按智力佔比排序（智力越高，Autopilot 越快勝出）</p>
+  <div id="chart1" style="width:100%;height:450px;"></div>
+
+  <div id="chart2" style="width:100%;height:350px;margin-top:40px;"></div>
+
+  <p class="source">資料來源：Sequoia Capital / Julien Bek (2026-03), PitchBook, Artificial Lawyer, Accounting Today</p>
+</div>
+<script>
+// Chart 1: Intelligence ratio bar chart
+const chart1 = echarts.init(document.getElementById('chart1'));
+chart1.setOption({
+  tooltip: {
+    trigger: 'axis',
+    formatter: function(params) {
+      const d = params[0];
+      return d.name + '<br/>智力佔比: ' + d.value + '%<br/>判斷佔比: ' + (100-d.value) + '%';
+    }
+  },
+  grid: { left: '15%', right: '10%', bottom: '15%', top: '10%' },
+  xAxis: {
+    type: 'category',
+    data: ['保險經紀', '醫療帳單', '會計', '稅務', '法律文書', '理賠定損', 'IT運維', '採購', '招聘', '諮詢'],
+    axisLabel: { rotate: 30, fontSize: 12 }
+  },
+  yAxis: {
+    type: 'value',
+    max: 100,
+    axisLabel: { formatter: '{value}%' },
+    name: '智力佔比'
+  },
+  series: [{
+    type: 'bar',
+    data: [
+      { value: 90, itemStyle: { color: '#1a1a2e' } },
+      { value: 85, itemStyle: { color: '#16213e' } },
+      { value: 82, itemStyle: { color: '#0f3460' } },
+      { value: 80, itemStyle: { color: '#0f3460' } },
+      { value: 75, itemStyle: { color: '#533483' } },
+      { value: 70, itemStyle: { color: '#533483' } },
+      { value: 68, itemStyle: { color: '#e94560' } },
+      { value: 55, itemStyle: { color: '#e94560' } },
+      { value: 45, itemStyle: { color: '#f39c12' } },
+      { value: 30, itemStyle: { color: '#f39c12' } }
+    ],
+    barWidth: '60%',
+    itemStyle: { borderRadius: [4,4,0,0] },
+    label: { show: true, position: 'top', formatter: '{c}%', fontSize: 11 }
+  }],
+  graphic: [{
+    type: 'text',
+    left: '70%', top: '5%',
+    style: { text: '← Autopilot 先到', fill: '#1a1a2e', fontSize: 12 }
+  }]
+});
+
+// Chart 2: Software vs Service spend
+const chart2 = echarts.init(document.getElementById('chart2'));
+chart2.setOption({
+  title: { text: '每 $1 軟體支出 vs $6 服務支出', left: 'center', textStyle: { fontSize: 16 } },
+  tooltip: { trigger: 'item' },
+  series: [{
+    type: 'pie',
+    radius: ['40%', '70%'],
+    center: ['30%', '55%'],
+    data: [
+      { value: 1, name: '軟體支出 ($1)\nSaaS 已吃下', itemStyle: { color: '#ccc' } },
+      { value: 6, name: '服務支出 ($6)\nAutopilot 目標', itemStyle: { color: '#1a1a2e' } }
+    ],
+    label: { fontSize: 12, lineHeight: 18 },
+    emphasis: { itemStyle: { shadowBlur: 10 } }
+  }],
+  graphic: [{
+    type: 'group',
+    left: '55%', top: '20%',
+    children: [
+      { type: 'text', style: { text: 'Autopilot 的 TAM\n是整個品類的\n勞動力支出', fill: '#2a2a2a', fontSize: 14, lineHeight: 22, fontWeight: 'bold' } },
+      { type: 'text', top: 80, style: { text: '過去 20 年 SaaS 吃了 $1\n未來 10 年 AI 要吃那個 $6', fill: '#666', fontSize: 12, lineHeight: 20 } }
+    ]
+  }]
+});
+
+window.addEventListener('resize', () => { chart1.resize(); chart2.resize(); });
+</script>
+</body>
+</html>

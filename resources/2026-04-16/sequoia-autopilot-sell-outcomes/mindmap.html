@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>紅杉 Copilot vs Autopilot 框架心智圖</title>
+<style>
+* { margin: 0; padding: 0; }
+body { background: #ffffff; }
+#mindmap { width: 100vw; height: 100vh; }
+.markmap-node text { font-family: 'Noto Sans TC', sans-serif; }
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+<script src="https://cdn.jsdelivr.net/npm/markmap-view@0.17"></script>
+<script src="https://cdn.jsdelivr.net/npm/markmap-lib@0.17/dist/browser/index.js"></script>
+</head>
+<body>
+<svg id="mindmap"></svg>
+<script>
+const { Transformer } = window.markmap;
+const transformer = new Transformer();
+const markdown = `
+# 紅杉 AI 框架：Copilot vs Autopilot
+
+## 核心問題
+### 賣工具 = 跟模型賽跑
+### 賣結果 = 跟模型一起跑
+### 下一個萬億公司偽裝成服務公司
+
+## 智力 vs 判斷
+### 智力（Intelligence）
+#### 規則化的工作
+#### 翻譯需求→程式碼
+#### AI 已跨過這條線
+### 判斷（Judgement）
+#### 需要經驗和直覺
+#### 決定下一步做什麼
+#### 人類仍有優勢
+
+## Copilot 路線
+### 賣工具給專業人士
+### 預算來源：軟體預算（$1）
+### 風險：模型升級 = 你的功能消失
+### 代表：Harvey（法律 AI）
+
+## Autopilot 路線
+### 直接賣工作成果
+### 預算來源：服務預算（$6）
+### 優勢：模型越強，交付越好
+### 代表：Crosby（法律結果交付）
+
+## 十大萬億級機會
+### 保險經紀（最大市場）
+### 會計（34萬人缺口）
+### 醫療帳單（7萬 ICD-10 代碼）
+### 理賠定損
+### 稅務自動化
+### 法律文書（$60B）
+### IT 運維
+### 採購（2-5% 合同洩漏）
+### 招聘（最大服務市場）
+### 諮詢（判斷為主）
+
+## 進場策略
+### 從外包切入
+#### 現成預算科目
+#### 客戶已接受外部交付
+#### 替換供應商，不是組織重組
+### $1 軟體 vs $6 服務
+### 外包 = 楔子，內部 = 長期 TAM
+
+## 關鍵數據
+### $24.2B agentic AI 募資（2025）
+### $60B 法律工作可被吸收
+### 34萬名美國會計師流失
+### 75% CPA 接近退休
+`;
+const { root } = transformer.transform(markdown);
+const mm = window.markmap.Markmap.create('#mindmap', {
+  colorFreezeLevel: 2,
+  duration: 500,
+  maxWidth: 300,
+  spacingVertical: 10,
+  paddingX: 16,
+  zoom: true,
+  pan: true
+}, root);
+</script>
+</body>
+</html>
