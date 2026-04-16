@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude 廚房助手 Prompt 指令包｜Elijah Sensei</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Noto Sans TC',system-ui,sans-serif;background:#fff;color:#2a2a2a;line-height:1.7}
+.brand-bar{background:#2a2a2a;color:#fff;text-align:center;padding:10px;font-size:13px;letter-spacing:1px}
+.brand-bar span{background:#e94560;padding:2px 8px;border-radius:10px;font-size:11px;margin-left:8px}
+.container{max-width:680px;margin:0 auto;padding:24px 20px 60px}
+h1{font-size:24px;margin:24px 0 8px;line-height:1.4}
+.subtitle{color:#666;font-size:14px;margin-bottom:32px}
+.prompt-card{background:#f8f9fa;border-radius:12px;padding:20px;margin-bottom:20px;border-left:4px solid #2a2a2a}
+.prompt-card h3{font-size:16px;margin-bottom:4px}
+.prompt-card .scene{color:#e94560;font-size:13px;margin-bottom:10px}
+.prompt-card .prompt-text{background:#fff;border-radius:8px;padding:14px;font-size:14px;border:1px solid #eee;margin-bottom:10px;white-space:pre-wrap}
+.prompt-card .tip{color:#888;font-size:12px}
+.section-title{font-size:18px;margin:32px 0 16px;padding-bottom:8px;border-bottom:2px solid #2a2a2a}
+.cta-box{background:#2a2a2a;color:#fff;border-radius:16px;padding:28px;text-align:center;margin-top:40px}
+.cta-box p{margin-bottom:12px;font-size:15px}
+.cta-box a{display:inline-block;background:#fff;color:#2a2a2a;padding:12px 28px;border-radius:24px;text-decoration:none;font-weight:bold;font-size:15px}
+.cta-box .live{color:#e94560;font-size:13px;margin-top:12px}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="brand-bar">Elijah Sensei · AI 生活應用教學 <span>FREE RESOURCE</span></div>
+<div class="container">
+<h1>Claude 廚房助手<br>10 個 Prompt 指令包</h1>
+<p class="subtitle">複製貼上就能用，從冰箱到餐桌只要 3 分鐘</p>
+
+<div class="section-title">基本款：有什麼煮什麼</div>
+
+<div class="prompt-card">
+<h3>1. 冰箱食材變晚餐</h3>
+<div class="scene">用在：下班回家不知道煮什麼的時候</div>
+<div class="prompt-text">我冰箱裡有：[列出食材]
+幫我用這些食材想一道 15 分鐘能做完的晚餐
+附上步驟和調味料比例
+越簡單越好，我是料理新手</div>
+<div class="tip">進階：拍冰箱照片直接丟給 Claude，它看得懂</div>
+</div>
+
+<div class="prompt-card">
+<h3>2. 限定設備版</h3>
+<div class="scene">用在：租屋族只有電鍋或微波爐</div>
+<div class="prompt-text">我只有 [微波爐/電鍋/氣炸鍋]
+食材有：[列出食材]
+幫我想一道用這個設備就能完成的料理
+不需要開火</div>
+</div>
+
+<div class="prompt-card">
+<h3>3. 快過期食材急救</h3>
+<div class="scene">用在：食材快壞了但不想浪費</div>
+<div class="prompt-text">這些食材明後天就要過期了：[列出食材]
+幫我想辦法在今天全部用掉
+可以是一道菜，也可以是兩道簡單的</div>
+</div>
+
+<div class="section-title">減脂版：吃得飽又不怕胖</div>
+
+<div class="prompt-card">
+<h3>4. 算熱量版食譜</h3>
+<div class="scene">用在：減脂期需要控制熱量</div>
+<div class="prompt-text">我今天剩餘熱量大約 [500] 大卡
+冰箱有：[列出食材]
+幫我配一餐，要有蛋白質和蔬菜
+附上每樣食材的大概熱量</div>
+</div>
+
+<div class="prompt-card">
+<h3>5. 一週減脂菜單</h3>
+<div class="scene">用在：週日規劃整週飲食</div>
+<div class="prompt-text">幫我規劃一週的減脂晚餐菜單（週一到週五）
+條件：
+- 每餐 400-500 大卡
+- 食材盡量重複使用（減少浪費）
+- 備料時間不超過 20 分鐘
+- 我不吃 [香菜/內臟/辣]
+最後幫我列出週末一次採購的購物清單</div>
+</div>
+
+<div class="section-title">懶人版：能多懶就多懶</div>
+
+<div class="prompt-card">
+<h3>6. 三步驟懶人餐</h3>
+<div class="scene">用在：累到只想躺但還是要吃東西</div>
+<div class="prompt-text">幫我想一道「最多 3 個步驟」就能完成的晚餐
+食材我等一下去超商買，所以用超商買得到的東西就好
+不要太貴，100 元以內</div>
+</div>
+
+<div class="prompt-card">
+<h3>7. 便利商店改造餐</h3>
+<div class="scene">用在：不想煮但想吃健康一點</div>
+<div class="prompt-text">我等一下要去 [7-11/全家] 買晚餐
+幫我搭配一組「看起來像自己煮的」組合
+預算 120 元，要有蛋白質和蔬菜
+告訴我買什麼 + 怎麼擺盤</div>
+</div>
+
+<div class="section-title">進階版：讓人以為你很會煮</div>
+
+<div class="prompt-card">
+<h3>8. 約會料理</h3>
+<div class="scene">用在：想在家煮給另一半吃</div>
+<div class="prompt-text">我想在家做一頓簡單但看起來厲害的晚餐
+對象是 [男友/朋友/家人]
+我的料理程度是 [新手/普通]
+預算 [300-500] 元
+幫我規劃菜單（前菜+主菜+飲品）
+附上詳細步驟，備料和烹飪分開列</div>
+</div>
+
+<div class="prompt-card">
+<h3>9. 營養分析師</h3>
+<div class="scene">用在：想知道自己吃得營養不營養</div>
+<div class="prompt-text">我今天吃了這些：
+早餐：[列出]
+午餐：[列出]
+晚餐：[列出]
+幫我分析今天的營養攝取
+蛋白質、碳水、脂肪、纖維各大概多少
+有什麼明顯不足的嗎？明天可以怎麼補</div>
+</div>
+
+<div class="prompt-card">
+<h3>10. 購物清單產生器</h3>
+<div class="scene">用在：去超市前先列好清單</div>
+<div class="prompt-text">我這週想做這幾道菜：
+1. [菜名]
+2. [菜名]
+3. [菜名]
+幫我整理出一份購物清單
+把重複的食材合併，標上大概用量
+按超市區域分類（蔬果區/肉品區/調味區/冷藏區）</div>
+</div>
+
+<div class="cta-box">
+<p>想學更多 Claude 生活應用？</p>
+<a href="https://www.threads.com/@elijah.shi.sensei" target="_blank">追蹤 @elijah.shi.sensei</a>
+<p class="live">4/21（一）晚上 9 點直播：女生怎麼把 Claude 用在每天的生活裡</p>
+</div>
+</div>
+</body>
+</html>
