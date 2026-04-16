@@ -7,16 +7,15 @@
 * { margin: 0; padding: 0; }
 body { background: #ffffff; }
 #mindmap { width: 100vw; height: 100vh; }
-.markmap-node text { font-family: 'Noto Sans TC', sans-serif; }
 </style>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
 <script src="https://cdn.jsdelivr.net/npm/markmap-view@0.17"></script>
-<script src="https://cdn.jsdelivr.net/npm/markmap-lib@0.17/dist/browser/index.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/markmap-lib@0.17"></script>
 </head>
 <body>
 <svg id="mindmap"></svg>
 <script>
+window.addEventListener('DOMContentLoaded', () => {
 const { Transformer } = window.markmap;
 const transformer = new Transformer();
 const markdown = `
@@ -85,6 +84,7 @@ const mm = window.markmap.Markmap.create('#mindmap', {
   zoom: true,
   pan: true
 }, root);
+});
 </script>
 </body>
 </html>
