@@ -17,8 +17,9 @@ body{font-family:'Noto Sans TC',system-ui,sans-serif;background:#fff;color:#2a2a
 .tag.hot{background:#fff0f3;color:#e94560}
 .hero h1{font-size:24px;line-height:1.4;margin:8px 0}
 .hero .subtitle{color:#666;font-size:14px}
-.mindmap-wrap{background:#fff;border:1px solid #eaeaea;border-radius:12px;padding:12px;margin-bottom:12px;min-height:640px;position:relative;overflow:hidden}
-.markmap{width:100%;height:620px;display:block}
+.mindmap-wrap{background:#fff;border:1px solid #eaeaea;border-radius:12px;padding:0;margin-bottom:12px;overflow:hidden}
+.mindmap-wrap > .markmap{width:100%;height:640px;display:block}
+.mindmap-wrap svg{width:100%;height:100%;display:block}
 .hint{text-align:center;font-size:12px;color:#888;margin-bottom:32px}
 .cta-box{background:#2a2a2a;color:#fff;border-radius:16px;padding:28px 24px;text-align:center}
 .cta-box p{margin-bottom:14px;font-size:15px}
@@ -40,19 +41,7 @@ body{font-family:'Noto Sans TC',system-ui,sans-serif;background:#fff;color:#2a2a
 </div>
 
 <div class="mindmap-wrap">
-<svg class="markmap"></svg>
-</div>
-<p class="hint">💡 點擊節點展開或收合分支，拖曳可移動畫面</p>
-
-<div class="cta-box">
-<p>想看真實的 AI 團隊怎麼跑？</p>
-<a href="https://www.threads.com/@elijah.shi.sensei" target="_blank">追蹤 @elijah.shi.sensei</a>
-<p class="hint2">每週分享 Claude Code 實戰架構和踩坑經驗</p>
-</div>
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/markmap-autoloader@0.18"></script>
-<script type="text/template" class="markmap">
+<div class="markmap"><script type="text/template">
 ---
 markmap:
   colorFreezeLevel: 2
@@ -132,6 +121,17 @@ markmap:
 ### 第三週
 - 打包成第一個 Agent
 - 串接 Notion 任務板
-</script>
+</script></div>
+</div>
+<p class="hint">💡 點擊節點展開或收合分支，拖曳可移動畫面</p>
+
+<div class="cta-box">
+<p>想看真實的 AI 團隊怎麼跑？</p>
+<a href="https://www.threads.com/@elijah.shi.sensei" target="_blank">追蹤 @elijah.shi.sensei</a>
+<p class="hint2">每週分享 Claude Code 實戰架構和踩坑經驗</p>
+</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/markmap-autoloader@0.18"></script>
 </body>
 </html>
