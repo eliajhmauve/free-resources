@@ -1,51 +1,71 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-TW">
 <head>
 <meta charset="UTF-8">
-<title>Claude 新手 5 大技巧心智圖</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude 新手 5 大技巧心智圖｜Elijah Sensei</title>
+<meta name="description" content="Claude 新手必學 5 大技巧心智圖：ICC 公式、Context Interview、Ground First、Projects、Skills。互動式展開收合。">
 <style>
-* { margin: 0; padding: 0; }
-body { background: #0a0a0a; }
-#mindmap { width: 100vw; height: 100vh; }
-.brand-bar {
-  position: fixed; top: 0; left: 0; right: 0;
-  background: #111; padding: 12px 24px;
-  display: flex; justify-content: space-between; align-items: center;
-  z-index: 100; border-bottom: 1px solid #222;
-}
-.brand-bar .name { color: #f5f5f5; font-size: 14px; font-weight: 600; font-family: -apple-system, sans-serif; }
-.brand-bar .tag { color: #e0c96e; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; }
-.footer-cta {
-  position: fixed; bottom: 0; left: 0; right: 0;
-  background: #111; padding: 14px 24px;
-  text-align: center; z-index: 100; border-top: 1px solid #222;
-  font-family: -apple-system, sans-serif;
-}
-.footer-cta a { color: #e0c96e; text-decoration: none; font-size: 13px; }
-.footer-cta span { color: #555; font-size: 12px; }
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Noto Sans TC',system-ui,sans-serif;background:#fff;color:#2a2a2a;line-height:1.7}
+.brand-bar{background:#2a2a2a;color:#fff;text-align:center;padding:10px;font-size:13px;letter-spacing:1px}
+.brand-bar span{background:#e94560;padding:2px 8px;border-radius:10px;font-size:11px;margin-left:8px}
+.container{max-width:960px;margin:0 auto;padding:24px 20px 40px}
+.hero{padding:8px 0 20px;border-bottom:1px solid #eee;margin-bottom:24px}
+.tags{display:flex;gap:8px;flex-wrap:wrap;font-size:12px;margin-bottom:12px}
+.tag{background:#f1f3f5;color:#555;padding:4px 10px;border-radius:12px}
+.tag.hot{background:#fff0f3;color:#e94560}
+.hero h1{font-size:24px;line-height:1.4;margin:8px 0}
+.hero .subtitle{color:#666;font-size:14px}
+.mindmap-wrap{background:#fff;border:1px solid #eaeaea;border-radius:12px;padding:12px;margin-bottom:12px;min-height:640px;position:relative;overflow:hidden}
+.markmap{width:100%;height:620px;display:block}
+.hint{text-align:center;font-size:12px;color:#888;margin-bottom:32px}
+.cta-box{background:#2a2a2a;color:#fff;border-radius:16px;padding:28px 24px;text-align:center}
+.cta-box p{margin-bottom:14px;font-size:15px}
+.cta-box a{display:inline-block;background:#fff;color:#2a2a2a;padding:12px 28px;border-radius:24px;text-decoration:none;font-weight:700;font-size:14px}
+.cta-box .hint2{color:#e94560;font-size:12px;margin-top:12px}
 </style>
-<script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
-<script src="https://cdn.jsdelivr.net/npm/markmap-view@0.17"></script>
-<script src="https://cdn.jsdelivr.net/npm/markmap-lib@0.17"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<div class="brand-bar">
-  <span class="name">Elijah Sensei</span>
-  <span class="tag">Free Resource</span>
+<div class="brand-bar">Elijah Sensei · 互動心智圖 <span>FREE RESOURCE</span></div>
+<div class="container">
+<div class="hero">
+<div class="tags">
+<span class="tag">🧠 心智圖</span>
+<span class="tag hot">點節點展開收合</span>
 </div>
-<svg id="mindmap" style="margin-top: 44px; margin-bottom: 44px;"></svg>
-<div class="footer-cta">
-  <a href="https://www.threads.net/@elijah.shi.sensei">追蹤 @elijah.shi.sensei 取得更多 AI 教學</a>
-  <br><span>Threads | AI 自動化 | 個人品牌</span>
+<h1>Claude 新手 5 大技巧</h1>
+<p class="subtitle">ICC 公式、Context Interview、Ground First、Projects、Skills 完整架構</p>
 </div>
-<script>
-window.addEventListener('DOMContentLoaded', () => {
-  const md = `
+
+<div class="mindmap-wrap">
+<svg class="markmap"></svg>
+</div>
+<p class="hint">💡 點擊節點展開或收合分支，拖曳可移動畫面</p>
+
+<div class="cta-box">
+<p>想學更多 Claude 實戰技巧？</p>
+<a href="https://www.threads.com/@elijah.shi.sensei" target="_blank">追蹤 @elijah.shi.sensei</a>
+<p class="hint2">每週更新 AI 自動化教學和隱藏技巧</p>
+</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/markmap-autoloader@0.18"></script>
+<script type="text/template" class="markmap">
+---
+markmap:
+  colorFreezeLevel: 2
+  maxWidth: 300
+  initialExpandLevel: 2
+  duration: 500
+---
+
 # Claude 新手 5 大技巧
 
 ## 1. ICC 提問公式
 ### I - Instructions
-- 你要 Claude 做什麼？
+- 你要 Claude 做什麼
 - 動詞要具體（列清單/分析/比較）
 ### C - Context
 - 你的角色、產業、目標
@@ -56,8 +76,8 @@ window.addEventListener('DOMContentLoaded', () => {
 
 ## 2. Context Interview
 ### 怎麼用
-- prompt 結尾加：「先問我你需要的資訊」
-- Claude 會反問 3-5 個問題
+- prompt 結尾加「先問我你需要的資訊」
+- Claude 會反問 3 到 5 個問題
 ### 為什麼有用
 - 你常常遺漏關鍵背景
 - Claude 知道自己需要什麼
@@ -73,8 +93,8 @@ window.addEventListener('DOMContentLoaded', () => {
 
 ## 4. Projects
 ### 取代全域 custom instructions
-- 全域設定 = 每道菜加一樣的醬
-- Projects = 每個情境一套設定
+- 全域設定等於每道菜加一樣的醬
+- Projects 等於每個情境一套設定
 ### 怎麼用
 - 每個工作類型建一個 Project
 - 上傳品牌指南、範例、SOP
@@ -86,18 +106,7 @@ window.addEventListener('DOMContentLoaded', () => {
 - 從簡單兩步驟開始
 ### 進階玩法
 - 多個 Skill 串成產線
-- Projects = 記憶 / Skills = 能力
-`;
-
-  const transformer = new window.markmap.Transformer();
-  const { root } = transformer.transform(md);
-  const mm = window.markmap.Markmap.create('#mindmap', {
-    colorFreezeLevel: 2,
-    duration: 500,
-    maxWidth: 300,
-    initialExpandLevel: 2
-  }, root);
-});
+- Projects 等於記憶，Skills 等於能力
 </script>
 </body>
 </html>

@@ -1,21 +1,66 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-TW">
 <head>
 <meta charset="UTF-8">
-<title>Claude Code AI 團隊架構心智圖</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Code AI 團隊架構心智圖｜Elijah Sensei</title>
+<meta name="description" content="Claude Code AI 團隊架構心智圖：Skill、Agent、品質控制、中控台、三週建置順序。互動式展開收合。">
 <style>
-* { margin: 0; padding: 0; }
-body { background: #fafafa; }
-#mindmap { width: 100vw; height: 100vh; }
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Noto Sans TC',system-ui,sans-serif;background:#fff;color:#2a2a2a;line-height:1.7}
+.brand-bar{background:#2a2a2a;color:#fff;text-align:center;padding:10px;font-size:13px;letter-spacing:1px}
+.brand-bar span{background:#e94560;padding:2px 8px;border-radius:10px;font-size:11px;margin-left:8px}
+.container{max-width:960px;margin:0 auto;padding:24px 20px 40px}
+.hero{padding:8px 0 20px;border-bottom:1px solid #eee;margin-bottom:24px}
+.tags{display:flex;gap:8px;flex-wrap:wrap;font-size:12px;margin-bottom:12px}
+.tag{background:#f1f3f5;color:#555;padding:4px 10px;border-radius:12px}
+.tag.hot{background:#fff0f3;color:#e94560}
+.hero h1{font-size:24px;line-height:1.4;margin:8px 0}
+.hero .subtitle{color:#666;font-size:14px}
+.mindmap-wrap{background:#fff;border:1px solid #eaeaea;border-radius:12px;padding:12px;margin-bottom:12px;min-height:640px;position:relative;overflow:hidden}
+.markmap{width:100%;height:620px;display:block}
+.hint{text-align:center;font-size:12px;color:#888;margin-bottom:32px}
+.cta-box{background:#2a2a2a;color:#fff;border-radius:16px;padding:28px 24px;text-align:center}
+.cta-box p{margin-bottom:14px;font-size:15px}
+.cta-box a{display:inline-block;background:#fff;color:#2a2a2a;padding:12px 28px;border-radius:24px;text-decoration:none;font-weight:700;font-size:14px}
+.cta-box .hint2{color:#e94560;font-size:12px;margin-top:12px}
 </style>
-<script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
-<script src="https://cdn.jsdelivr.net/npm/markmap-view@0.17"></script>
-<script src="https://cdn.jsdelivr.net/npm/markmap-lib@0.17"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<svg id="mindmap"></svg>
-<script>
-const md = `
+<div class="brand-bar">Elijah Sensei · 互動心智圖 <span>FREE RESOURCE</span></div>
+<div class="container">
+<div class="hero">
+<div class="tags">
+<span class="tag">🧠 心智圖</span>
+<span class="tag hot">Claude Code 架構</span>
+</div>
+<h1>Claude Code AI 團隊架構</h1>
+<p class="subtitle">從 Skill 到 Agent、從品質控制到中控台，3 週完整建置路徑</p>
+</div>
+
+<div class="mindmap-wrap">
+<svg class="markmap"></svg>
+</div>
+<p class="hint">💡 點擊節點展開或收合分支，拖曳可移動畫面</p>
+
+<div class="cta-box">
+<p>想看真實的 AI 團隊怎麼跑？</p>
+<a href="https://www.threads.com/@elijah.shi.sensei" target="_blank">追蹤 @elijah.shi.sensei</a>
+<p class="hint2">每週分享 Claude Code 實戰架構和踩坑經驗</p>
+</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/markmap-autoloader@0.18"></script>
+<script type="text/template" class="markmap">
+---
+markmap:
+  colorFreezeLevel: 2
+  maxWidth: 300
+  initialExpandLevel: 2
+  duration: 500
+---
+
 # Claude Code AI 團隊
 
 ## Skill（食譜）
@@ -26,8 +71,8 @@ const md = `
 ### 怎麼建
 - 找出重複工作
 - 拆解成步驟
-- 加入品牌風格 + 禁忌清單
-- 放範例文章（2-3 篇）
+- 加入品牌風格、禁忌清單
+- 放範例文章 2 到 3 篇
 ### 範例
 - 社群貼文產生器
 - 電子報撰寫器
@@ -39,12 +84,12 @@ const md = `
 - 配了多個 Skill 的角色
 - 自己判斷用哪個 Skill
 - 每個 Agent 專注一個領域
-### 行銷團隊版（影片）
-- Data Analyst（數據分析）
-- Content Creator（內容創作）
-- Market Researcher（市場調查）
-- Creative Designer（設計）
-- Campaign Strategist（策略）
+### 行銷團隊版
+- Data Analyst 數據分析
+- Content Creator 內容創作
+- Market Researcher 市場調查
+- Creative Designer 設計
+- Campaign Strategist 策略
 ### 內容創作版（Elijah）
 - 資訊雷達（素材蒐集）
 - 內容工作室（產文）
@@ -54,7 +99,7 @@ const md = `
 
 ## 品質控制
 ### 5 層檢查
-- DNA 命中驗證（≥5/11）
+- DNA 命中驗證（至少 5/11）
 - AI 黑名單詞掃描
 - 禁用句型攔截
 - 格式驗證
@@ -65,13 +110,13 @@ const md = `
 - 範例文章
 - AI 黑名單詞庫
 
-## 中控台（Notion）
+## 中控台 Notion
 ### 任務管理
 - 待辦 → 執行中 → 完成
 - Agent 自動抓任務
 ### 素材管理
 - info-radar 推送素材
-- 評分 + 篩選
+- 評分加篩選
 ### 發布排程
 - 每篇文章追蹤狀態
 - 多平台發布管理
@@ -80,25 +125,13 @@ const md = `
 ### 第一週
 - 找 1 個重複工作
 - 建第一個 SKILL.md
-- 試跑 + 迭代 3-5 次
+- 試跑加迭代 3 到 5 次
 ### 第二週
-- 建第 2-3 個 Skill
+- 建第 2 到 3 個 Skill
 - 加入品質控制層
 ### 第三週
 - 打包成第一個 Agent
 - 串接 Notion 任務板
-`;
-
-const { Transformer } = window.markmap;
-const transformer = new Transformer();
-const { root } = transformer.transform(md);
-const { Markmap } = window.markmap;
-Markmap.create('#mindmap', {
-  colorFreezeLevel: 2,
-  duration: 500,
-  maxWidth: 300,
-  initialExpandLevel: 2
-}, root);
 </script>
 </body>
 </html>
