@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Code 懶人包｜CLI + MCP + Skill + Hook 完整指南｜Elijah Sensei</title>
+<meta name="description" content="Claude Code 完整實戰懶人包：5 步驟安裝上手、MCP / Skills / Hooks / Subagents 四大延伸機制詳解、踩坑解法。Anthropic 官方 CLI AI 代理繁中教學。">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Noto Sans TC',system-ui,sans-serif;background:#fff;color:#2a2a2a;line-height:1.75}
+.brand-bar{background:#2a2a2a;color:#fff;text-align:center;padding:10px;font-size:13px;letter-spacing:1px}
+.brand-bar span{background:#e94560;padding:2px 8px;border-radius:10px;font-size:11px;margin-left:8px}
+.container{max-width:720px;margin:0 auto;padding:24px 20px 60px}
+.hero{padding:8px 0 24px;border-bottom:1px solid #eee;margin-bottom:32px}
+.hero h1{font-size:26px;line-height:1.4;margin:12px 0 8px}
+.hero .subtitle{color:#666;font-size:15px;margin-bottom:14px}
+.tags{display:flex;gap:8px;flex-wrap:wrap;font-size:12px}
+.tag{background:#f1f3f5;color:#555;padding:4px 10px;border-radius:12px}
+.tag.hot{background:#fff0f3;color:#e94560}
+.section-title{font-size:20px;margin:40px 0 16px;padding:6px 0 10px;border-bottom:2px solid #2a2a2a;display:flex;align-items:center;gap:8px}
+.section-title .icon{font-size:22px}
+.lead{font-size:15px;color:#444;margin-bottom:20px;padding:14px 16px;background:#f8f9fa;border-radius:10px;border-left:3px solid #2a2a2a}
+.step-card{background:#fff;border:1px solid #eaeaea;border-radius:12px;padding:18px 20px;margin-bottom:14px;position:relative}
+.step-card .num{position:absolute;top:-10px;left:18px;background:#2a2a2a;color:#fff;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700}
+.step-card h3{font-size:16px;margin:4px 0 6px;padding-left:24px}
+.step-card p{font-size:14px;color:#555;padding-left:24px}
+.step-card .code{display:block;margin:8px 0 0 24px;background:#2a2a2a;color:#f8f9fa;padding:8px 12px;border-radius:6px;font-family:'SFMono-Regular',Menlo,monospace;font-size:13px;white-space:pre-wrap;overflow-x:auto}
+.must-do{background:#fff0f3;border-left:4px solid #e94560;border-radius:10px;padding:18px 20px;margin:20px 0}
+.must-do .label{color:#e94560;font-size:12px;font-weight:700;letter-spacing:1px;margin-bottom:6px}
+.must-do h3{font-size:17px;margin-bottom:6px}
+.must-do p{font-size:14px;color:#444}
+.module-card{background:#f8f9fa;border-radius:14px;padding:24px;margin-bottom:20px;border-top:4px solid #2a2a2a}
+.module-card .tag-top{display:inline-block;background:#2a2a2a;color:#fff;font-size:11px;padding:3px 10px;border-radius:10px;margin-bottom:10px;letter-spacing:1px}
+.module-card h3{font-size:18px;margin-bottom:6px}
+.module-card .tagline{color:#e94560;font-size:13px;margin-bottom:14px;font-weight:500}
+.module-card p{font-size:14px;color:#444;margin-bottom:10px}
+.module-card .example{background:#fff;border-radius:8px;padding:12px 14px;margin-top:10px;font-size:13px;color:#555;border-left:3px solid #e94560}
+.module-card .example strong{color:#2a2a2a}
+.module-card code{background:#2a2a2a;color:#f8f9fa;padding:2px 8px;border-radius:4px;font-family:'SFMono-Regular',Menlo,monospace;font-size:12px}
+.adv-card{background:#f8f9fa;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:4px solid #2a2a2a}
+.adv-card h3{font-size:16px;margin-bottom:6px}
+.adv-card .scene{color:#e94560;font-size:12px;margin-bottom:10px}
+.adv-card p{font-size:14px;color:#444}
+.adv-card .tip{margin-top:10px;padding:10px 12px;background:#fff;border-radius:8px;font-size:13px;color:#555;border:1px dashed #ccc}
+.trap-list{background:#fff;border:1px solid #eaeaea;border-radius:12px;padding:18px 20px}
+.trap-item{padding:12px 0;border-bottom:1px solid #f0f0f0}
+.trap-item:last-child{border-bottom:none}
+.trap-item .bad{color:#c03a4d;font-weight:700;font-size:14px;margin-bottom:4px}
+.trap-item .fix{color:#2a2a2a;font-size:14px}
+.source-list{background:#f8f9fa;border-radius:12px;padding:20px 24px}
+.source-list li{list-style:none;margin-bottom:10px;font-size:14px;padding-left:16px;position:relative}
+.source-list li::before{content:"›";position:absolute;left:0;color:#e94560;font-weight:700}
+.source-list a{color:#2a5d9f;text-decoration:none}
+.source-list a:hover{text-decoration:underline}
+.cta-box{background:#2a2a2a;color:#fff;border-radius:16px;padding:32px 24px;text-align:center;margin-top:48px}
+.cta-box p{margin-bottom:14px;font-size:15px}
+.cta-box a{display:inline-block;background:#fff;color:#2a2a2a;padding:14px 32px;border-radius:28px;text-decoration:none;font-weight:700;font-size:15px}
+.cta-box .hint{color:#e94560;font-size:13px;margin-top:14px}
+.series-nav{margin:36px 0;padding:18px 20px;background:#f8f9fa;border-radius:12px}
+.series-nav .label{font-size:12px;color:#888;margin-bottom:10px;letter-spacing:1px}
+.series-nav .items{display:flex;gap:8px;flex-wrap:wrap}
+.series-nav a{font-size:13px;padding:6px 12px;border-radius:16px;background:#fff;color:#555;text-decoration:none;border:1px solid #eaeaea}
+.series-nav a.current{background:#2a2a2a;color:#fff;border-color:#2a2a2a}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="brand-bar">Elijah Sensei · Claude 完整教學系列 <span>FREE RESOURCE</span></div>
+<div class="container">
+
+<div class="hero">
+<div class="tags">
+<span class="tag">⚙️ Claude Code</span>
+<span class="tag">難度 ★★★★☆</span>
+<span class="tag hot">開發者神器</span>
+</div>
+<h1>Claude Code 懶人包<br>CLI + MCP + Skill + Hook 完整指南</h1>
+<p class="subtitle">這不是「聰明的自動補全」，是能讀懂整個 codebase、跑 git、改檔案、串工具的完整開發代理</p>
+</div>
+
+<div class="series-nav">
+<div class="label">CLAUDE 四大產品系列</div>
+<div class="items">
+<a href="../claude-chat-guide/">1. Chat</a>
+<a href="../claude-cowork-guide/">2. Cowork</a>
+<a class="current" href="../claude-code-guide/">3. Code</a>
+<a href="../claude-design-guide/">4. Design</a>
+</div>
+</div>
+
+<div class="section-title"><span class="icon">💡</span>這是什麼，為什麼工程師都在瘋</div>
+<div class="lead">
+Claude Code 是 Anthropic 官方的 CLI 開發工具，把 Claude 塞進你的終端機，讓它能直接讀檔、改檔、跑指令、操作 git。跟 Cursor、Copilot 最大的差別是 Claude Code 的「代理能力」，它會自己規劃完整任務、呼叫工具、驗證結果。真正讓它威力爆發的，是四個延伸機制：MCP、Skills、Hooks、Subagents。只懂基礎用法大概發揮 30% 能力，搞懂這四個才算真的進入 Claude Code 的世界。
+</div>
+
+<div class="section-title"><span class="icon">🌱</span>基礎上手：5 步驟裝好開跑</div>
+
+<div class="lead">
+<strong>前置條件：</strong>Node.js 18 以上、訂閱 Claude Pro $20/月（內含 Claude Code 存取）或用 API key（重度使用直接上 Max $100/月 額度最划算）。Windows、macOS、Linux 都支援，Windows 建議搭配 Git Bash 或 WSL。
+</div>
+
+<div class="step-card">
+<span class="num">1</span>
+<h3>一行指令安裝</h3>
+<p>打開終端機執行安裝指令，裝好後任何資料夾都能用 claude 啟動。</p>
+<span class="code">npm install -g @anthropic-ai/claude-code</span>
+</div>
+
+<div class="step-card">
+<span class="num">2</span>
+<h3>進專案資料夾啟動</h3>
+<p>cd 到你的 repo，直接輸入 claude，它會讀取資料夾結構、先建立內部 context。第一次用不要急著下指令，先問它「解釋這個 codebase 的架構」讓它先讀過專案。</p>
+<span class="code">cd ~/my-project
+claude</span>
+</div>
+
+<div class="step-card">
+<span class="num">3</span>
+<h3>在根目錄建立 CLAUDE.md</h3>
+<p>這是 Claude Code 最重要的檔案，等於「專案級系統提示」。內容至少要寫三件事：你的技術棧、禁止動作（例如「不要修改 config/prod.yaml」）、常用指令（npm run dev、pnpm test 等）。每次啟動 Claude 都會自動載入，不用重複交代。</p>
+</div>
+
+<div class="step-card">
+<span class="num">4</span>
+<h3>輸入 /help 看所有指令</h3>
+<p>Claude Code 有大量內建 slash commands：/clear 清對話、/compact 壓縮 context、/model 換模型、/mcp 管理 MCP、/agents 管理 subagents。新手先熟 /help 和 /compact 兩個就夠。</p>
+</div>
+
+<div class="step-card">
+<span class="num">5</span>
+<h3>設定永久權限，免去每次確認</h3>
+<p>編輯 <code>~/.claude/settings.json</code>，加入允許清單。沒設定的話每次 Claude 要動檔案都會跳出確認，嚴重拖慢速度。新手建議先開 Read、Edit、Bash 這幾個基本權限，危險指令另外處理。</p>
+<span class="code">{
+  "permissions": {
+    "allow": ["Read", "Edit", "Write", "Bash"]
+  }
+}</span>
+</div>
+
+<div class="must-do">
+<div class="label">⚡ 第一次用必做的一件事</div>
+<h3>CLAUDE.md 寫明「絕對不能動什麼」</h3>
+<p>這比寫「要做什麼」更重要。最低限度要禁止：生產環境設定檔（config/prod.*）、環境變數（.env）、上線部署設定（vercel.json、deploy/）、CI pipeline（.github/workflows）。沒寫這段，哪天 Claude 幫你「順手優化」把 prod.yaml 改掉就慘了。這是全世界 Claude Code 用戶第一次踩坑的 top 1。</p>
+</div>
+
+<div class="section-title"><span class="icon">🚀</span>進階玩法：四大延伸機制</div>
+
+<div class="lead">
+搞懂 MCP、Skills、Hooks、Subagents 這四個，Claude Code 才真的從「AI 工具」變成「可編程的開發代理平台」。以下每個都附實戰範例，直接抄可用。
+</div>
+
+<div class="module-card">
+<span class="tag-top">MCP</span>
+<h3>Model Context Protocol：串接外部系統的標準</h3>
+<p class="tagline">把 Notion、GitHub、Slack、Playwright 變成 Claude 的原生指令</p>
+<p>MCP 是 Anthropic 推的開放協議，把外部工具的 API 包裝成 Claude 能直接呼叫的指令。裝一次，之後整個 Claude 生態（Code、Desktop、Cowork）都能用同一個 MCP server。</p>
+<div class="example">
+<strong>實戰範例 1：Notion MCP</strong><br>
+<code>claude mcp add --transport http notion https://mcp.notion.com/mcp</code><br>
+裝好後直接說「把這個函式的文件更新到 Notion 頁面 [URL]」，Claude 呼叫 API 自動寫入，不用開瀏覽器。
+</div>
+<div class="example">
+<strong>實戰範例 2：Playwright MCP</strong><br>
+裝好後 Claude 變成自動化 QA，對話裡說「開瀏覽器測試登入流程，截圖每一步，最後寫 bug report」，它會真的開 Chromium 跑完整測試。
+</div>
+<div class="example">
+<strong>實戰範例 3：GitHub MCP</strong><br>
+裝 GitHub MCP 後可以說「列出這 repo 所有 open issues，按 label 排序」、「幫我建一個 PR，title 是 xxx」，不用切出去開 GitHub 網頁。
+</div>
+</div>
+
+<div class="module-card">
+<span class="tag-top">SKILLS</span>
+<h3>Skills：可重複使用的 workflow 模板</h3>
+<p class="tagline">把常用指令包裝成 /slash-command，不用每次重貼 200 字提示</p>
+<p>Skills 就是放在 <code>~/.claude/skills/</code> 或 <code>.claude/skills/</code> 的 Markdown 文件，每個文件對應一個 slash command。設計 skill 的時候，把「你希望 Claude 每次都照著做」的標準流程寫進去，之後只要打 slash 一鍵觸發。</p>
+<div class="example">
+<strong>實戰範例：<code>/code-review</code> skill</strong><br>
+在 <code>~/.claude/skills/code-review/SKILL.md</code> 定義檢查清單（安全漏洞、效能、命名、測試覆蓋），之後要做 review 只要打 <code>/code-review</code>，Claude 自動按清單掃 diff，不用重複貼 prompt。
+</div>
+<div class="example">
+<strong>進階：Auto-trigger Skill</strong><br>
+在 SKILL.md 的 frontmatter 加 <code>auto: true</code>，Claude 偵測到特定情境會自己觸發對應 skill。例如 reuse-guard skill 在你要求寫新程式時自動先搜現有可重用的 code。
+</div>
+</div>
+
+<div class="module-card">
+<span class="tag-top">HOOKS</span>
+<h3>Hooks：事件驅動的確定性控制</h3>
+<p class="tagline">在 Claude 生命週期的 12+ 個事件點掛 shell script，確定性比 LLM 高</p>
+<p>Hooks 是在 PreToolUse、PostToolUse、SessionStart 等事件發生時自動觸發的 shell script 或 HTTP endpoint。跟 Skills 的差別是 Hooks 是「程式」不是「提示」，執行結果是確定的，適合做安全控制和自動化。</p>
+<div class="example">
+<strong>實戰範例 1：PostToolUse 自動格式化</strong><br>
+Claude 每次寫完檔案後自動跑 <code>prettier --write</code>，不用每次手動格式化。
+</div>
+<div class="example">
+<strong>實戰範例 2：PreToolUse 攔截危險指令</strong><br>
+寫一個 hook 偵測到 <code>rm -rf</code>、<code>git push --force</code>、<code>DROP TABLE</code> 就 exit code 非 0 直接擋下。比起期待 Claude 不會犯錯，這個是硬門。
+</div>
+<div class="example">
+<strong>實戰範例 3：SessionStart 自動補 context</strong><br>
+每次開啟 Claude 時自動執行 <code>git log --oneline -10</code> 顯示最近 10 個 commit，讓 Claude 開場就知道專案近況，不用每次問。
+</div>
+</div>
+
+<div class="module-card">
+<span class="tag-top">SUBAGENTS</span>
+<h3>Subagents：平行隔離執行</h3>
+<p class="tagline">獨立 context window 的迷你代理，避免主對話污染、支援平行</p>
+<p>Subagents 是有獨立 context 的小型代理，定義在 <code>~/.claude/agents/</code>。適合兩種場景：一是需要「乾淨 context」的重複性查詢（主對話已經累積太多訊息），二是需要平行執行的大量獨立任務。</p>
+<div class="example">
+<strong>實戰範例 1：研究 subagent</strong><br>
+定義一個 <code>researcher</code> subagent 專門跑 WebSearch + 網頁分析。主對話要研究的時候呼叫它，大量搜尋結果只留在 subagent 的 context，主對話只拿結構化摘要，不會被雜訊塞爆。
+</div>
+<div class="example">
+<strong>實戰範例 2：isolation: worktree</strong><br>
+Subagent 定義裡設 <code>isolation: worktree</code>，每個 subagent 操作獨立 git worktree 副本。可以派 3 個 subagent 同時改不同 feature，最後主對話決定哪個成果要合併。
+</div>
+<div class="example">
+<strong>實戰範例 3：代理團隊</strong><br>
+定義 planner、coder、reviewer 三個 subagent。主對話只做任務派發，planner 先出計畫、coder 實作、reviewer 檢查，流水線化的開發體驗。
+</div>
+</div>
+
+<div class="section-title"><span class="icon">⚠️</span>常見踩坑 + 解法</div>
+
+<div class="trap-list">
+<div class="trap-item">
+<div class="bad">❌ CLAUDE.md 沒寫禁止清單，Claude 亂改 config</div>
+<div class="fix">✅ 第一件事就寫「絕對不要修改以下檔案：config/prod.*、.env、.github/workflows/」。寫得越明確越好。</div>
+</div>
+<div class="trap-item">
+<div class="bad">❌ Hook 設了但沒觸發</div>
+<div class="fix">✅ 事件名稱必須精確匹配，<code>Write</code> 不等於 <code>write</code>。檢查 <code>~/.claude/settings.json</code> 的 hooks 區塊有沒有拼錯。</div>
+</div>
+<div class="trap-item">
+<div class="bad">❌ 裝了 10 個 MCP 結果啟動很慢</div>
+<div class="fix">✅ 2026 起 MCP 已改為延遲載入，影響變小。但還是建議只裝當前專案會用的，用 <code>/mcp</code> 管理。</div>
+</div>
+<div class="trap-item">
+<div class="bad">❌ Subagent 改的檔案結束後消失</div>
+<div class="fix">✅ 未設 <code>isolation: worktree</code> 時 subagent 的暫存修改可能不保留。需要持久化的工作請開 worktree 模式。</div>
+</div>
+<div class="trap-item">
+<div class="bad">❌ Context 爆掉輸出品質下滑</div>
+<div class="fix">✅ 輸入 <code>/context</code> 查看用量，超過 70% 主動用 <code>/compact</code> 壓縮，不要等它自動觸發。</div>
+</div>
+<div class="trap-item">
+<div class="bad">❌ Windows 環境變數沒生效</div>
+<div class="fix">✅ Windows 優先用 Git Bash 或 WSL，避免 PowerShell 的路徑解析問題。Python 相關請用 <code>python3</code> 而非 <code>py</code>。</div>
+</div>
+</div>
+
+<div class="section-title"><span class="icon">📚</span>延伸資源</div>
+<ul class="source-list">
+<li><a href="https://code.claude.com/docs/en/sub-agents" target="_blank">Subagents 官方文件</a></li>
+<li><a href="https://code.claude.com/docs/en/hooks" target="_blank">Hooks 官方文件</a></li>
+<li><a href="https://alexop.dev/posts/understanding-claude-code-full-stack/" target="_blank">Understanding Claude Code's Full Stack｜alexop.dev</a></li>
+<li><a href="https://muneebsa.medium.com/claude-code-extensions-explained-skills-mcp-hooks-subagents-agent-teams-plugins-9294907e84ff" target="_blank">Claude Code Extensions Explained｜Medium</a></li>
+<li><a href="https://github.com/hesreallyhim/awesome-claude-code" target="_blank">awesome-claude-code 社群資源庫</a></li>
+<li><a href="https://www.datacamp.com/tutorial/claude-code-hooks" target="_blank">Claude Code Hooks 實戰｜DataCamp</a></li>
+</ul>
+
+<div class="cta-box">
+<p>Claude Code 是四大系列的第三集</p>
+<p>下一集是設計師最關心的 Claude Design</p>
+<a href="https://www.threads.com/@elijah.shi.sensei" target="_blank">追蹤 @elijah.shi.sensei 不錯過</a>
+<p class="hint">全系列陸續更新中，追蹤後每集上架第一時間通知你</p>
+</div>
+
+</div>
+</body>
+</html>

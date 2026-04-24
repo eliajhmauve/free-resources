@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Design 懶人包｜對話生成視覺稿完整上手｜Elijah Sensei</title>
+<meta name="description" content="Claude Design 完整實戰懶人包：5 步驟設定品牌設計系統、10 個進階玩法、常見踩坑解法。Anthropic 2026/4 最新視覺稿生成工具繁中指南。">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Noto Sans TC',system-ui,sans-serif;background:#fff;color:#2a2a2a;line-height:1.75}
+.brand-bar{background:#2a2a2a;color:#fff;text-align:center;padding:10px;font-size:13px;letter-spacing:1px}
+.brand-bar span{background:#e94560;padding:2px 8px;border-radius:10px;font-size:11px;margin-left:8px}
+.container{max-width:720px;margin:0 auto;padding:24px 20px 60px}
+.hero{padding:8px 0 24px;border-bottom:1px solid #eee;margin-bottom:32px}
+.hero h1{font-size:26px;line-height:1.4;margin:12px 0 8px}
+.hero .subtitle{color:#666;font-size:15px;margin-bottom:14px}
+.tags{display:flex;gap:8px;flex-wrap:wrap;font-size:12px}
+.tag{background:#f1f3f5;color:#555;padding:4px 10px;border-radius:12px}
+.tag.hot{background:#fff0f3;color:#e94560}
+.section-title{font-size:20px;margin:40px 0 16px;padding:6px 0 10px;border-bottom:2px solid #2a2a2a;display:flex;align-items:center;gap:8px}
+.section-title .icon{font-size:22px}
+.lead{font-size:15px;color:#444;margin-bottom:20px;padding:14px 16px;background:#f8f9fa;border-radius:10px;border-left:3px solid #2a2a2a}
+.step-card{background:#fff;border:1px solid #eaeaea;border-radius:12px;padding:18px 20px;margin-bottom:14px;position:relative}
+.step-card .num{position:absolute;top:-10px;left:18px;background:#2a2a2a;color:#fff;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700}
+.step-card h3{font-size:16px;margin:4px 0 6px;padding-left:24px}
+.step-card p{font-size:14px;color:#555;padding-left:24px}
+.step-card .code{display:block;margin:8px 0 0 24px;background:#2a2a2a;color:#f8f9fa;padding:8px 12px;border-radius:6px;font-family:'SFMono-Regular',Menlo,monospace;font-size:13px;white-space:pre-wrap}
+.must-do{background:#fff0f3;border-left:4px solid #e94560;border-radius:10px;padding:18px 20px;margin:20px 0}
+.must-do .label{color:#e94560;font-size:12px;font-weight:700;letter-spacing:1px;margin-bottom:6px}
+.must-do h3{font-size:17px;margin-bottom:6px}
+.must-do p{font-size:14px;color:#444}
+.adv-card{background:#f8f9fa;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:4px solid #2a2a2a}
+.adv-card h3{font-size:16px;margin-bottom:6px}
+.adv-card .scene{color:#e94560;font-size:12px;margin-bottom:10px}
+.adv-card p{font-size:14px;color:#444}
+.adv-card .tip{margin-top:10px;padding:10px 12px;background:#fff;border-radius:8px;font-size:13px;color:#555;border:1px dashed #ccc}
+.trap-list{background:#fff;border:1px solid #eaeaea;border-radius:12px;padding:18px 20px}
+.trap-item{padding:12px 0;border-bottom:1px solid #f0f0f0}
+.trap-item:last-child{border-bottom:none}
+.trap-item .bad{color:#c03a4d;font-weight:700;font-size:14px;margin-bottom:4px}
+.trap-item .fix{color:#2a2a2a;font-size:14px}
+.source-list{background:#f8f9fa;border-radius:12px;padding:20px 24px}
+.source-list li{list-style:none;margin-bottom:10px;font-size:14px;padding-left:16px;position:relative}
+.source-list li::before{content:"›";position:absolute;left:0;color:#e94560;font-weight:700}
+.source-list a{color:#2a5d9f;text-decoration:none}
+.source-list a:hover{text-decoration:underline}
+.cta-box{background:#2a2a2a;color:#fff;border-radius:16px;padding:32px 24px;text-align:center;margin-top:48px}
+.cta-box p{margin-bottom:14px;font-size:15px}
+.cta-box a{display:inline-block;background:#fff;color:#2a2a2a;padding:14px 32px;border-radius:28px;text-decoration:none;font-weight:700;font-size:15px}
+.cta-box .hint{color:#e94560;font-size:13px;margin-top:14px}
+.series-nav{margin:36px 0;padding:18px 20px;background:#f8f9fa;border-radius:12px}
+.series-nav .label{font-size:12px;color:#888;margin-bottom:10px;letter-spacing:1px}
+.series-nav .items{display:flex;gap:8px;flex-wrap:wrap}
+.series-nav a{font-size:13px;padding:6px 12px;border-radius:16px;background:#fff;color:#555;text-decoration:none;border:1px solid #eaeaea}
+.series-nav a.current{background:#2a2a2a;color:#fff;border-color:#2a2a2a}
+.notice{background:#fffbe6;border:1px solid #ffe58f;border-radius:10px;padding:14px 16px;margin-bottom:20px;font-size:13px;color:#8c6500}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="brand-bar">Elijah Sensei · Claude 完整教學系列 <span>FREE RESOURCE</span></div>
+<div class="container">
+
+<div class="hero">
+<div class="tags">
+<span class="tag">🎨 Claude Design</span>
+<span class="tag">難度 ★★☆☆☆</span>
+<span class="tag hot">2026/4/17 全新上線</span>
+</div>
+<h1>Claude Design 懶人包<br>對話生成視覺稿完整上手</h1>
+<p class="subtitle">不用會 Figma，用一句話讓 Claude 做出可互動的原型、簡報、一頁式文件</p>
+</div>
+
+<div class="series-nav">
+<div class="label">CLAUDE 四大產品系列</div>
+<div class="items">
+<a href="../claude-chat-guide/">1. Chat</a>
+<a href="../claude-cowork-guide/">2. Cowork</a>
+<a href="../claude-code-guide/">3. Code</a>
+<a class="current" href="../claude-design-guide/">4. Design</a>
+</div>
+</div>
+
+<div class="notice">
+ℹ️ Claude Design 於 2026/4/17 首次發布，目前為 Research Preview 階段。部分 UI 和功能細節仍在調整，本篇以 2026/4/24 的版本為準。
+</div>
+
+<div class="section-title"><span class="icon">💡</span>這是什麼，跟 Figma / Canva 差在哪</div>
+<div class="lead">
+Claude Design 不是設計軟體，是「對話式視覺稿產生器」。你用白話描述要做什麼（投資人簡報、產品一頁式、Landing Page 原型），Claude 在畫布上直接生成可互動的結果，你再透過對話調整。定位不是取代 Figma，而是「從 0 到 80 分的起點」。適合創辦人、PM、行銷人、內容創作者，不會 Figma 也能產出專業視覺稿；設計師則能用它快速打草圖，精修再進 Figma。
+</div>
+
+<div class="section-title"><span class="icon">🌱</span>基礎上手：5 步驟完成設定</div>
+
+<div class="lead">
+<strong>前置條件：</strong>Claude Pro $20/月 以上方案皆可（Pro / Max / Team / Enterprise）。Enterprise 用戶需管理員在 Organization Settings 先啟用才會看到入口。可直接網頁使用，不需安裝 App。
+</div>
+
+<div class="step-card">
+<span class="num">1</span>
+<h3>前往 claude.ai/design</h3>
+<p>首次進入會觸發設計系統建立流程，不要跳過這一步。Claude 會問你要為哪個品牌建設計系統、如何匯入素材。</p>
+</div>
+
+<div class="step-card">
+<span class="num">2</span>
+<h3>匯入品牌素材建立設計系統</h3>
+<p>有三種方式：上傳 Figma 檔案、上傳品牌 Guideline PDF、連接 codebase 讓 Claude 直接讀前端 tokens。任選一種都可以，Claude 會自動萃取主色、次色、字型、間距、圓角、元件規範。</p>
+</div>
+
+<div class="step-card">
+<span class="num">3</span>
+<h3>左側聊天框輸入任務</h3>
+<p>描述要什麼，越具體越好。例如：「做一個給投資人看的產品 demo 一頁式，突顯核心 3 個功能，最上方是 Hero 區塊，下面是功能對比表格，最後是數據證明區」。Claude 開始在右側畫布生成。</p>
+</div>
+
+<div class="step-card">
+<span class="num">4</span>
+<h3>用對話持續精修</h3>
+<p>生成後不滿意不用重做，直接對話調整：「Hero 文字縮小 20%」、「主色從紅換成深藍」、「第二個 section 加圓角」、「這個按鈕放右上」。每次修改即時反應在畫布上。</p>
+</div>
+
+<div class="step-card">
+<span class="num">5</span>
+<h3>匯出成多種格式</h3>
+<p>完成後一鍵匯出：PDF 給客戶看、PPTX 給簡報用、HTML 可直接分享連結（不用帳號就能開）、Canva 給設計師繼續精修。不同場景對應不同格式，不用重做。</p>
+</div>
+
+<div class="must-do">
+<div class="label">⚡ 第一次用必做的一件事</div>
+<h3>入門就把設計系統建好，不要跳過</h3>
+<p>沒建設計系統直接開始做案子，Claude 每次輸出風格都不同，你會花大把時間在「改配色、統一字型」的鬼打牆裡。花 15 分鐘把品牌設計系統建好，之後每個新專案自動套用，不用再重新指定配色和字型。這是 Claude Design 跟其他 AI 設計工具最大的差別，也是被低估最多的功能。</p>
+</div>
+
+<div class="section-title"><span class="icon">🚀</span>進階玩法：Elijah 實戰 workflow</div>
+
+<div class="adv-card">
+<h3>用網頁 URL 當參考，擷取競品視覺</h3>
+<div class="scene">用在：做 Landing Page、同行業參考</div>
+<p>直接把競品 URL 丟進對話：「參考 linear.app 的 Hero 風格，但色系換成深藍，CTA 按鈕風格更銳利」。Claude 會擷取該網頁的視覺元素作為參考，確保原型風格符合你心目中的樣貌，省掉描述視覺細節的苦工。</p>
+</div>
+
+<div class="adv-card">
+<h3>Export to Claude Code：原型秒變上線程式碼</h3>
+<div class="scene">用在：PM 到工程師的交接</div>
+<p>完成互動原型後點「Export to Claude Code」，Claude Design 會把設計稿轉成生產就緒的 React / Next.js 程式碼，工程師打開 Claude Code 直接開發，零翻譯成本。PM 畫原型 → 工程師接 code，整段流程從三天縮短到半天。</p>
+<div class="tip">💡 關鍵心法：Design 和 Code 共用同一個 Claude 生態，這是跟 Figma + Cursor 組合最大的差別。</div>
+</div>
+
+<div class="adv-card">
+<h3>多品牌管理：代理商一帳號接所有客戶</h3>
+<div class="scene">用在：接多個客戶的設計師 / 代理商</div>
+<p>一個帳號下維護多套設計系統，按專案切換。客戶 A 的品牌配色不會污染客戶 B 的提案。這點 Figma 要靠 Team Workspace 才能做到，Claude Design 原生就支援。</p>
+</div>
+
+<div class="adv-card">
+<h3>投資人 Pitch Deck 快速版</h3>
+<div class="scene">用在：募資、商業提案</div>
+<p>輸入「產品一句話描述 + 目標市場 + 核心數據 + 目前進度」，Claude 生成完整 Pitch Deck 框架（問題、解決方案、市場、商業模式、團隊、要錢做什麼）。再逐頁精修，一個下午完成本來要兩週的工作。</p>
+</div>
+
+<div class="adv-card">
+<h3>Inline Comment 精修：畫布上點選直接標註</h3>
+<div class="scene">用在：複雜版面的局部修改</div>
+<p>在畫布上對特定元件點右鍵加 inline comment，Claude 會針對那個元件修改，不會誤動別的地方。比在聊天框裡描述位置更精確，特別適合「這個按鈕」、「這段文字」的局部調整。</p>
+<div class="tip">💡 如果 inline comment 沒識別，同樣的描述貼進聊天框也有效，不用卡在介面。</div>
+</div>
+
+<div class="adv-card">
+<h3>獨立 HTML 匯出：一個檔案寄給客戶</h3>
+<div class="scene">用在：不想給客戶裝帳號但想給他看互動原型</div>
+<p>匯出為獨立 HTML 檔案，一個 .html 檔包含全部資源，客戶用瀏覽器開就能看可互動原型。不需要 Claude 帳號、不需要任何軟體、不需要 server。寄信附件直接丟過去，對方雙擊就能操作。</p>
+</div>
+
+<div class="section-title"><span class="icon">⚠️</span>常見踩坑 + 解法</div>
+
+<div class="trap-list">
+<div class="trap-item">
+<div class="bad">❌ 提示太模糊，輸出不對味</div>
+<div class="fix">✅ 提示越具體越好。說「三欄式 SaaS 定價頁，第二欄 highlight，每欄 5 個 feature bullet，底部加 FAQ」比「做定價頁」有效 10 倍。</div>
+</div>
+<div class="trap-item">
+<div class="bad">❌ 以為 Claude Design 能取代 Figma</div>
+<div class="fix">✅ 定位是「從 0 到 80 分的起點」，不是取代專業設計工具。複雜的品牌設計、精細的互動、設計系統維護，Figma 仍然不可取代。Claude Design 適合打草圖、做原型、快速提案。</div>
+</div>
+<div class="trap-item">
+<div class="bad">❌ Enterprise 用戶看不到入口</div>
+<div class="fix">✅ 管理員需先到 Organization Settings 啟用 Claude Design，才會對成員顯示。個人方案不用做這件事。</div>
+</div>
+<div class="trap-item">
+<div class="bad">❌ 設計系統建了但沒自動套用</div>
+<div class="fix">✅ 確認是在 Organization 層級上傳品牌素材，不是個人帳號。Team / Enterprise 常見的設定錯誤。</div>
+</div>
+<div class="trap-item">
+<div class="bad">❌ 匯出 PPT 後字型變了</div>
+<div class="fix">✅ Claude Design 的字型若是自訂字型（例如思源黑體、Inter），匯出到 PPT 時對方電腦沒裝字型會 fallback。建議匯出 PDF 保留視覺一致性，或同時附上字型檔。</div>
+</div>
+<div class="trap-item">
+<div class="bad">❌ 擔心做幾張設計稿就把 Chat 額度用光</div>
+<div class="fix">✅ Claude Design 和 Chat 的用量分開計算，兩邊獨立配額，不會互相扣。重度使用設計功能不用擔心會影響日常對話額度。</div>
+</div>
+</div>
+
+<div class="section-title"><span class="icon">📚</span>延伸資源</div>
+<ul class="source-list">
+<li><a href="https://www.anthropic.com/news/claude-design-anthropic-labs" target="_blank">Introducing Claude Design｜Anthropic 官方發布文</a></li>
+<li><a href="https://support.claude.com/en/articles/14604416-get-started-with-claude-design" target="_blank">Get Started with Claude Design｜官方 Help</a></li>
+<li><a href="https://techcrunch.com/2026/04/17/anthropic-launches-claude-design-a-new-product-for-creating-quick-visuals/" target="_blank">TechCrunch 首發報導（2026/4/17）</a></li>
+<li><a href="https://venturebeat.com/technology/anthropic-just-launched-claude-design-an-ai-tool-that-turns-prompts-into-prototypes-and-challenges-figma/" target="_blank">VentureBeat 市場分析</a></li>
+<li><a href="https://www.buildfastwithai.com/blogs/claude-design-anthropic-guide-2026" target="_blank">Claude Design 完整教學｜buildfastwithai</a></li>
+</ul>
+
+<div class="cta-box">
+<p>恭喜看完 Claude 四大產品系列完整教學</p>
+<p>從 Chat 的對話、Cowork 的代理、Code 的開發，到 Design 的設計，四套技能全部打通</p>
+<a href="https://www.threads.com/@elijah.shi.sensei" target="_blank">追蹤 @elijah.shi.sensei 看更多</a>
+<p class="hint">每週更新 Claude 實戰玩法和隱藏技巧，追蹤不錯過</p>
+</div>
+
+</div>
+</body>
+</html>

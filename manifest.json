@@ -1,6 +1,38 @@
 {
   "resources": [
     {
+      "date": "2026-04-24",
+      "slug": "claude-chat-guide",
+      "title": "Claude Chat 懶人包｜10 分鐘從註冊到上手",
+      "type": "guide",
+      "file": "index.html",
+      "description": "Claude 四大系列 ①：5 步驟上手 + 10 個 Elijah 實戰玩法 + 5 個踩坑解法"
+    },
+    {
+      "date": "2026-04-24",
+      "slug": "claude-cowork-guide",
+      "title": "Claude Cowork 懶人包｜桌面 AI 代理完整上手",
+      "type": "guide",
+      "file": "index.html",
+      "description": "Claude 四大系列 ②：2026/4 GA 新功能、Connectors + Scheduled Tasks 全攻略"
+    },
+    {
+      "date": "2026-04-24",
+      "slug": "claude-code-guide",
+      "title": "Claude Code 懶人包｜CLI + MCP + Skill + Hook 完整指南",
+      "type": "guide",
+      "file": "index.html",
+      "description": "Claude 四大系列 ③：四大延伸機制詳解、開發者級實戰玩法"
+    },
+    {
+      "date": "2026-04-24",
+      "slug": "claude-design-guide",
+      "title": "Claude Design 懶人包｜對話生成視覺稿完整上手",
+      "type": "guide",
+      "file": "index.html",
+      "description": "Claude 四大系列 ④：2026/4/17 全新產品、設計系統 + Pitch Deck 快速產製"
+    },
+    {
       "date": "2026-04-14",
       "slug": "claude-code-beginner-setup",
       "title": "Claude Code 新手設定指南",

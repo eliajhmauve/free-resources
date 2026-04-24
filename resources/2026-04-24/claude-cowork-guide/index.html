@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Cowork 懶人包｜桌面 AI 代理完整上手｜Elijah Sensei</title>
+<meta name="description" content="Claude Cowork 新手到進階完整懶人包：5 步驟啟用、10 個實戰 workflow、常見踩坑解法。Anthropic 2026 最新桌面代理工具繁中指南。">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Noto Sans TC',system-ui,sans-serif;background:#fff;color:#2a2a2a;line-height:1.75}
+.brand-bar{background:#2a2a2a;color:#fff;text-align:center;padding:10px;font-size:13px;letter-spacing:1px}
+.brand-bar span{background:#e94560;padding:2px 8px;border-radius:10px;font-size:11px;margin-left:8px}
+.container{max-width:720px;margin:0 auto;padding:24px 20px 60px}
+.hero{padding:8px 0 24px;border-bottom:1px solid #eee;margin-bottom:32px}
+.hero h1{font-size:26px;line-height:1.4;margin:12px 0 8px}
+.hero .subtitle{color:#666;font-size:15px;margin-bottom:14px}
+.tags{display:flex;gap:8px;flex-wrap:wrap;font-size:12px}
+.tag{background:#f1f3f5;color:#555;padding:4px 10px;border-radius:12px}
+.tag.hot{background:#fff0f3;color:#e94560}
+.section-title{font-size:20px;margin:40px 0 16px;padding:6px 0 10px;border-bottom:2px solid #2a2a2a;display:flex;align-items:center;gap:8px}
+.section-title .icon{font-size:22px}
+.lead{font-size:15px;color:#444;margin-bottom:20px;padding:14px 16px;background:#f8f9fa;border-radius:10px;border-left:3px solid #2a2a2a}
+.step-card{background:#fff;border:1px solid #eaeaea;border-radius:12px;padding:18px 20px;margin-bottom:14px;position:relative}
+.step-card .num{position:absolute;top:-10px;left:18px;background:#2a2a2a;color:#fff;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700}
+.step-card h3{font-size:16px;margin:4px 0 6px;padding-left:24px}
+.step-card p{font-size:14px;color:#555;padding-left:24px}
+.step-card .code{display:block;margin:8px 0 0 24px;background:#2a2a2a;color:#f8f9fa;padding:8px 12px;border-radius:6px;font-family:'SFMono-Regular',Menlo,monospace;font-size:13px;white-space:pre-wrap}
+.must-do{background:#fff0f3;border-left:4px solid #e94560;border-radius:10px;padding:18px 20px;margin:20px 0}
+.must-do .label{color:#e94560;font-size:12px;font-weight:700;letter-spacing:1px;margin-bottom:6px}
+.must-do h3{font-size:17px;margin-bottom:6px}
+.must-do p{font-size:14px;color:#444}
+.adv-card{background:#f8f9fa;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:4px solid #2a2a2a}
+.adv-card h3{font-size:16px;margin-bottom:6px}
+.adv-card .scene{color:#e94560;font-size:12px;margin-bottom:10px}
+.adv-card p{font-size:14px;color:#444}
+.adv-card .tip{margin-top:10px;padding:10px 12px;background:#fff;border-radius:8px;font-size:13px;color:#555;border:1px dashed #ccc}
+.trap-list{background:#fff;border:1px solid #eaeaea;border-radius:12px;padding:18px 20px}
+.trap-item{padding:12px 0;border-bottom:1px solid #f0f0f0}
+.trap-item:last-child{border-bottom:none}
+.trap-item .bad{color:#c03a4d;font-weight:700;font-size:14px;margin-bottom:4px}
+.trap-item .fix{color:#2a2a2a;font-size:14px}
+.source-list{background:#f8f9fa;border-radius:12px;padding:20px 24px}
+.source-list li{list-style:none;margin-bottom:10px;font-size:14px;padding-left:16px;position:relative}
+.source-list li::before{content:"›";position:absolute;left:0;color:#e94560;font-weight:700}
+.source-list a{color:#2a5d9f;text-decoration:none}
+.source-list a:hover{text-decoration:underline}
+.cta-box{background:#2a2a2a;color:#fff;border-radius:16px;padding:32px 24px;text-align:center;margin-top:48px}
+.cta-box p{margin-bottom:14px;font-size:15px}
+.cta-box a{display:inline-block;background:#fff;color:#2a2a2a;padding:14px 32px;border-radius:28px;text-decoration:none;font-weight:700;font-size:15px}
+.cta-box .hint{color:#e94560;font-size:13px;margin-top:14px}
+.series-nav{margin:36px 0;padding:18px 20px;background:#f8f9fa;border-radius:12px}
+.series-nav .label{font-size:12px;color:#888;margin-bottom:10px;letter-spacing:1px}
+.series-nav .items{display:flex;gap:8px;flex-wrap:wrap}
+.series-nav a{font-size:13px;padding:6px 12px;border-radius:16px;background:#fff;color:#555;text-decoration:none;border:1px solid #eaeaea}
+.series-nav a.current{background:#2a2a2a;color:#fff;border-color:#2a2a2a}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="brand-bar">Elijah Sensei · Claude 完整教學系列 <span>FREE RESOURCE</span></div>
+<div class="container">
+
+<div class="hero">
+<div class="tags">
+<span class="tag">🖥️ Claude Cowork</span>
+<span class="tag">難度 ★★☆☆☆</span>
+<span class="tag hot">2026/4 GA 新功能</span>
+</div>
+<h1>Claude Cowork 懶人包<br>桌面 AI 代理完整上手</h1>
+<p class="subtitle">把 Claude Code 的能力搬到桌面，不用 terminal，讓 AI 自己跑檔案、排程、串工具</p>
+</div>
+
+<div class="series-nav">
+<div class="label">CLAUDE 四大產品系列</div>
+<div class="items">
+<a href="../claude-chat-guide/">1. Chat</a>
+<a class="current" href="../claude-cowork-guide/">2. Cowork</a>
+<a href="../claude-code-guide/">3. Code</a>
+<a href="../claude-design-guide/">4. Design</a>
+</div>
+</div>
+
+<div class="section-title"><span class="icon">💡</span>這是什麼，跟 Chat 差在哪</div>
+<div class="lead">
+Chat 是「一問一答」，Cowork 是「一次交派整個任務」。你告訴 Claude 要做什麼，它自己規劃步驟、讀本機檔案、打開 Google Drive、寫 Email 草稿、跑完整個流程，你在旁邊審核就好。2026 年 1 月底推出 research preview，4 月正式 GA，macOS + Windows 都能用。定位是給非工程師的 Claude Code，研究員、分析師、營運、法務、財務都適用。
+</div>
+
+<div class="section-title"><span class="icon">🌱</span>基礎上手：5 步驟啟用 Cowork</div>
+
+<div class="lead">
+<strong>前置條件：</strong>Claude Pro $20/月 以上方案（免費方案不支援）、macOS 或 Windows 桌面版 Claude Desktop。Computer Use 功能目前僅 macOS 可用，Windows 只支援 Connectors 和 Scheduled Tasks。
+</div>
+
+<div class="step-card">
+<span class="num">1</span>
+<h3>下載 Claude Desktop</h3>
+<p>到 claude.ai/download 抓桌面版 App。安裝完用原本的 claude.ai 帳號登入即可，不需要另外付費。</p>
+</div>
+
+<div class="step-card">
+<span class="num">2</span>
+<h3>切換到 Cowork 模式</h3>
+<p>Claude Desktop 左上方有模式切換器，點「Cowork」標籤進入代理模式。介面會變成左邊對話、右邊計畫與執行記錄，跟 Chat 明顯不同。</p>
+</div>
+
+<div class="step-card">
+<span class="num">3</span>
+<h3>用白話描述整個任務</h3>
+<p>不要拆成小步驟，直接說終態。例如：「整理 Downloads 資料夾，把超過 30 天的圖片按日期分資料夾，影片類的單獨放一個 archive」。Claude 自己會規劃順序。</p>
+</div>
+
+<div class="step-card">
+<span class="num">4</span>
+<h3>先看計畫再按 Approve</h3>
+<p>Claude 給出行動計畫後，<strong>一定要先讀過再同意</strong>。代理模式能真的動你的檔案和 App，第一次用請用低風險任務練手，例如「整理桌面截圖」，不要直接讓它動工作檔案。</p>
+</div>
+
+<div class="step-card">
+<span class="num">5</span>
+<h3>到 Connectors 連第一個外部工具</h3>
+<p>左側 Connectors 面板，建議先連 Google Drive 或 Notion。連好後 Claude 可以直接讀你的文件、建立頁面、更新表格。完整清單包含 Gmail、DocuSign、FactSet、Slack、Microsoft 365 等 38+ 個整合。</p>
+</div>
+
+<div class="must-do">
+<div class="label">⚡ 第一次用必做的一件事</div>
+<h3>建立 ~/Claude-Workspace/ 資料夾，放 3 份 context 檔</h3>
+<p>在家目錄開一個 Claude-Workspace 資料夾，裡面放三份 Markdown：<strong>about-me.md</strong>（你是誰、工作目標、成功標準）、<strong>brand-voice.md</strong>（寫作風格範例、禁忌詞）、<strong>working-preferences.md</strong>（行為規則、不要做什麼）。每次開新任務第一句話告訴 Claude「先讀這個資料夾」。有沒有這三份檔案，輸出品質差異非常大。</p>
+</div>
+
+<div class="section-title"><span class="icon">🚀</span>進階玩法：Elijah 實戰 workflow</div>
+
+<div class="adv-card">
+<h3>Notion MCP 整合，對話中直接更新頁面</h3>
+<div class="scene">用在：筆記整理、專案追蹤、CRM 維護</div>
+<p>裝 Notion Connector 後，在 Cowork 對話裡直接說「把這份會議紀錄摘要更新到 Notion 頁面 [URL]」，Claude 直接呼叫 API 完成，不需要開瀏覽器貼上。整合 Notion 後，Cowork 就變成「會自己整理進資料庫的秘書」。</p>
+</div>
+
+<div class="adv-card">
+<h3>Scheduled Tasks 排程晨間日報</h3>
+<div class="scene">用在：固定重複性工作自動化</div>
+<p>設定一次永遠跑：「每天早上 8:00 摘要 Gmail 未讀、整理今日行事曆、查今日 3 個關鍵客戶的最新動態，輸出 Daily Briefing 到桌面 briefing.md」。起床時日報已經躺在桌面，不用再手動點開一堆 App。</p>
+<div class="tip">💡 注意：排程只在 Claude Desktop 開啟時執行，電腦休眠會跳過（但會補記錄，下次開機可以補跑）。</div>
+</div>
+
+<div class="adv-card">
+<h3>Sub-agents 平行處理大量工作</h3>
+<div class="scene">用在：批次研究、競品分析、多檔案處理</div>
+<p>任務描述裡說「分析這 20 個競品的官網和定價頁」，Cowork 會自動派 5 個 sub-agents 各處理 4 個，30 分鐘的工作壓縮到 4 到 5 分鐘完成。sub-agents 有獨立 context，不會互相污染主對話。</p>
+</div>
+
+<div class="adv-card">
+<h3>Projects 隔離上下文，多客戶不打架</h3>
+<div class="scene">用在：代理商、Freelancer、多專案並行</div>
+<p>行銷工作一個 Project、財務分析另一個、個人寫作再一個。每個 Project 獨立記憶、獨立 Connectors、獨立 Instructions。客戶 A 的品牌 voice 不會污染客戶 B 的報告，這是 Cowork 最被低估的功能。</p>
+</div>
+
+<div class="adv-card">
+<h3>Computer Use 讓 Claude 操作你的 App</h3>
+<div class="scene">用在：沒有 API 的老軟體、重複性點擊工作</div>
+<p>macOS 用戶可開 Computer Use，Claude 能直接看你的畫面、移動滑鼠、輸入文字。實際應用：「幫我把這份 Excel 的每一行複製到公司內網的 CRM 系統」。雖然慢，但能解決 API 不存在的場景。第一次用會嚇到，之後就回不去手動了。</p>
+<div class="tip">💡 安全建議：Computer Use 開啟時請關掉銀行、密碼管理員，避免 Claude 誤點到敏感視窗。</div>
+</div>
+
+<div class="adv-card">
+<h3>Dispatch 遠端派單，電腦在家背景跑</h3>
+<div class="scene">用在：出門在外但想讓電腦繼續工作</div>
+<p>手機 Claude App 打開，描述任務並標記成 Cowork Task，指定你家電腦執行。你通勤時在手機上指派「整理本週會議逐字稿、產出摘要、寄給團隊」，回到家電腦已經跑完了。</p>
+</div>
+
+<div class="section-title"><span class="icon">⚠️</span>常見踩坑 + 解法</div>
+
+<div class="trap-list">
+<div class="trap-item">
+<div class="bad">❌ 排程任務時間到了沒執行</div>
+<div class="fix">✅ 電腦必須保持開機、Claude Desktop 不能關、不能休眠。Windows 在電源設定禁止「顯示器關閉時睡眠」，mac 用 caffeinate 指令防睡眠。</div>
+</div>
+<div class="trap-item">
+<div class="bad">❌ Connector 連了但授權失敗</div>
+<div class="fix">✅ Team / Enterprise 方案需管理員批准，個人方案試重新 OAuth。授權期限一般 60 天，過期會靜默斷線。</div>
+</div>
+<div class="trap-item">
+<div class="bad">❌ 每次輸出風格都不一樣，品質不穩</div>
+<div class="fix">✅ 沒建 context 檔的通病。一定要寫 brand-voice.md 丟進 Workspace，並在首句告訴 Claude 先讀。</div>
+</div>
+<div class="trap-item">
+<div class="bad">❌ 任務跑到一半中斷</div>
+<div class="fix">✅ 多半是電腦睡眠導致。設定電源為「永不睡眠」或在任務開始前關閉其他會搶資源的 App。</div>
+</div>
+<div class="trap-item">
+<div class="bad">❌ 把步驟寫太細，Claude 被綁手綁腳</div>
+<div class="fix">✅ 描述終態就好，不要寫執行步驟。說「按專案分類所有 Downloads 檔案」比「先列檔案、再按日期排序、再移到資料夾」有效得多。</div>
+</div>
+</div>
+
+<div class="section-title"><span class="icon">📚</span>延伸資源</div>
+<ul class="source-list">
+<li><a href="https://www.anthropic.com/product/claude-cowork" target="_blank">Claude Cowork 產品頁｜Anthropic 官方</a></li>
+<li><a href="https://claude.com/blog/cowork-research-preview" target="_blank">Cowork Research Preview 發布文｜官方部落格</a></li>
+<li><a href="https://support.claude.com/en/articles/13345190-get-started-with-claude-cowork" target="_blank">Get Started with Claude Cowork｜官方 Help</a></li>
+<li><a href="https://www.datacamp.com/tutorial/claude-cowork-tutorial" target="_blank">Claude Cowork Tutorial｜DataCamp</a></li>
+<li><a href="https://aifordevelopers.substack.com/p/the-complete-guide-to-claude-cowork" target="_blank">The Complete Guide to Claude Cowork｜AI for Developers</a></li>
+</ul>
+
+<div class="cta-box">
+<p>Cowork 是 Claude 四大系列的第二集</p>
+<p>接下來還有工程師最愛的 Code 和設計師的 Design</p>
+<a href="https://www.threads.com/@elijah.shi.sensei" target="_blank">追蹤 @elijah.shi.sensei 不錯過</a>
+<p class="hint">全系列陸續更新中，追蹤後每集上架第一時間通知你</p>
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Chat 懶人包｜10 分鐘從註冊到上手｜Elijah Sensei</title>
+<meta name="description" content="Claude Chat 新手到進階完整懶人包：5 步驟上手、10 個 Elijah 實戰玩法、5 個踩坑解法。Anthropic Claude AI 繁中使用指南。">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Noto Sans TC',system-ui,sans-serif;background:#fff;color:#2a2a2a;line-height:1.75}
+.brand-bar{background:#2a2a2a;color:#fff;text-align:center;padding:10px;font-size:13px;letter-spacing:1px}
+.brand-bar span{background:#e94560;padding:2px 8px;border-radius:10px;font-size:11px;margin-left:8px}
+.container{max-width:720px;margin:0 auto;padding:24px 20px 60px}
+.hero{padding:8px 0 24px;border-bottom:1px solid #eee;margin-bottom:32px}
+.hero h1{font-size:26px;line-height:1.4;margin:12px 0 8px}
+.hero .subtitle{color:#666;font-size:15px;margin-bottom:14px}
+.tags{display:flex;gap:8px;flex-wrap:wrap;font-size:12px}
+.tag{background:#f1f3f5;color:#555;padding:4px 10px;border-radius:12px}
+.tag.hot{background:#fff0f3;color:#e94560}
+.section-title{font-size:20px;margin:40px 0 16px;padding:6px 0 10px;border-bottom:2px solid #2a2a2a;display:flex;align-items:center;gap:8px}
+.section-title .icon{font-size:22px}
+.lead{font-size:15px;color:#444;margin-bottom:20px;padding:14px 16px;background:#f8f9fa;border-radius:10px;border-left:3px solid #2a2a2a}
+.step-card{background:#fff;border:1px solid #eaeaea;border-radius:12px;padding:18px 20px;margin-bottom:14px;position:relative}
+.step-card .num{position:absolute;top:-10px;left:18px;background:#2a2a2a;color:#fff;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700}
+.step-card h3{font-size:16px;margin:4px 0 6px;padding-left:24px}
+.step-card p{font-size:14px;color:#555;padding-left:24px}
+.step-card .code{display:block;margin:8px 0 0 24px;background:#2a2a2a;color:#f8f9fa;padding:8px 12px;border-radius:6px;font-family:'SFMono-Regular',Menlo,monospace;font-size:13px;white-space:pre-wrap}
+.must-do{background:#fff0f3;border-left:4px solid #e94560;border-radius:10px;padding:18px 20px;margin:20px 0}
+.must-do .label{color:#e94560;font-size:12px;font-weight:700;letter-spacing:1px;margin-bottom:6px}
+.must-do h3{font-size:17px;margin-bottom:6px}
+.must-do p{font-size:14px;color:#444}
+.adv-card{background:#f8f9fa;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:4px solid #2a2a2a}
+.adv-card h3{font-size:16px;margin-bottom:6px}
+.adv-card .scene{color:#e94560;font-size:12px;margin-bottom:10px}
+.adv-card p{font-size:14px;color:#444}
+.adv-card .tip{margin-top:10px;padding:10px 12px;background:#fff;border-radius:8px;font-size:13px;color:#555;border:1px dashed #ccc}
+.trap-list{background:#fff;border:1px solid #eaeaea;border-radius:12px;padding:18px 20px}
+.trap-item{padding:12px 0;border-bottom:1px solid #f0f0f0}
+.trap-item:last-child{border-bottom:none}
+.trap-item .bad{color:#c03a4d;font-weight:700;font-size:14px;margin-bottom:4px}
+.trap-item .fix{color:#2a2a2a;font-size:14px}
+.source-list{background:#f8f9fa;border-radius:12px;padding:20px 24px}
+.source-list li{list-style:none;margin-bottom:10px;font-size:14px;padding-left:16px;position:relative}
+.source-list li::before{content:"›";position:absolute;left:0;color:#e94560;font-weight:700}
+.source-list a{color:#2a5d9f;text-decoration:none}
+.source-list a:hover{text-decoration:underline}
+.cta-box{background:#2a2a2a;color:#fff;border-radius:16px;padding:32px 24px;text-align:center;margin-top:48px}
+.cta-box p{margin-bottom:14px;font-size:15px}
+.cta-box a{display:inline-block;background:#fff;color:#2a2a2a;padding:14px 32px;border-radius:28px;text-decoration:none;font-weight:700;font-size:15px}
+.cta-box .hint{color:#e94560;font-size:13px;margin-top:14px}
+.series-nav{margin:36px 0;padding:18px 20px;background:#f8f9fa;border-radius:12px}
+.series-nav .label{font-size:12px;color:#888;margin-bottom:10px;letter-spacing:1px}
+.series-nav .items{display:flex;gap:8px;flex-wrap:wrap}
+.series-nav a{font-size:13px;padding:6px 12px;border-radius:16px;background:#fff;color:#555;text-decoration:none;border:1px solid #eaeaea}
+.series-nav a.current{background:#2a2a2a;color:#fff;border-color:#2a2a2a}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="brand-bar">Elijah Sensei · Claude 完整教學系列 <span>FREE RESOURCE</span></div>
+<div class="container">
+
+<div class="hero">
+<div class="tags">
+<span class="tag">💬 Claude Chat</span>
+<span class="tag">難度 ★☆☆☆☆</span>
+<span class="tag hot">適合完全新手</span>
+</div>
+<h1>Claude Chat 懶人包<br>10 分鐘從註冊到上手</h1>
+<p class="subtitle">最基礎的 Claude 入口，不用會寫程式，白話問問題就能讓 AI 幫你做事</p>
+</div>
+
+<div class="series-nav">
+<div class="label">CLAUDE 四大產品系列</div>
+<div class="items">
+<a class="current" href="../claude-chat-guide/">1. Chat</a>
+<a href="../claude-cowork-guide/">2. Cowork</a>
+<a href="../claude-code-guide/">3. Code</a>
+<a href="../claude-design-guide/">4. Design</a>
+</div>
+</div>
+
+<div class="section-title"><span class="icon">💡</span>這是什麼，跟 ChatGPT 差在哪</div>
+<div class="lead">
+Claude Chat 就是 claude.ai 上的對話介面，Anthropic 出的 AI 聊天工具。跟 ChatGPT 最大的差別不是「誰比較聰明」，而是 Claude 特別強在長文本處理、寫作不油膩、跟程式碼理解。如果你常常要分析文件、寫東西、或需要 AI 回得像個「有判斷力的同事」而不是「討好型客服」，Claude 會更順手。
+</div>
+
+<div class="section-title"><span class="icon">🌱</span>基礎上手：5 步驟完成設定</div>
+
+<div class="lead">
+<strong>前置條件：</strong>有 Google 或 Apple 帳號即可註冊，免費方案就能用。進階功能（記憶、Projects、擴充額度）需 Pro 方案 $20/月，重度使用者建議直接上 Max $100/月。
+</div>
+
+<div class="step-card">
+<span class="num">1</span>
+<h3>到 claude.ai 用 Google 一鍵登入</h3>
+<p>不用填信用卡、不用驗證電話，兩秒完成註冊。首次登入會問你想用什麼名字、工作類型，照實填即可，之後 Claude 會根據這個微調回答風格。</p>
+</div>
+
+<div class="step-card">
+<span class="num">2</span>
+<h3>直接白話問，不要背「提示詞技巧」</h3>
+<p>把 Claude 當成剛到職的聰明同事：告訴它你要什麼、背景是什麼、希望格式長怎樣。不用學「你是一位資深 xxx 專家」那套，那是 2024 年的老招了。</p>
+</div>
+
+<div class="step-card">
+<span class="num">3</span>
+<h3>點左側「Projects」建立第一個 Project</h3>
+<p>Projects 是 Claude 最重要的功能。每個 Project 有獨立的記憶、獨立的背景文件、獨立的對話歷史。行銷工作開一個 Project，財務分析開另一個，兩邊假設互不污染。</p>
+</div>
+
+<div class="step-card">
+<span class="num">4</span>
+<h3>在 Project 的 Instructions 寫入身份＋偏好</h3>
+<p>這個欄位等於「每次對話自動帶入的系統提示」。建議寫三件事：你是誰、希望 Claude 用什麼口吻、有哪些禁忌（例如不要用 bullet、不要用 em dash、回答用繁體中文）。</p>
+</div>
+
+<div class="step-card">
+<span class="num">5</span>
+<h3>開啟 Memory 讓 Claude 跨對話記住你</h3>
+<p>Settings &gt; Memory 確認功能已啟用。Memory 會自動記錄你多次提過的偏好、常用工作模式，下次在別的對話也會帶入。這是 Claude 從「工具」變「助手」的關鍵差別。</p>
+</div>
+
+<div class="must-do">
+<div class="label">⚡ 第一次用必做的一件事</div>
+<h3>先開 Project 再聊，不要在 New Chat 裡裸聊</h3>
+<p>這是新手最常浪費時間的地方。每次開 New Chat 都要重說一次背景，半小時後翻回來什麼都記不住。先花 3 分鐘開 Project、填 Instructions，之後每次對話都直接進入狀況，省下的時間以週為單位。</p>
+</div>
+
+<div class="section-title"><span class="icon">🚀</span>進階玩法：Elijah 實戰 workflow</div>
+
+<div class="adv-card">
+<h3>XML 結構化提示，輸出穩定度翻倍</h3>
+<div class="scene">用在：複雜任務、多條件的寫作或分析</div>
+<p>把提示用 XML 標籤分區，Claude 的解析準確度會明顯提升。例如：<code>&lt;context&gt;...&lt;/context&gt;</code>、<code>&lt;task&gt;...&lt;/task&gt;</code>、<code>&lt;constraints&gt;...&lt;/constraints&gt;</code>、<code>&lt;examples&gt;...&lt;/examples&gt;</code>。這是 Anthropic 官方文件推薦的寫法，寫起來麻煩但一次就對。</p>
+<div class="tip">💡 為什麼有效：Claude 的訓練資料裡 XML 結構化內容比純文字多，所以它對標籤邊界的理解天生比較準。</div>
+</div>
+
+<div class="adv-card">
+<h3>蘇格拉底式提問法：讓 Claude 先反問再做事</h3>
+<div class="scene">用在：想做但需求還不清楚的任務</div>
+<p>不要直接下命令，改說：「我想達成 [目標]，但我自己也還沒想清楚細節。你先讀我貼的背景資料，然後問我 5 個最關鍵的問題，幫我把需求釐清再動手。」這樣 Claude 會先幫你整理思路，最後做出的東西才真的貼近你想要的。</p>
+</div>
+
+<div class="adv-card">
+<h3>三層記憶架構：不同身份不互相污染</h3>
+<div class="scene">用在：身兼多職、多客戶、多專案</div>
+<p>第一層 Settings 的 Global Memory，放跨專案都適用的個人偏好（語言、寫作風格、禁忌）。第二層 Project Instructions，放該專案獨有的背景（客戶資料、品牌 voice、KPI）。第三層 對話開頭的臨時指令，放單次任務的特殊需求。三層分開，假設不打架。</p>
+</div>
+
+<div class="adv-card">
+<h3>多文件並行分析：一次丟 10 份文件比逐份問快 7 倍</h3>
+<div class="scene">用在：市場研究、競品分析、大量資料整理</div>
+<p>把文件全部上傳到 Project Files（不是貼進對話框），然後下指令：「比對這 10 份文件，找出所有作者都同意的 3 個論點，和 2 個明顯分歧的地方。」Claude 會跨文件引用，速度比逐份問快非常多。文件放 Project Files 而不是對話框是關鍵，貼進對話框會吃掉 context。</p>
+</div>
+
+<div class="adv-card">
+<h3>Anti-AI-Writing-Style 清單：讓輸出不像 AI 寫的</h3>
+<div class="scene">用在：所有要給人看的寫作任務</div>
+<p>在 Instructions 明確列禁詞：「遊戲規則改變者」「在這個快速進化的時代」「不僅…更是…」「讓我們一起探索」「值得注意的是」。再貼 2 到 3 段你自己實際寫過的文字當樣本，請 Claude 模仿。這招對輸出品質的提升，比任何「提示詞技巧」都明顯。</p>
+<div class="tip">💡 進階：Google「anti-ai-writing-style.md」直接抄現成的禁詞清單。</div>
+</div>
+
+<div class="section-title"><span class="icon">⚠️</span>常見踩坑 + 解法</div>
+
+<div class="trap-list">
+<div class="trap-item">
+<div class="bad">❌ 每次開新對話都要重說背景</div>
+<div class="fix">✅ 用 Projects + Instructions，把不變的背景固定下來。</div>
+</div>
+<div class="trap-item">
+<div class="bad">❌ 輸出都像 AI 範文，讀起來很油</div>
+<div class="fix">✅ 在 Instructions 貼 2 到 3 段自己的寫作樣本，讓 Claude 學你的語氣。</div>
+</div>
+<div class="trap-item">
+<div class="bad">❌ 長文分析到後段品質突然下滑</div>
+<div class="fix">✅ 對話框右上 % 超過 80% 就開新對話，把結論當交接摘要帶過去。文件也要放 Project Files 而不是貼對話框。</div>
+</div>
+<div class="trap-item">
+<div class="bad">❌ 找不到以前聊過的內容</div>
+<div class="fix">✅ Ctrl/Cmd + K 全局搜尋歷史對話，比手動翻側邊欄快 20 倍。</div>
+</div>
+<div class="trap-item">
+<div class="bad">❌ Claude 回答太拘謹、不敢給意見</div>
+<div class="fix">✅ 在 Instructions 寫「我要的是有判斷力的同事不是客服，意見請直接說，不用先鋪陳。」</div>
+</div>
+</div>
+
+<div class="section-title"><span class="icon">📚</span>延伸資源</div>
+<ul class="source-list">
+<li><a href="https://claude.ai/pricing" target="_blank">Claude 方案與定價｜官方</a></li>
+<li><a href="https://support.claude.com/en/articles/11817273-use-claude-s-chat-search-and-memory-to-build-on-previous-context" target="_blank">Chat Search &amp; Memory 官方說明</a></li>
+<li><a href="https://www.the-ai-corner.com/p/claude-best-practices-power-user-guide-2026" target="_blank">Claude Best Practices Power User Guide 2026｜The AI Corner</a></li>
+<li><a href="https://aimaker.substack.com/p/ultimate-guide-to-claude-project-memory-system-prompt" target="_blank">Project Memory 深度指南｜AI Maker</a></li>
+</ul>
+
+<div class="cta-box">
+<p>這只是 Claude 四大產品系列的第一集</p>
+<p>接下來還有 Cowork、Code、Design 完整懶人包</p>
+<a href="https://www.threads.com/@elijah.shi.sensei" target="_blank">追蹤 @elijah.shi.sensei 不錯過</a>
+<p class="hint">全系列陸續更新中，追蹤後每集上架第一時間通知你</p>
+</div>
+
+</div>
+</body>
+</html>
