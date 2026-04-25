@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ChatGPT Images 2.0 完整懶人包｜會先想後畫的圖像模型｜Elijah Sensei</title>
+<meta name="description" content="OpenAI ChatGPT Images 2.0 / GPT Image 2 完整實戰懶人包：5 步驟上手、Instant vs Thinking 模式對比、5 個實戰場景、API 整合、DALL-E 退役遷移、5 個踩坑解法。2026/4/21 最新發布繁中指南。">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Noto Sans TC',system-ui,sans-serif;background:#fff;color:#2a2a2a;line-height:1.75}
+.brand-bar{background:#2a2a2a;color:#fff;text-align:center;padding:10px;font-size:13px;letter-spacing:1px}
+.brand-bar span{background:#e94560;padding:2px 8px;border-radius:10px;font-size:11px;margin-left:8px}
+.container{max-width:720px;margin:0 auto;padding:24px 20px 60px}
+.hero{padding:8px 0 24px;border-bottom:1px solid #eee;margin-bottom:32px}
+.hero h1{font-size:26px;line-height:1.4;margin:12px 0 8px}
+.hero .subtitle{color:#666;font-size:15px;margin-bottom:14px}
+.tags{display:flex;gap:8px;flex-wrap:wrap;font-size:12px}
+.tag{background:#f1f3f5;color:#555;padding:4px 10px;border-radius:12px}
+.tag.hot{background:#fff0f3;color:#e94560}
+.section-title{font-size:20px;margin:40px 0 16px;padding:6px 0 10px;border-bottom:2px solid #2a2a2a;display:flex;align-items:center;gap:8px}
+.section-title .icon{font-size:22px}
+.lead{font-size:15px;color:#444;margin-bottom:20px;padding:14px 16px;background:#f8f9fa;border-radius:10px;border-left:3px solid #2a2a2a}
+.step-card{background:#fff;border:1px solid #eaeaea;border-radius:12px;padding:18px 20px;margin-bottom:14px;position:relative}
+.step-card .num{position:absolute;top:-10px;left:18px;background:#2a2a2a;color:#fff;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700}
+.step-card h3{font-size:16px;margin:4px 0 6px;padding-left:24px}
+.step-card p{font-size:14px;color:#555;padding-left:24px}
+.step-card .code{display:block;margin:8px 0 0 24px;background:#2a2a2a;color:#f8f9fa;padding:8px 12px;border-radius:6px;font-family:'SFMono-Regular',Menlo,monospace;font-size:13px;white-space:pre-wrap;overflow-x:auto}
+.must-do{background:#fff0f3;border-left:4px solid #e94560;border-radius:10px;padding:18px 20px;margin:20px 0}
+.must-do .label{color:#e94560;font-size:12px;font-weight:700;letter-spacing:1px;margin-bottom:6px}
+.must-do h3{font-size:17px;margin-bottom:6px}
+.must-do p{font-size:14px;color:#444}
+.compare-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:14px;background:#fff;border:1px solid #eaeaea;border-radius:12px;overflow:hidden}
+.compare-table th{background:#2a2a2a;color:#fff;padding:10px 12px;text-align:left;font-size:13px}
+.compare-table td{padding:10px 12px;border-top:1px solid #eee}
+.compare-table tr:nth-child(even) td{background:#fafafa}
+.compare-table .col-mode{font-weight:700;color:#e94560}
+.adv-card{background:#f8f9fa;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:4px solid #2a2a2a}
+.adv-card h3{font-size:16px;margin-bottom:6px}
+.adv-card .scene{color:#e94560;font-size:12px;margin-bottom:10px}
+.adv-card p{font-size:14px;color:#444}
+.adv-card .tip{margin-top:10px;padding:10px 12px;background:#fff;border-radius:8px;font-size:13px;color:#555;border:1px dashed #ccc}
+.adv-card code{background:#2a2a2a;color:#f8f9fa;padding:2px 8px;border-radius:4px;font-family:'SFMono-Regular',Menlo,monospace;font-size:12px}
+.trap-list{background:#fff;border:1px solid #eaeaea;border-radius:12px;padding:18px 20px}
+.trap-item{padding:12px 0;border-bottom:1px solid #f0f0f0}
+.trap-item:last-child{border-bottom:none}
+.trap-item .bad{color:#c03a4d;font-weight:700;font-size:14px;margin-bottom:4px}
+.trap-item .fix{color:#2a2a2a;font-size:14px}
+.source-list{background:#f8f9fa;border-radius:12px;padding:20px 24px}
+.source-list li{list-style:none;margin-bottom:10px;font-size:14px;padding-left:16px;position:relative}
+.source-list li::before{content:"›";position:absolute;left:0;color:#e94560;font-weight:700}
+.source-list a{color:#2a5d9f;text-decoration:none}
+.source-list a:hover{text-decoration:underline}
+.notion-cta{background:#f4f0ff;border:1px solid #d4c4f8;border-radius:14px;padding:22px 24px;margin:32px 0;display:flex;gap:16px;align-items:center}
+.notion-cta .icon-box{flex:0 0 56px;height:56px;background:#2a2a2a;color:#fff;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:26px}
+.notion-cta .body{flex:1}
+.notion-cta .title{font-size:16px;font-weight:700;margin-bottom:6px}
+.notion-cta .desc{font-size:13px;color:#666;margin-bottom:12px;line-height:1.6}
+.notion-cta a{display:inline-block;background:#2a2a2a;color:#fff;font-size:13px;padding:8px 20px;border-radius:20px;text-decoration:none;font-weight:600}
+.notion-cta a:hover{background:#444}
+@media(max-width:520px){.notion-cta{flex-direction:column;text-align:center}}
+.cta-box{background:#2a2a2a;color:#fff;border-radius:16px;padding:32px 24px;text-align:center;margin-top:48px}
+.cta-box p{margin-bottom:14px;font-size:15px}
+.cta-box a{display:inline-block;background:#fff;color:#2a2a2a;padding:14px 32px;border-radius:28px;text-decoration:none;font-weight:700;font-size:15px}
+.cta-box .hint{color:#e94560;font-size:13px;margin-top:14px}
+.notice{background:#fffbe6;border:1px solid #ffe58f;border-radius:10px;padding:14px 16px;margin-bottom:20px;font-size:13px;color:#8c6500}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="brand-bar">Elijah Sensei · AI 圖像生成 <span>FREE RESOURCE</span></div>
+<div class="container">
+
+<div class="hero">
+<div class="tags">
+<span class="tag">🎨 ChatGPT Images 2.0</span>
+<span class="tag">難度 ★★☆☆☆</span>
+<span class="tag hot">2026/4/21 全新發布</span>
+</div>
+<h1>ChatGPT Images 2.0 完整懶人包<br>會「先想後畫」的圖像模型</h1>
+<p class="subtitle">原生推理架構 + 文字渲染 95%+ 準確 + 批量 8 張一致 + API 一行替換 DALL-E</p>
+</div>
+
+<div class="notice">
+ℹ️ DALL-E 2 / 3 將於 2026/5/12 完全關閉，務必在那之前完成 API 遷移。本懶人包附遷移指令。
+</div>
+
+<div class="section-title"><span class="icon">💡</span>這是什麼，跟 DALL-E 差在哪</div>
+<div class="lead">
+ChatGPT Images 2.0（API 名稱 <code style="background:#2a2a2a;color:#f8f9fa;padding:2px 6px;border-radius:4px;font-size:13px">gpt-image-2</code>）是 OpenAI 第一個有「先想後畫」推理能力的圖像模型。Image Arena Elo 1512，比第二名領先 +242 分（可驗證的事實）。最大改變不是「圖更漂亮」，是模型架構從擴散模型升級成原生推理，能在生成前分析意圖、規劃構圖、評估文字排版、自我驗證。
+</div>
+
+<table class="compare-table">
+<tr><th>對比項目</th><th>DALL-E 3</th><th class="col-mode">GPT Image 2</th></tr>
+<tr><td>架構</td><td>擴散模型，無推理</td><td class="col-mode">原生推理架構</td></tr>
+<tr><td>文字渲染</td><td>常拼錯、亂碼</td><td class="col-mode">CJK + 拉丁 &gt;95% 準確</td></tr>
+<tr><td>批量一致性</td><td>多圖角色飄移</td><td class="col-mode">8 圖跨圖角色一致</td></tr>
+<tr><td>Web 搜尋</td><td>無</td><td class="col-mode">Thinking 模式可即時搜尋</td></tr>
+<tr><td>解析度</td><td>最高 1792x1024</td><td class="col-mode">2K 穩定 / 4K 實驗</td></tr>
+<tr><td>Image Arena Elo</td><td>~1264</td><td class="col-mode">1512（領先 +242）</td></tr>
+</table>
+
+<div class="section-title"><span class="icon">🌱</span>基礎上手：5 步驟跑出第一張圖</div>
+
+<div class="lead">
+<strong>前置條件：</strong>免費帳號就能用 Instant 模式，但 Thinking 模式（推理 + 批量一致 + Web 搜尋）需要 Plus $20/月以上。重度使用建議 Pro $200/月或直接走 API（Tier 制度按用量計費更可預期）。
+</div>
+
+<div class="step-card">
+<span class="num">1</span>
+<h3>到 chat.openai.com 試 Instant 模式</h3>
+<p>免費用戶直接在 ChatGPT 對話框輸入「幫我做一張 [描述]」，會自動跑 Images 2.0 Instant 模式，3-5 秒出圖。Free tier 約每 3 小時 3-10 張動態配額。</p>
+</div>
+
+<div class="step-card">
+<span class="num">2</span>
+<h3>判斷你需要 Instant 還是 Thinking</h3>
+<p>純藝術探索、社群快速圖卡、商品照 → Instant 就夠（快、便宜）。複雜多元素構圖、商業印刷素材、需要文字精準、需要批量系列圖一致 → 開 Thinking。Thinking 延遲 10-30 秒，成本是 Instant 2-3 倍，但品質差距明顯。</p>
+</div>
+
+<div class="step-card">
+<span class="num">3</span>
+<h3>API 第一次跑：機械式替換 DALL-E 3</h3>
+<p>如果你之前用 DALL-E 3，遷移就是改一個參數。response 結構完全相同，b64_json / url 都不變。唯一注意：DALL-E 3 的 <code>quality="hd"</code> 改成 <code>quality="high"</code>。</p>
+<span class="code">from openai import OpenAI
+client = OpenAI()
+
+result = client.images.generate(
+    model="gpt-image-2",   # 唯一改動
+    prompt="...",
+    size="1024x1024",
+    quality="high",        # hd → high
+    n=1,
+)</span>
+</div>
+
+<div class="step-card">
+<span class="num">4</span>
+<h3>寫第一個會自動精準渲染中文的 prompt</h3>
+<p>關鍵指令：用全大寫前綴 <code>EXACT TEXT: "你要的字串"</code>，prompt 結尾加 <code>Render text verbatim. No extra words.</code> 解析度拉到 1024x1024 以上、品質設 medium 或 high，中文字準確率立刻拉到 95% 以上。</p>
+<span class="code">A promotional banner for a coffee brand.
+Center: matte black ceramic cup on wood table.
+Top: bold sans-serif text reads "EXACT TEXT: 春季限定 - 焙煎深度烘焙"
+Render all text verbatim. No extra words.
+Size: 1920x1080</span>
+</div>
+
+<div class="step-card">
+<span class="num">5</span>
+<h3>避免第一週最容易踩的 3 個坑</h3>
+<p>第一坑：以為 <code>n=8</code> 就會角色一致 → 必須加 <code>quality_mode="thinking"</code>。第二坑：中文長文字（&gt;20 字一行）漏字 → 拆成多行、解析度 1536+。第三坑：Thinking 模式吃額度 → 開發階段先用 Instant + low quality 測試構圖。</p>
+</div>
+
+<div class="must-do">
+<div class="label">⚡ 第一次用必做的一件事</div>
+<h3>立刻檢查你有沒有 DALL-E 3 整合的舊程式碼</h3>
+<p>2026/5/12 之後 DALL-E 2/3 API 完全關閉。如果你有 production 服務還在用 <code style="background:#2a2a2a;color:#f8f9fa;padding:2px 6px;border-radius:4px">model="dall-e-3"</code> 或 <code style="background:#2a2a2a;color:#f8f9fa;padding:2px 6px;border-radius:4px">model="dall-e-2"</code>，5/13 早上就會返回錯誤。今天花 30 分鐘搜尋 codebase，把 model 名稱換成 <code style="background:#2a2a2a;color:#f8f9fa;padding:2px 6px;border-radius:4px">gpt-image-2</code>，順便回歸測試一輪（GPT Image 2 比 DALL-E 3 更字面執行 prompt，部分 prompt 需要重新調整）。</p>
+</div>
+
+<div class="section-title"><span class="icon">🚀</span>進階玩法：5 個實戰 workflow</div>
+
+<div class="adv-card">
+<h3>批量產 8 張角色一致的 IG 系列圖</h3>
+<div class="scene">用在：知識型內容、品牌系列、Pitch Deck</div>
+<p>關鍵組合：<code>n=8</code> + <code>quality_mode="thinking"</code> + prompt 中對角色做「錨點描述」（same character: [外觀], face/outfit must remain identical across all images）。Thinking 模式會建內部角色 embedding，跨 8 圖維持臉、體、服裝一致。純 n=8 不加 thinking 等於 8 次獨立生成，無一致性。</p>
+<div class="tip">💡 進階：若有參考圖，用 <code>/v1/images/edits</code> 端點上傳作 reference，一致性比 generations 端點更高。</div>
+</div>
+
+<div class="adv-card">
+<h3>讓 Claude / Cursor 自動串 GPT Image 2 產圖</h3>
+<div class="scene">用在：開發工作流、AI 產線</div>
+<p>用 OpenAI SDK 包裝成 MCP server 或 Skill，Claude Code 或 Cursor 對話中直接說「產一張 XXX 圖」就觸發。這對「研究素材 → 自動產配圖」的工作流是 game changer（建議走 medium quality 控制成本，每張 ~$0.053）。</p>
+</div>
+
+<div class="adv-card">
+<h3>Web Search 整合：產出含當下事件的視覺</h3>
+<div class="scene">用在：時事新聞圖、新品包裝參考、最新設計趨勢</div>
+<p>Thinking 模式可即時呼叫網路搜尋，抓最新視覺參考再生成。突破訓練資料截止（2025/12）的限制。例如「做一張關於 Anthropic 4/17 推出的 Claude Design 的概念圖」，模型會先 web search 抓 Claude Design 的官方視覺，再生成符合品牌的圖。</p>
+<div class="tip">💡 限制：僅 Thinking 模式可用，Free tier 沒有此能力。</div>
+</div>
+
+<div class="adv-card">
+<h3>多語文字渲染（特別中日韓）</h3>
+<div class="scene">用在：海外行銷、多語社群、亞洲市場素材</div>
+<p>過去 DALL-E 渲染日文、韓文常出現亂字、混入英文，GPT Image 2 在 CJK 字符達 95%+ 準確。實測一張圖內可同時出現「日文標語 + 英文品牌名 + 數字促銷碼」三語，互不干擾。對接亞洲市場的品牌素材立刻省去後製疊字工序。</p>
+</div>
+
+<div class="adv-card">
+<h3>4K 高解析度商業印刷素材</h3>
+<div class="scene">用在：實體廣告、雜誌封面、印刷品</div>
+<p>API beta 支援 3840x2160（4K landscape）和 2160x3840（4K portrait）。4K high quality 約 $0.41/圖，比外包設計便宜兩個數量級。需要符合 Size 約束：最長邊 ≤3840、雙邊均為 16 倍數、寬高比 ≤3:1。</p>
+<div class="tip">💡 ChatGPT 介面目前仍是 2K 上限，4K 必須走 API。</div>
+</div>
+
+<div class="section-title"><span class="icon">⚠️</span>5 個常見踩坑 + 解法</div>
+
+<div class="trap-list">
+<div class="trap-item">
+<div class="bad">❌ 文字渲染失敗（亂字、錯字、字母變形）</div>
+<div class="fix">✅ 用 <code>EXACT TEXT: "..."</code> 標記、prompt 結尾加 <code>Render verbatim. No extra words.</code>、解析度 1024+、品質 medium 或 high。</div>
+</div>
+<div class="trap-item">
+<div class="bad">❌ 設了 n=8 但每張臉都不同</div>
+<div class="fix">✅ 必須加 <code>quality_mode="thinking"</code>（純 n=8 等於獨立生成）。Prompt 中描述「same character: [外觀]」當錨點。有參考圖優先用 edits 端點。</div>
+</div>
+<div class="trap-item">
+<div class="bad">❌ Thinking 模式帳單突然飆高</div>
+<div class="fix">✅ 推理 token 另計，成本是 Instant 2-3 倍。開發期先用 Instant + low quality 測試構圖，確認方向後再切 Thinking + high。每月監控 Dashboard 用量。</div>
+</div>
+<div class="trap-item">
+<div class="bad">❌ 中文長文字（一行 &gt;20 字）漏字</div>
+<div class="fix">✅ 拆成多行、每行 12-15 字以內。解析度強制 1536+。或者：圖像生成不含長文字，後製在 Canva/Figma 疊上文字層（最穩做法）。</div>
+</div>
+<div class="trap-item">
+<div class="bad">❌ DALL-E 3 遷移後 prompt 出來的圖跟以前不一樣</div>
+<div class="fix">✅ GPT Image 2 比 DALL-E 3 更字面執行 prompt，原本 DALL-E 3 會做創意詮釋的部分要重新調整 prompt 措辭。建議遷移後對所有現有 prompt 跑一輪回歸測試。</div>
+</div>
+</div>
+
+<div class="section-title"><span class="icon">📚</span>延伸資源</div>
+<ul class="source-list">
+<li><a href="https://openai.com/index/introducing-chatgpt-images-2-0/" target="_blank">Introducing ChatGPT Images 2.0｜OpenAI 官方發布文</a></li>
+<li><a href="https://developers.openai.com/api/docs/models/gpt-image-2" target="_blank">GPT Image 2 Model API Docs｜OpenAI Developer</a></li>
+<li><a href="https://developers.openai.com/cookbook/examples/multimodal/image-gen-models-prompting-guide" target="_blank">官方 Prompting Guide｜OpenAI Cookbook</a></li>
+<li><a href="https://techcrunch.com/2026/04/21/chatgpts-new-images-2-0-model-is-surprisingly-good-at-generating-text/" target="_blank">TechCrunch：文字渲染實測對比</a></li>
+<li><a href="https://venturebeat.com/technology/openais-chatgpt-images-2-0-is-here-and-it-does-multilingual-text-full-infographics-slides-maps-even-manga-seemingly-flawlessly" target="_blank">VentureBeat：多語言實測（含 manga）</a></li>
+<li><a href="https://artificialanalysis.ai/image/arena" target="_blank">Image Arena Leaderboard｜即時 Elo 排名</a></li>
+<li><a href="https://dev.to/tokenmixai/gpt-image-2-api-developer-guide-pricing-thinking-mode-and-production-integration-2026-28p5" target="_blank">API Developer Guide：Pricing + Thinking Mode 完整解析</a></li>
+</ul>
+
+<div class="notion-cta">
+<div class="icon-box">📚</div>
+<div class="body">
+<div class="title">想看更深入的章節版？</div>
+<div class="desc">這份是快速版懶人包。Notion 上有完整 5 章深度教學（Instant vs Thinking 完整解析、五大關鍵能力深度拆解、API 整合 + 5 個實戰 prompt、DALL-E 退役遷移 + 5 個踩坑解法）。</div>
+<a href="https://elated-chocolate-84e.notion.site/331ba22a8e5a81fe9ed5c54198cd3c50" target="_blank">開啟 Notion 章節版 →</a>
+</div>
+</div>
+
+<div class="cta-box">
+<p>每週都有 AI 工具的完整實戰教學</p>
+<p>追蹤後第一時間收到新教學上架</p>
+<a href="https://www.threads.com/@elijah.shi.sensei" target="_blank">追蹤 @elijah.shi.sensei</a>
+<p class="hint">下一份：Claude vs ChatGPT 實戰對比指南</p>
+</div>
+
+</div>
+</body>
+</html>

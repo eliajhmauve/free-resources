@@ -1,6 +1,22 @@
 {
   "resources": [
     {
+      "date": "2026-04-25",
+      "slug": "chatgpt-images-2",
+      "title": "ChatGPT Images 2.0 完整懶人包｜會「先想後畫」的圖像模型",
+      "type": "guide",
+      "file": "index.html",
+      "description": "OpenAI 2026/4/21 全新發布：5 步驟上手 + Instant vs Thinking + 5 個實戰場景 + DALL-E 退役遷移指南"
+    },
+    {
+      "date": "2026-04-25",
+      "slug": "chatgpt-images-2",
+      "title": "ChatGPT Images 2.0 完整心智圖",
+      "type": "mindmap",
+      "file": "mindmap.html",
+      "description": "互動心智圖：5 大能力、Instant vs Thinking、API 整合、5 個實戰場景、踩坑解法"
+    },
+    {
       "date": "2026-04-24",
       "slug": "claude-chat-guide",
       "title": "Claude Chat 懶人包｜10 分鐘從註冊到上手",

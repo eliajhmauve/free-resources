@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ChatGPT Images 2.0 完整心智圖｜Elijah Sensei</title>
+<meta name="description" content="ChatGPT Images 2.0 / GPT Image 2 互動式心智圖：5 大能力、Instant vs Thinking、API 整合、5 個實戰場景、踩坑解法。">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Noto Sans TC',system-ui,sans-serif;background:#fff;color:#2a2a2a;line-height:1.7}
+.brand-bar{background:#2a2a2a;color:#fff;text-align:center;padding:10px;font-size:13px;letter-spacing:1px}
+.brand-bar span{background:#e94560;padding:2px 8px;border-radius:10px;font-size:11px;margin-left:8px}
+.container{max-width:960px;margin:0 auto;padding:24px 20px 40px}
+.hero{padding:8px 0 20px;border-bottom:1px solid #eee;margin-bottom:24px}
+.tags{display:flex;gap:8px;flex-wrap:wrap;font-size:12px;margin-bottom:12px}
+.tag{background:#f1f3f5;color:#555;padding:4px 10px;border-radius:12px}
+.tag.hot{background:#fff0f3;color:#e94560}
+.hero h1{font-size:24px;line-height:1.4;margin:8px 0}
+.hero .subtitle{color:#666;font-size:14px}
+.mindmap-wrap{background:#fff;border:1px solid #eaeaea;border-radius:12px;padding:0;margin-bottom:12px;overflow:hidden}
+.mindmap-wrap > .markmap{width:100%;height:680px;display:block}
+.mindmap-wrap svg{width:100%;height:100%;display:block}
+.hint{text-align:center;font-size:12px;color:#888;margin-bottom:32px}
+.cta-box{background:#2a2a2a;color:#fff;border-radius:16px;padding:28px 24px;text-align:center}
+.cta-box p{margin-bottom:14px;font-size:15px}
+.cta-box a{display:inline-block;background:#fff;color:#2a2a2a;padding:12px 28px;border-radius:24px;text-decoration:none;font-weight:700;font-size:14px}
+.cta-box .hint2{color:#e94560;font-size:12px;margin-top:12px}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="brand-bar">Elijah Sensei · 互動心智圖 <span>FREE RESOURCE</span></div>
+<div class="container">
+<div class="hero">
+<div class="tags">
+<span class="tag">🧠 心智圖</span>
+<span class="tag hot">2026/4/21 全新發布</span>
+</div>
+<h1>ChatGPT Images 2.0 完整架構</h1>
+<p class="subtitle">GPT Image 2 五大能力、API 整合、實戰場景、踩坑解法一次看懂</p>
+</div>
+
+<div class="mindmap-wrap">
+<div class="markmap"><script type="text/template">
+---
+markmap:
+  colorFreezeLevel: 2
+  maxWidth: 320
+  initialExpandLevel: 2
+  duration: 500
+---
+
+# ChatGPT Images 2.0
+
+## 一句話定位
+### 是什麼
+- OpenAI 第一個會「先想後畫」的圖像模型
+- API 名稱 gpt-image-2
+- 2026/4/21 發布
+### Image Arena 表現
+- Elo 1512（#1）
+- 領先第二名 +242 分
+- 文字渲染達 95% 準確
+
+## 五大關鍵能力
+### 1. Thinking 模式
+- 把 ChatGPT o 系列推理架構接入
+- 生成前先分析意圖+規劃構圖+自我驗證
+- 延遲 10-30 秒（Instant 是 3-5 秒）
+- 成本約 Instant 的 2-3 倍
+### 2. Web Search 整合
+- Thinking 模式可即時搜尋網路
+- 突破訓練資料時間截止
+- 可生成包含當下事件的視覺
+- 限制：僅 Thinking 模式
+### 3. 八張 Batch 一致性
+- 一次 n=8，跨圖角色臉、體、服一致
+- 必須搭配 quality_mode=thinking
+- 機制：建內部角色 embedding 當錨點
+- 純 n=8 無 thinking 等於獨立生成
+### 4. 多語文字渲染
+- 拉丁文字接近 100% 準確
+- CJK 中日韓 95%+ 字符準確
+- 印度文字（印地、孟加拉）強化支援
+- 中文長文字 >20 字一行仍可能漏字
+### 5. 高解析度
+- 2K 穩定版（最長邊 2000）
+- 4K 實驗版（3840x2160）
+- 4K high 約 $0.41/圖
+- ChatGPT 介面 2K 上限，4K 走 API
+
+## Instant vs Thinking
+### Instant 模式
+- Free tier 可用
+- 延遲 3-5 秒
+- 無 web search
+- 無批量一致性保障
+- 適合：快速草稿、社群圖卡
+### Thinking 模式
+- 限 Plus $20+
+- 延遲 10-30 秒
+- 可 web search
+- 批量一致 + 自驗證
+- 適合：商業素材、複雜構圖、文字精準
+
+## API 整合
+### 基本資訊
+- Model: gpt-image-2
+- Endpoint: /v1/images/generations
+- Endpoint: /v1/images/edits
+### Pricing（1024x1024）
+- low ~$0.006
+- medium ~$0.053
+- high ~$0.211
+- 4K high ~$0.41
+### 參數
+- size: 16 倍數、寬高比 ≤3:1
+- quality: low / medium / high / auto
+- quality_mode: instant / thinking
+- n: 1 到 8
+- output_format: png / jpeg / webp
+
+## 5 個實戰場景
+### 行銷素材
+- 電商 Banner
+- 精準中文文案
+- 用 EXACT TEXT 標記
+### 社群圖卡
+- IG 3 格系列
+- n=3 + thinking 確保一致
+- 同一presenter角色
+### 教學 Infographic
+- 4 步驟流程圖
+- pastel 手繪風
+- 中文標籤精準
+### 商品攝影
+- 棚拍模擬
+- 三點打光
+- 純白背景無 props
+### Pitch Deck
+- 4 頁簡報配圖
+- 一致設計系統
+- 色彩字型統一
+
+## 5 個常見踩坑
+### 文字渲染失敗
+- 用 EXACT TEXT 標記
+- 結尾加 Render verbatim
+- 解析度 1024+
+### Batch 角色不一致
+- 必加 quality_mode=thinking
+- prompt 描述 same character
+- 用 edits 端點 + 參考圖
+### Thinking 吃額度
+- 開發期用 Instant 測試
+- 確認方向再切 Thinking
+- 監控 Dashboard 用量
+### 中文長文字漏字
+- 拆多行每行 12-15 字
+- 解析度 1536+
+- 後製疊字最穩
+### DALL-E 遷移結果不一樣
+- GPT Image 2 更字面執行
+- 重新調整 prompt 措辭
+- 跑回歸測試
+
+## DALL-E 退役遷移
+### 時程
+- 2025/11/14 開發者通知
+- 2025/12 ChatGPT Plus 已切換
+- 2026/5/12 DALL-E 2/3 完全關閉
+### 遷移方式
+- API 機械式替換 model 名稱
+- quality "hd" 改 "high"
+- response 結構不變
+- 跑回歸測試
+</script></div>
+</div>
+<p class="hint">💡 點擊節點展開或收合分支，拖曳可移動畫面</p>
+
+<div class="cta-box">
+<p>每週都有 AI 工具的完整心智圖+實戰教學</p>
+<a href="https://www.threads.com/@elijah.shi.sensei" target="_blank">追蹤 @elijah.shi.sensei</a>
+<p class="hint2">下一份：Claude vs ChatGPT 對比心智圖</p>
+</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/markmap-autoloader@0.18"></script>
+</body>
+</html>
