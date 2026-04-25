@@ -63,6 +63,14 @@ body{font-family:'Noto Sans TC',system-ui,sans-serif;background:#fff;color:#2a2a
 .cta-box a{display:inline-block;background:#fff;color:#2a2a2a;padding:14px 32px;border-radius:28px;text-decoration:none;font-weight:700;font-size:15px}
 .cta-box .hint{color:#e94560;font-size:13px;margin-top:14px}
 .notice{background:#fffbe6;border:1px solid #ffe58f;border-radius:10px;padding:14px 16px;margin-bottom:20px;font-size:13px;color:#8c6500}
+.nlm-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:20px 0}
+.nlm-card{background:#f8f9fa;border:1px solid #eaeaea;border-radius:12px;padding:16px;text-decoration:none;color:#2a2a2a;display:flex;flex-direction:column;gap:6px;transition:transform 0.15s,border-color 0.15s}
+.nlm-card:hover{transform:translateY(-2px);border-color:#e94560}
+.nlm-card .emoji{font-size:24px}
+.nlm-card .title{font-size:14px;font-weight:700}
+.nlm-card .desc{font-size:12px;color:#666;line-height:1.5}
+.nlm-card.featured{background:linear-gradient(135deg,#fff0f3 0%,#f4f0ff 100%);border-color:#e94560}
+.nlm-pending{background:#f8f9fa;color:#999;cursor:not-allowed}
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
@@ -226,6 +234,44 @@ Size: 1920x1080</span>
 <li><a href="https://artificialanalysis.ai/image/arena" target="_blank">Image Arena Leaderboard｜即時 Elo 排名</a></li>
 <li><a href="https://dev.to/tokenmixai/gpt-image-2-api-developer-guide-pricing-thinking-mode-and-production-integration-2026-28p5" target="_blank">API Developer Guide：Pricing + Thinking Mode 完整解析</a></li>
 </ul>
+
+<div class="section-title"><span class="icon">🎤</span>NotebookLM 多媒體版（NEW）</div>
+<div class="lead">
+把上面 14 條官方來源餵進 NotebookLM，產出 5 種多媒體格式。最強的是直接打開 NotebookLM 連結，可以跟全部來源做 Q&A 對話，問什麼都能答。
+</div>
+
+<div class="nlm-grid">
+<a class="nlm-card featured" href="https://notebooklm.google.com/notebook/8a48ddf7-322d-4598-8b6f-bf1748a7b8ac" target="_blank">
+<span class="emoji">🧠</span>
+<span class="title">NotebookLM 互動筆記</span>
+<span class="desc">直接跟 14 條官方來源 Q&A 對話</span>
+</a>
+<a class="nlm-card" href="nlm/infographic.png" target="_blank">
+<span class="emoji">📊</span>
+<span class="title">資訊圖表（PNG）</span>
+<span class="desc">5 大能力一張圖看懂</span>
+</a>
+<a class="nlm-card" href="nlm/briefing_doc.md" target="_blank">
+<span class="emoji">📄</span>
+<span class="title">Briefing Doc</span>
+<span class="desc">完整書面報告（Markdown）</span>
+</a>
+<a class="nlm-card" href="nlm/study_guide.md" target="_blank">
+<span class="emoji">📖</span>
+<span class="title">Study Guide</span>
+<span class="desc">學習指南（含複習題）</span>
+</a>
+<a class="nlm-card" href="nlm/mind_map.json" target="_blank">
+<span class="emoji">🌳</span>
+<span class="title">心智圖 JSON</span>
+<span class="desc">原始結構化資料（可匯入工具）</span>
+</a>
+<span class="nlm-card nlm-pending">
+<span class="emoji">🎬</span>
+<span class="title">解說影片</span>
+<span class="desc">即將上架（產製中）</span>
+</span>
+</div>
 
 <div class="notion-cta">
 <div class="icon-box">📚</div>

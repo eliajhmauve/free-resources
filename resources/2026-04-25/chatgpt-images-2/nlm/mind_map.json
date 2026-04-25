@@ -1,0 +1,138 @@
+{
+  "name": "ChatGPT Images 2.0 (gpt-image-2)",
+  "children": [
+    {
+      "name": "核心功能與特性",
+      "children": [
+        {
+          "name": "原生推理能力 (Thinking Mode)"
+        },
+        {
+          "name": "2K 高解析度輸出"
+        },
+        {
+          "name": "多圖一致性 (最多 8 張)"
+        },
+        {
+          "name": "優化文本渲染 (含非拉丁語系)"
+        },
+        {
+          "name": "靈活長寬比 (3:1 到 1:3)"
+        },
+        {
+          "name": "即時聯網搜尋與自我驗證"
+        }
+      ]
+    },
+    {
+      "name": "運行模式",
+      "children": [
+        {
+          "name": "Instant Mode (即時模式)",
+          "children": [
+            {
+              "name": "速度快、成本低"
+            },
+            {
+              "name": "適用於單一概念與快速草圖"
+            },
+            {
+              "name": "開放給所有用戶 (含免費版)"
+            }
+          ]
+        },
+        {
+          "name": "Thinking Mode (思考模式)",
+          "children": [
+            {
+              "name": "具備推理步驟與自我修正"
+            },
+            {
+              "name": "適用於複雜排版、漫畫與一致性角色"
+            },
+            {
+              "name": "僅限 Plus、Pro、企業版用戶"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "API 與開發者工具",
+      "children": [
+        {
+          "name": "模型名稱：gpt-image-2"
+        },
+        {
+          "name": "串接方式：Image API 與 Responses API"
+        },
+        {
+          "name": "Codex 集成：原生內建於開發環境"
+        },
+        {
+          "name": "參數設定：n (1-8)、quality (low/medium/high)、size"
+        },
+        {
+          "name": "版本演進：取代 DALL-E 2/3 (2026年5月退役)"
+        }
+      ]
+    },
+    {
+      "name": "定價結構 (以 Token 計費)",
+      "children": [
+        {
+          "name": "輸入文本: $5/M tokens"
+        },
+        {
+          "name": "輸出文本: $10/M tokens"
+        },
+        {
+          "name": "輸入圖像: $8/M tokens"
+        },
+        {
+          "name": "輸出圖像: $30/M tokens"
+        },
+        {
+          "name": "估算成本: 1024x1024 HD 約 $0.21/張"
+        }
+      ]
+    },
+    {
+      "name": "實際應用場景",
+      "children": [
+        {
+          "name": "市場行銷資產 (多種尺寸同步生成)"
+        },
+        {
+          "name": "教育與科學插圖 (精準標籤與圖表)"
+        },
+        {
+          "name": "UI/UX 原型設計 (Mockups)"
+        },
+        {
+          "name": "漫畫與序列敘事 (角色連續性)"
+        },
+        {
+          "name": "多國語言廣告在地化"
+        }
+      ]
+    },
+    {
+      "name": "限制與挑戰",
+      "children": [
+        {
+          "name": "知識截止日期為 2025年12月"
+        },
+        {
+          "name": "物理模型理解 (如魔術方塊、摺紙)"
+        },
+        {
+          "name": "品牌標誌精準度不一"
+        },
+        {
+          "name": "思考模式會增加回應延遲"
+        }
+      ]
+    }
+  ]
+}
