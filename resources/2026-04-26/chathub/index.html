@@ -65,6 +65,13 @@ body{font-family:'Noto Sans TC',system-ui,sans-serif;background:#fff;color:#2a2a
 .cta-box .hint{color:#e94560;font-size:13px;margin-top:14px}
 .foot{text-align:center;color:#999;font-size:12px;margin-top:24px;line-height:1.7}
 @media(max-width:520px){.scene-card h3{font-size:16px}}
+.nlm-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:20px 0}
+.nlm-card{background:#f8f9fa;border:1px solid #eaeaea;border-radius:12px;padding:18px;text-decoration:none;color:#2a2a2a;display:flex;flex-direction:column;gap:8px;transition:transform 0.15s,border-color 0.15s}
+.nlm-card:hover{transform:translateY(-2px);border-color:#e94560}
+.nlm-card .emoji{font-size:28px}
+.nlm-card .title{font-size:15px;font-weight:700}
+.nlm-card .desc{font-size:12px;color:#666;line-height:1.6}
+.nlm-card.featured{background:linear-gradient(135deg,#fff0f3 0%,#f4f0ff 100%);border-color:#e94560}
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
@@ -188,6 +195,23 @@ body{font-family:'Noto Sans TC',system-ui,sans-serif;background:#fff;color:#2a2a
 <div class="bad">❌ 你完全不會看英文介面、也不想填 API key</div>
 <div class="fix">✅ ChatHub 雖然有中文介面，但部分進階功能（如自備 API key、模型切換）需要一點 AI 工具基礎。完全新手建議先從原廠 app 上手。</div>
 </div>
+</div>
+
+<div class="section-title"><span class="icon">🎧</span>多媒體版本</div>
+<div class="lead">
+不愛讀字的人可以走這條：我用 NotebookLM 把所有來源（產品官網、官方 AiTing 介紹、本篇實測、4 場景筆記）整合成一個可互動的知識庫。你可以直接問問題、看心智圖架構、產生 podcast 摘要。
+</div>
+<div class="nlm-grid">
+<a class="nlm-card featured" href="https://notebooklm.google.com/notebook/6c89a732-3d12-4f40-9017-bd58f5cfd120" target="_blank" rel="noopener">
+<span class="emoji">🤖</span>
+<span class="title">NotebookLM 互動知識庫</span>
+<span class="desc">公開連結，可直接問 ChatHub 的任何問題（如「我這個用量自備 API key 划算嗎」），NLM 會根據所有來源回答你</span>
+</a>
+<a class="nlm-card" href="./mindmap.html">
+<span class="emoji">🧠</span>
+<span class="title">完整架構心智圖</span>
+<span class="desc">6 模型 / 3 工具箱 / 4 場景 / 適合與不適合誰，一張互動圖看懂</span>
+</a>
 </div>
 
 <div class="product-cta">
