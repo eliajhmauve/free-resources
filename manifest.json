@@ -1,6 +1,22 @@
 {
   "resources": [
     {
+      "date": "2026-04-26",
+      "slug": "chathub",
+      "title": "ChatHub 一站式 AI 聊天工作台｜一個介面跑 6 個模型 [合作]",
+      "type": "sponsored",
+      "file": "index.html",
+      "description": "ChatHub 業配實測：4 個 Elijah 實機截圖場景 — 6 模型並排對話、GPT Image 2 中文海報、AI 多語翻譯、網頁 URL 摘要"
+    },
+    {
+      "date": "2026-04-26",
+      "slug": "chathub",
+      "title": "ChatHub 完整心智圖｜6 模型 + 3 工具箱架構圖",
+      "type": "mindmap",
+      "file": "mindmap.html",
+      "description": "ChatHub 互動心智圖：產品定位、支援模型、工具箱、實戰場景、適合誰、價格策略一張圖看懂"
+    },
+    {
       "date": "2026-04-25",
       "slug": "chatgpt-images-2",
       "title": "ChatGPT Images 2.0 完整懶人包｜會「先想後畫」的圖像模型",
