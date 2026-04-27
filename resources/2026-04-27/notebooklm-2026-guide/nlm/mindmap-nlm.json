@@ -1,0 +1,151 @@
+{
+  "name": "NotebookLM 2026 完整指南",
+  "children": [
+    {
+      "name": "產品核心定位",
+      "children": [
+        {
+          "name": "Gemini 3 驅動 AI 工作台"
+        },
+        {
+          "name": "僅依據上傳來源回答 (RAG)"
+        },
+        {
+          "name": "資料壓縮與多模態輸出"
+        },
+        {
+          "name": "繁體中文支援且完全免費"
+        }
+      ]
+    },
+    {
+      "name": "2026 七大新功能",
+      "children": [
+        {
+          "name": "Cinematic Video Overviews",
+          "children": [
+            {
+              "name": "電影感沉浸式影片"
+            },
+            {
+              "name": "Gemini 自動決策視覺風格"
+            },
+            {
+              "name": "社群觸及率高 5-10 倍"
+            }
+          ]
+        },
+        {
+          "name": "Studio 4-tile 升級",
+          "children": [
+            {
+              "name": "音頻/影片/心智圖/報告並排"
+            },
+            {
+              "name": "支援同類型多個輸出儲存"
+            }
+          ]
+        },
+        {
+          "name": "Infographic 10 種風格",
+          "children": [
+            {
+              "name": "手選風格：Bento Grid, Anime, Sketch Note 等"
+            },
+            {
+              "name": "支援 Timeline 與 Process Flow"
+            }
+          ]
+        },
+        {
+          "name": "EPUB 檔案上傳支援"
+        },
+        {
+          "name": "Slide deck 匯出 PPTX"
+        },
+        {
+          "name": "學習工具強化",
+          "children": [
+            {
+              "name": "Flashcards 跨 session 進度保存"
+            },
+            {
+              "name": "Quizzes 標記錯題與洗牌"
+            }
+          ]
+        },
+        {
+          "name": "Audio Overview 4 模式",
+          "children": [
+            {
+              "name": "Deep Dive (深度)"
+            },
+            {
+              "name": "Brief (速報)"
+            },
+            {
+              "name": "Critique (批判建議)"
+            },
+            {
+              "name": "Default (預設)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Power User 進階玩法",
+      "children": [
+        {
+          "name": "Topical Authority Clustering (主題分群)"
+        },
+        {
+          "name": "Note-as-Source 壓縮術 (突破數量上限)"
+        },
+        {
+          "name": "NotebookLM + Claude MCP 連線 (知識+推理)"
+        },
+        {
+          "name": "Deep Research (自動跨網研究員)"
+        },
+        {
+          "name": "Public + Cinematic 雙投放策略"
+        }
+      ]
+    },
+    {
+      "name": "常見問題與踩坑點",
+      "children": [
+        {
+          "name": "API 失敗率高：建議用 Web UI"
+        },
+        {
+          "name": "處理延遲：上傳後需等 30-90 秒"
+        },
+        {
+          "name": "生成耗時：影片需 20-40 分鐘"
+        },
+        {
+          "name": "口吻設定：指令指定「繁中台灣口吻」"
+        }
+      ]
+    },
+    {
+      "name": "版本比較 (訂閱層級)",
+      "children": [
+        {
+          "name": "Standard: 100 筆記本 / 50 來源"
+        },
+        {
+          "name": "AI Plus: 200 筆記本 / 100 來源"
+        },
+        {
+          "name": "AI Pro: 500 筆記本 / 300 來源"
+        },
+        {
+          "name": "AI Ultra: 每日對話 5,000 次 / 600 來源"
+        }
+      ]
+    }
+  ]
+}

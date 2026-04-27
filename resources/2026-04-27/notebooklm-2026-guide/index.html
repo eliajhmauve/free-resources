@@ -62,6 +62,13 @@ body{font-family:'Noto Sans TC',system-ui,sans-serif;background:#fff;color:#2a2a
 .try-cta p{font-size:14px;color:#555;margin-bottom:14px}
 .try-cta a{display:inline-block;background:#2a2a2a;color:#fff;padding:12px 28px;border-radius:24px;text-decoration:none;font-weight:700;font-size:14px}
 .foot{text-align:center;color:#999;font-size:12px;margin-top:24px;line-height:1.7}
+.nlm-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:20px 0}
+.nlm-card{background:#f8f9fa;border:1px solid #eaeaea;border-radius:12px;padding:18px;text-decoration:none;color:#2a2a2a;display:flex;flex-direction:column;gap:8px;transition:transform 0.15s,border-color 0.15s}
+.nlm-card:hover{transform:translateY(-2px);border-color:#e94560}
+.nlm-card .emoji{font-size:28px}
+.nlm-card .title{font-size:15px;font-weight:700}
+.nlm-card .desc{font-size:12px;color:#666;line-height:1.6}
+.nlm-card.featured{background:linear-gradient(135deg,#fff0f3 0%,#f4f0ff 100%);border-color:#e94560}
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
@@ -217,6 +224,23 @@ body{font-family:'Noto Sans TC',system-ui,sans-serif;background:#fff;color:#2a2a
 <li><a href="https://medium.com/@kombib/notebooklm-claude-the-research-workflow-shift-e643e826c38b" target="_blank" rel="noopener">NotebookLM + Claude Research Workflow（MCP 整合）</a></li>
 <li><a href="https://grenade.tw/blog/notebooklm-google-ai-notebook/" target="_blank" rel="noopener">grenade.tw 中文教學（2026 更新版）</a></li>
 </ul>
+
+<div class="section-title"><span class="icon">🎧</span>多媒體版本（NLM 自己生）</div>
+<div class="lead">
+這份指南本身也丟進 NotebookLM 跑了一輪。下面是 NLM 自己用這份內容產的多媒體版本，你可以開公開連結直接問問題（NLM 會用本指南的 source 回答），或看它整理出來的架構心智圖。
+</div>
+<div class="nlm-grid">
+<a class="nlm-card featured" href="https://notebooklm.google.com/notebook/64d16b23-1d3b-4924-800a-b935b400fdf6" target="_blank" rel="noopener">
+<span class="emoji">🤖</span>
+<span class="title">NotebookLM 互動知識庫</span>
+<span class="desc">公開連結，可以問任何問題（如「我該用 Topical Clustering 還是塞一個大 notebook」），NLM 用本指南所有 source 回答你</span>
+</a>
+<a class="nlm-card" href="./mindmap.html">
+<span class="emoji">🧠</span>
+<span class="title">完整架構心智圖</span>
+<span class="desc">7 大新功能 / Audio 4 模式 / 5 個 Power User 玩法 / 踩坑解法，互動式心智圖</span>
+</a>
+</div>
 
 <div class="try-cta">
 <h3>🚀 立刻開始用 NotebookLM</h3>
