@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NotebookLM 2026 完整新功能 + Power User 玩法｜一份資料七種輸出｜Elijah Sensei</title>
+<meta name="description" content="NotebookLM 2026 完整懶人包：Studio 4-tile 升級、Cinematic Video Overviews、Infographic 10 風格、EPUB 上傳、PPTX 匯出、Audio 4 種模式、5 個 Power User 玩法（Topical Clustering、Source 壓縮、NLM+Claude MCP）。一份資料七種輸出的完整實戰指南。">
+<meta property="og:title" content="NotebookLM 2026 完整新功能 + Power User 玩法">
+<meta property="og:description" content="一份資料七種輸出 · Studio 升級 · Cinematic Video · Infographic 10 風格 · 5 個 Power User 玩法">
+<meta property="og:image" content="cover.png">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="cover.png">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Noto Sans TC',system-ui,sans-serif;background:#fff;color:#2a2a2a;line-height:1.75}
+.brand-bar{background:#2a2a2a;color:#fff;text-align:center;padding:10px;font-size:13px;letter-spacing:1px}
+.brand-bar span{background:#e94560;padding:2px 8px;border-radius:10px;font-size:11px;margin-left:8px}
+.container{max-width:760px;margin:0 auto;padding:24px 20px 60px}
+.hero-img{width:100%;border-radius:14px;margin:0 0 20px;display:block;box-shadow:0 2px 8px rgba(0,0,0,0.06)}
+.hero{padding:8px 0 24px;border-bottom:1px solid #eee;margin-bottom:32px}
+.hero h1{font-size:26px;line-height:1.4;margin:12px 0 8px}
+.hero .subtitle{color:#666;font-size:15px;margin-bottom:14px}
+.tags{display:flex;gap:8px;flex-wrap:wrap;font-size:12px}
+.tag{background:#f1f3f5;color:#555;padding:4px 10px;border-radius:12px}
+.tag.hot{background:#fff0f3;color:#e94560}
+.section-title{font-size:20px;margin:40px 0 16px;padding:6px 0 10px;border-bottom:2px solid #2a2a2a;display:flex;align-items:center;gap:8px}
+.section-title .icon{font-size:22px}
+.lead{font-size:15px;color:#444;margin-bottom:20px;padding:14px 16px;background:#f8f9fa;border-radius:10px;border-left:3px solid #2a2a2a}
+.feature-card{background:#fff;border:1px solid #eaeaea;border-radius:12px;padding:18px 20px;margin-bottom:14px;position:relative}
+.feature-card .num{position:absolute;top:-10px;left:18px;background:#2a2a2a;color:#fff;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700}
+.feature-card h3{font-size:16px;margin:4px 0 6px;padding-left:24px}
+.feature-card p{font-size:14px;color:#555;padding-left:24px}
+.feature-card .tip{margin-top:10px;margin-left:24px;padding:8px 12px;background:#f8f9fa;border-radius:8px;font-size:13px;color:#555;border-left:3px solid #e94560}
+.compare-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:14px;background:#fff;border:1px solid #eaeaea;border-radius:12px;overflow:hidden}
+.compare-table th{background:#2a2a2a;color:#fff;padding:10px 12px;text-align:left;font-size:13px}
+.compare-table td{padding:10px 12px;border-top:1px solid #eee}
+.compare-table tr:nth-child(even) td{background:#fafafa}
+.compare-table .col-best{font-weight:700;color:#e94560}
+.adv-card{background:#f8f9fa;border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:4px solid #2a2a2a}
+.adv-card h3{font-size:16px;margin-bottom:6px}
+.adv-card .scene{color:#e94560;font-size:12px;margin-bottom:10px;font-weight:700;letter-spacing:1px}
+.adv-card p{font-size:14px;color:#444}
+.adv-card .tip{margin-top:10px;padding:10px 12px;background:#fff;border-radius:8px;font-size:13px;color:#555;border:1px dashed #ccc}
+.adv-card code{background:#2a2a2a;color:#f8f9fa;padding:2px 8px;border-radius:4px;font-family:'SFMono-Regular',Menlo,monospace;font-size:12px}
+.trap-list{background:#fff;border:1px solid #eaeaea;border-radius:12px;padding:18px 20px}
+.trap-item{padding:12px 0;border-bottom:1px solid #f0f0f0}
+.trap-item:last-child{border-bottom:none}
+.trap-item .bad{color:#c03a4d;font-weight:700;font-size:14px;margin-bottom:4px}
+.trap-item .fix{color:#2a2a2a;font-size:14px}
+.source-list{background:#f8f9fa;border-radius:12px;padding:20px 24px}
+.source-list li{list-style:none;margin-bottom:10px;font-size:14px;padding-left:16px;position:relative}
+.source-list li::before{content:"›";position:absolute;left:0;color:#e94560;font-weight:700}
+.source-list a{color:#2a5d9f;text-decoration:none}
+.source-list a:hover{text-decoration:underline}
+.cta-box{background:#2a2a2a;color:#fff;border-radius:16px;padding:32px 24px;text-align:center;margin-top:48px}
+.cta-box p{margin-bottom:14px;font-size:15px}
+.cta-box a{display:inline-block;background:#fff;color:#2a2a2a;padding:14px 32px;border-radius:28px;text-decoration:none;font-weight:700;font-size:15px}
+.cta-box .hint{color:#e94560;font-size:13px;margin-top:14px}
+.try-cta{background:linear-gradient(135deg,#fff0f3 0%,#fffbe6 100%);border:1px solid #e94560;border-radius:16px;padding:24px;margin:32px 0;text-align:center}
+.try-cta h3{font-size:18px;margin-bottom:8px}
+.try-cta p{font-size:14px;color:#555;margin-bottom:14px}
+.try-cta a{display:inline-block;background:#2a2a2a;color:#fff;padding:12px 28px;border-radius:24px;text-decoration:none;font-weight:700;font-size:14px}
+.foot{text-align:center;color:#999;font-size:12px;margin-top:24px;line-height:1.7}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="brand-bar">Elijah Sensei · NotebookLM 2026 完整指南 <span>FREE RESOURCE</span></div>
+<div class="container">
+
+<div class="hero">
+<img class="hero-img" src="cover.png" alt="NotebookLM 2026 power user playbook 封面圖：開啟的筆記本上方浮著 7 個輸出形式（podcast、影片、心智圖、簡報、quiz、flashcard、報告），標題寫著 NotebookLM 一份資料七種輸出">
+<div class="tags">
+<span class="tag">🤖 NotebookLM</span>
+<span class="tag">難度 ★★☆☆☆</span>
+<span class="tag hot">2026 最新功能 + 5 玩法</span>
+</div>
+<h1>NotebookLM 2026 完整指南<br>一份資料七種輸出，從入門到 Power User</h1>
+<p class="subtitle">Studio 4-tile 升級 · Cinematic Video · Infographic 10 風格 · EPUB 上傳 · 5 個進階玩法</p>
+</div>
+
+<div class="section-title"><span class="icon">💡</span>它到底解決什麼問題</div>
+<div class="lead">
+你手邊有 30 個 PDF 想搞懂、有一段 5 萬字的逐字稿要消化、有 8 個競品官網要交叉分析。傳統做法是打開 ChatGPT 一份份貼，但 ChatGPT 會幻覺、會忘記前面講過什麼、會用它訓練資料的偏見覆蓋你的事實。<br><br>
+<strong>NotebookLM 是 Google 用 Gemini 3 做的「只根據你上傳資料」的 RAG 工作台</strong>。它不負責推理創新，它負責「壓縮你已經知道的資料」並把同一份資料變成 podcast、影片、心智圖、簡報、quiz、flashcard、報告 7 種不同形式。免費、繁中支援、不需訂閱。
+</div>
+
+<div class="section-title"><span class="icon">🆕</span>2026 七大新功能</div>
+
+<div class="feature-card">
+<span class="num">1</span>
+<h3>Cinematic Video Overviews（沉浸深度影片）</h3>
+<p>不是普通的 narrated slides，是讓 Gemini 做數百個結構與風格決策的沉浸影片。畫面有流暢動畫、豐富視覺、節奏起伏。輸出格式直接適合 LinkedIn / X / 教學分享。</p>
+<div class="tip">💡 一段 5 分鐘 Cinematic Video 在社群分享觸及率比文字文章高 5-10 倍，是 NLM 2026 最值得投資時間的功能。</div>
+</div>
+
+<div class="feature-card">
+<span class="num">2</span>
+<h3>Studio 4-tile 並排升級</h3>
+<p>右側 Studio 面板現在有 4 個獨立 tile：Audio Overviews / Video Overviews / Mind Maps / Reports。可以同時開多個、一邊聽 podcast 一邊看 mind map、同類型可存多個輸出。</p>
+<div class="tip">💡 過去同 type 只能存 1 個的限制解除了。同一份 source 可以產 3 種不同角度的 Briefing Doc 互相對照。</div>
+</div>
+
+<div class="feature-card">
+<span class="num">3</span>
+<h3>Infographic 10 種預設風格手選</h3>
+<p>過去 infographic 只有 auto。現在可以從 10 種預設風格挑：Timeline、Comparison、Process Flow、Statistics、Hierarchy 等。視覺風格能配合品牌 / 議題調整。</p>
+</div>
+
+<div class="feature-card">
+<span class="num">4</span>
+<h3>EPUB 檔案上傳支援</h3>
+<p>過去只能上傳 PDF / Google Doc / 網址。現在 EPUB 直接吃。Kindle 買的書、O'Reilly 訂閱的技術書、自製電子書都能丟進去做 podcast。</p>
+<div class="tip">💡 訂閱了書但沒時間看 → 丟 EPUB 進 NLM 產 Audio Overview → 通勤時聽完。學習效率拉滿。</div>
+</div>
+
+<div class="feature-card">
+<span class="num">5</span>
+<h3>Slide deck 匯出 PPTX</h3>
+<p>過去簡報只能匯出 PDF。現在可選 PPTX，落地後可以在 PowerPoint / Keynote 做最後微調。配合 2026/02 推出的「簡報單頁編輯」功能（用 prompt 改文字 / 圖片 / 圖表），整套簡報產線已經比 Gamma 等專業工具不差。</p>
+</div>
+
+<div class="feature-card">
+<span class="num">6</span>
+<h3>Flashcards / Quizzes 跨 session 進度保存</h3>
+<p>學習卡片可以標「Got it / Missed it」、洗牌、結算只練錯過的題目。Quizzes 結果也跨 session 保留，可以反覆練習弱點。NLM 從「資料整理工具」升級成「學習工具」。</p>
+</div>
+
+<div class="feature-card">
+<span class="num">7</span>
+<h3>Audio Overview 4 種模式</h3>
+<p>過去只有預設的雙主持人 Deep Dive。現在可選 <strong>Deep Dive</strong>（兩位深聊）/ <strong>Brief</strong>（單人 2-3 分鐘速報）/ <strong>Critique</strong>（兩位提批評建議）/ <strong>Default</strong>。Critique 模式拿來檢視自己的論文 / 提案非常有用。</p>
+<div class="tip">💡 寫完報告 → 上傳 → 跑 Critique → 兩位 AI 主持人會直接點出邏輯漏洞和該補的論證。比叫朋友看快 10 倍。</div>
+</div>
+
+<div class="section-title"><span class="icon">⚖️</span>NotebookLM vs ChatGPT vs Claude</div>
+<div class="lead">
+這三個工具<strong>不是競爭關係，是分工關係</strong>。把 NLM 當 ChatGPT 用是錯誤定位。
+</div>
+<table class="compare-table">
+<tr><th>場景</th><th>ChatGPT / Claude</th><th class="col-best">NotebookLM</th></tr>
+<tr><td>探索未知主題</td><td class="col-best">✅ 適合（廣度推理）</td><td>❌ 不適合（只看你的 source）</td></tr>
+<tr><td>壓縮大量已知資料</td><td>會幻覺、會忘</td><td class="col-best">✅ 強項（RAG 鎖在 source 內）</td></tr>
+<tr><td>多媒體輸出</td><td>純文字</td><td class="col-best">✅ Podcast / 影片 / 簡報 7 種</td></tr>
+<tr><td>長期專案知識庫</td><td>對話 context 限制</td><td class="col-best">✅ Notebook 永久保存</td></tr>
+<tr><td>需要創意 / 寫作</td><td class="col-best">✅ 強項</td><td>❌ 受 source 限制</td></tr>
+<tr><td>學習新領域</td><td>看人格選</td><td class="col-best">✅ Flashcards + Quiz 加分</td></tr>
+</table>
+
+<div class="section-title"><span class="icon">🚀</span>5 個 Power User 玩法</div>
+
+<div class="adv-card">
+<div class="scene">玩法 1 · 知識庫架構</div>
+<h3>Topical Authority Clustering（主題權威分群）</h3>
+<p>不要把所有資料丟一個 notebook。每個子主題開獨立 notebook，命名 <code>主題 / 子主題</code>。在 chat 裡引用其他 notebook 名稱，Gemini 能跨庫找關聯。一個專業領域的人應該有 5-10 個專屬 notebook，不是 1 個塞滿的雜物間。</p>
+<div class="tip">💡 適合長期經營某個領域（如行銷、AI、投資）。資料隨時間累積，notebook 是你的外掛大腦。</div>
+</div>
+
+<div class="adv-card">
+<div class="scene">玩法 2 · 突破 source 數限制</div>
+<h3>Note-as-Source 壓縮術</h3>
+<p>NLM 每個 notebook 有 source 數上限（免費 50 / Pro 300）。當你要處理超過上限的資料時：先丟一批 → 叫 NLM 整成 Briefing Doc 或 Study Guide → 把摘要存成 Note → Note 本身也可以當 source 用。等於你「壓縮」了 N 份原始 source 成 1 份濃縮 source。</p>
+<div class="tip">💡 處理 100+ 份論文時這招必用。先分批產 5-6 份 Study Guide，最後合併成總綱。</div>
+</div>
+
+<div class="adv-card">
+<div class="scene">玩法 3 · 雙系統協作</div>
+<h3>NotebookLM + Claude（MCP 連線）</h3>
+<p>NLM 管知識（RAG / 永久記憶 / source 鎖定），Claude 管推理（創意 / 寫作 / 跨庫思考）。透過 MCP 協議讓 Claude 直接存取你的 NLM notebook，等於把 Claude 的腦袋接上你的私人知識庫。</p>
+<div class="tip">💡 我自己跑這個流程：所有客戶資料、競品分析、產業報告都在 NLM。Claude 寫文時透過 MCP 抓對應 notebook，不用每次重貼。</div>
+</div>
+
+<div class="adv-card">
+<div class="scene">玩法 4 · 深度研究模式</div>
+<h3>Deep Research（2025/11 推出）</h3>
+<p>過去 NLM 只能讀「你給的」source。Deep Research 模式讓 NLM 自己去網路找補充資料、跨網域驗證、寫成研究報告。從 RAG 工具進化成 Agentic Researcher。</p>
+<div class="tip">💡 適合做產業研究、競品掃描、學術 literature review。給一個關鍵字，回來一份 30 頁報告。</div>
+</div>
+
+<div class="adv-card">
+<div class="scene">玩法 5 · 給粉絲拓展受眾</div>
+<h3>Public Notebook + Cinematic Video 雙投放</h3>
+<p>Notebook 設為 public share，連結直接放 Threads / Twitter。粉絲可以進去問問題（NLM 會用你給的 source 回答）。同時把 Cinematic Video 下載，配字幕剪 30-60 秒短影片發 Reels / Shorts。<strong>同一份資料兩個觸及路徑：深度族群（讀 NLM）+ 廣度流量（看影片）。</strong></p>
+</div>
+
+<div class="section-title"><span class="icon">⚠️</span>常見踩坑</div>
+<div class="trap-list">
+<div class="trap-item">
+<div class="bad">❌ API 觸發 audio / video / slide_deck 大量失敗</div>
+<div class="fix">✅ 用 NotebookLM Web UI 手動點 Generate 成功率 90%+。MCP API 觸發路徑跟 UI 觸發路徑不同，UI 比較穩。重要 artifact 別 100% 靠 API 自動化。</div>
+</div>
+<div class="trap-item">
+<div class="bad">❌ 上傳 source 後立刻 generate artifact 會 fail</div>
+<div class="fix">✅ Source 加進去後 NLM 端要處理 30-90 秒（embedding / 索引）。先在 chat 問一個簡單問題確認 source ready，再去 generate。</div>
+</div>
+<div class="trap-item">
+<div class="bad">❌ Cinematic Video 卡在「processing」超過 30 分鐘</div>
+<div class="fix">✅ 這是正常的。Cinematic 比一般 Video 慢 3-5 倍（畫面決策多）。中型主題抓 20-40 分鐘預期。重大會議簡報前一晚跑，不要當天才產。</div>
+</div>
+<div class="trap-item">
+<div class="bad">❌ 中文 podcast 主持人用詞偏中國大陸（「視頻」「軟件」）</div>
+<div class="fix">✅ 在 chat configure 階段明確指定「繁體中文 + 台灣口吻 + 用『影片』『軟體』不用『視頻』『軟件』」。NLM 會吃 instruction。</div>
+</div>
+<div class="trap-item">
+<div class="bad">❌ Source 數超過上限就無法新增</div>
+<div class="fix">✅ 用「玩法 2」的 Note-as-Source 壓縮術。或者開新 notebook，把舊 notebook 用 link reference 串起來。</div>
+</div>
+</div>
+
+<div class="section-title"><span class="icon">📚</span>延伸資源</div>
+<ul class="source-list">
+<li><a href="https://notebooklm.google.com/" target="_blank" rel="noopener">NotebookLM 官方入口（免費登入）</a></li>
+<li><a href="https://blog.google/innovation-and-ai/models-and-research/google-labs/notebooklm-video-overviews-studio-upgrades/" target="_blank" rel="noopener">Google Blog: Video Overviews + Studio Upgrades 官方公告</a></li>
+<li><a href="https://workspaceupdates.googleblog.com/2026/03/new-ways-to-customize-and-interact-with-your-content-in-NotebookLM.html" target="_blank" rel="noopener">Google Workspace Updates: 2026/03 NotebookLM 新功能</a></li>
+<li><a href="https://medium.com/@kombib/20-notebooklm-hacks-that-will-transform-how-you-work-with-information-part-2-0b0afc26fcd2" target="_blank" rel="noopener">20+ NotebookLM Hacks Part 2（Mihailo Zoin）</a></li>
+<li><a href="https://medium.com/@kombib/notebooklm-claude-the-research-workflow-shift-e643e826c38b" target="_blank" rel="noopener">NotebookLM + Claude Research Workflow（MCP 整合）</a></li>
+<li><a href="https://grenade.tw/blog/notebooklm-google-ai-notebook/" target="_blank" rel="noopener">grenade.tw 中文教學（2026 更新版）</a></li>
+</ul>
+
+<div class="try-cta">
+<h3>🚀 立刻開始用 NotebookLM</h3>
+<p>免費、不需訂閱、繁中支援。你只要有 Google 帳號就能用。</p>
+<a href="https://notebooklm.google.com/" target="_blank" rel="noopener">前往 notebooklm.google.com →</a>
+</div>
+
+<div class="cta-box">
+<p>更多我每天在用的 AI 工作流，都會發在 Threads</p>
+<a href="https://www.threads.net/@elijah.shi.sensei" target="_blank" rel="noopener">追蹤 @elijah.shi.sensei</a>
+<p class="hint">不灌水、不釣互動、只發我自己真的在用的工具與心法</p>
+</div>
+
+<div class="foot">
+2026/04/27 整理 · 資料來源以官方為準 · 有任何問題歡迎到 Threads 留言
+</div>
+
+</div>
+</body>
+</html>

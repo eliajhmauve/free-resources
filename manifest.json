@@ -1,6 +1,22 @@
 {
   "resources": [
     {
+      "date": "2026-04-27",
+      "slug": "notebooklm-2026-guide",
+      "title": "NotebookLM 2026 完整指南｜一份資料七種輸出 + 5 個 Power User 玩法",
+      "type": "guide",
+      "file": "index.html",
+      "description": "Studio 4-tile 升級、Cinematic Video、Infographic 10 風格、EPUB 上傳、PPTX 匯出、Audio 4 模式 + Topical Clustering / Note-as-Source / NLM+Claude MCP / Deep Research / 雙投放 5 大玩法"
+    },
+    {
+      "date": "2026-04-27",
+      "slug": "notebooklm-2026-guide",
+      "title": "NotebookLM 2026 完整心智圖",
+      "type": "mindmap",
+      "file": "mindmap.html",
+      "description": "7 大新功能、Audio 4 模式、5 個 Power User 玩法、踩坑解法一張圖看懂"
+    },
+    {
       "date": "2026-04-26",
       "slug": "chathub",
       "title": "ChatHub 一站式 AI 聊天工作台｜一個介面跑 6 個模型 [合作]",
