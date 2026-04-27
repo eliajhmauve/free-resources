@@ -1,0 +1,201 @@
+{
+  "title": "NotebookLM 學習卡",
+  "cards": [
+    {
+      "front": "NotebookLM 2026 版本主要由哪一個 AI 模型驅動？",
+      "back": "Gemini 3。"
+    },
+    {
+      "front": "根據 Elijah Sensei 的整理，NotebookLM 的核心定位是什麼？",
+      "back": "只根據使用者上傳的來源（Source）進行回答，不負責探索未知，而是壓縮已知資料。"
+    },
+    {
+      "front": "當需要「探索未知主題」時，比起 NotebookLM，應優先選擇哪類工具？",
+      "back": "ChatGPT 或 Claude（適合廣度推理）。"
+    },
+    {
+      "front": "NotebookLM 2026 推出的 Cinematic Video Overviews 主要功能為何？",
+      "back": "由 Gemini 自動決策結構與視覺風格，生成具備動畫與節奏感的深度沉浸影片。"
+    },
+    {
+      "front": "Cinematic Video 在社群分享的觸及率，預期比純文字文章高出多少倍？",
+      "back": "5-10 倍。"
+    },
+    {
+      "front": "2026 年升級的 Studio 4-tile 面板，支援哪四種產出類型的並排顯示？",
+      "back": "Audio (音訊)、Video (影片)、Mind Map (心智圖)、Report (報告)。"
+    },
+    {
+      "front": "升級後的 Studio 面板解決了過去關於「輸出儲存」的哪項限制？",
+      "back": "同類型的輸出（如 Briefing Doc）現在可以儲存多個版本，不再限於一個。"
+    },
+    {
+      "front": "NotebookLM 目前支援手選的 Infographic（圖解）預設風格共有幾種？",
+      "back": "10 種（如 Timeline、Comparison、Bento Grid 等）。"
+    },
+    {
+      "front": "除了 PDF、網頁和 YouTube，2026 年新增的檔案格式支援為何？",
+      "back": "EPUB (電子書格式)。"
+    },
+    {
+      "front": "NotebookLM 的簡報功能現在支援匯出成哪種可編輯的檔案格式？",
+      "back": "PPTX。"
+    },
+    {
+      "front": "針對已生成的投影片，2026/02 推出的新功能允許使用者如何編輯？",
+      "back": "使用 Prompt (指令) 針對單頁投影片進行文字、圖片或圖表的修改。"
+    },
+    {
+      "front": "Flashcards (學習卡片) 功能在 2026 年增加了哪種進度標記方式？",
+      "back": "「Got it」(已掌握) 與 「Missed it」(未掌握)。"
+    },
+    {
+      "front": "Audio Overview 的「Critique」模式主要用途為何？",
+      "back": "讓兩位 AI 主持人對上傳的文件提出批判性建議與邏輯漏洞檢視。"
+    },
+    {
+      "front": "Audio Overview 的哪種模式適合在時間有限時快速獲取 2-3 分鐘摘要？",
+      "back": "Brief (簡短版) 模式。"
+    },
+    {
+      "front": "在收聽 Audio Overview 時，2026 年新增的互動功能為何？",
+      "back": "可以隨時暫停並用語音或文字打斷主持人進行追問。"
+    },
+    {
+      "front": "何謂「Topical Authority Clustering」的筆記本架構策略？",
+      "back": "不將所有資料塞入單一筆記本，而是針對每個子主題開啟獨立的 Notebook。"
+    },
+    {
+      "front": "「Note-as-Source 壓縮術」的主要目的是什麼？",
+      "back": "將生成的摘要存為 Note 並轉為新的 Source，以突破筆記本 Source 數量的上限。"
+    },
+    {
+      "front": "NotebookLM 配合 Claude 的 MCP 連線玩法，兩者的分工為何？",
+      "back": "NotebookLM 負責知識管理與 RAG，Claude 負責邏輯推理與創意寫作。"
+    },
+    {
+      "front": "2025/11 推出的「Deep Research」模式與傳統 RAG 有何不同？",
+      "back": "具備 Agent 性質，能主動跨網路搜尋補充資料，而非僅限於使用者上傳的內容。"
+    },
+    {
+      "front": "若要針對粉絲經營達成廣度流量，Elijah 建議下載哪種輸出發布於 Reels？",
+      "back": "Cinematic Video Overviews。"
+    },
+    {
+      "front": "若 API 觸發自動化產出失敗率高，應改用哪種方式提升成功率？",
+      "back": "使用 Web UI 手動點擊 Generate (成功率約 90%+)。"
+    },
+    {
+      "front": "上傳來源資料後，建議等待多久再開始生成 Artifact (成品)？",
+      "back": "30-90 秒，確保後端索引（Embedding）處理完畢。"
+    },
+    {
+      "front": "生成 Cinematic Video 通常需要多少預期處理時間？",
+      "back": "20-40 分鐘（比一般影片慢 3-5 倍）。"
+    },
+    {
+      "front": "如何解決 NotebookLM 中文 Podcast 用詞偏向中國大陸的問題？",
+      "back": "在 Chat Configure 中明確指定「繁體中文、台灣口吻，不用視頻、軟件等詞」。"
+    },
+    {
+      "front": "NotebookLM 免費版每個筆記本的來源（Source）數量上限為何？",
+      "back": "50 個。"
+    },
+    {
+      "front": "NotebookLM AI Ultra 訂閱用戶每日的 AI 對話次數上限為何？",
+      "back": "5,000 次。"
+    },
+    {
+      "front": "關於 NotebookLM 的答案可信度，它是如何確保資訊透明的？",
+      "back": "每個回答都會標示明確的引用來源（Citations），點擊可跳轉至原文段落。"
+    },
+    {
+      "front": "哪種功能可以自動從資料中提取重點，並提供 Easy/Medium/Hard 難度分級？",
+      "back": "Flashcards (知識卡片)。"
+    },
+    {
+      "front": "Mind Maps (思維導圖) 生成後，支援以下哪種圖片格式導出？",
+      "back": "PNG。"
+    },
+    {
+      "front": "「Artifact creation in chat」功能具體指什麼？",
+      "back": "可直接在對話框中要求 Notebook 生成報告、音訊或影片，不需切換面板。"
+    },
+    {
+      "front": "當筆記本內來源總數達到 5 個以上時，NotebookLM 會自動執行什麼動作？",
+      "back": "自動將性質相近的來源歸類並貼上標籤（如「研究論文」）。"
+    },
+    {
+      "front": "哪種 AI 訂閱方案提供學生 50% 折扣且每日可生成 20 次 Audio Overview？",
+      "back": "AI Pro 方案。"
+    },
+    {
+      "front": "NotebookLM 與 Perplexity 在「聯網功能」上的主要區別為何？",
+      "back": "Perplexity 預設即時聯網，NotebookLM 則需手動上傳網頁或啟動 Deep Research 模式。"
+    },
+    {
+      "front": "Cinematic Video Overviews 功能對使用者的年齡限制為何？",
+      "back": "須年滿 18 歲。"
+    },
+    {
+      "front": "單個上傳來源的字數上限約為多少？",
+      "back": "50 萬字（約 1,500 頁 PDF）。"
+    },
+    {
+      "front": "在手機 App 上，2026/2/20 更新後增加了哪種自訂功能？",
+      "back": "Video Overview 的視覺風格與語言偏好設定。"
+    },
+    {
+      "front": "哪種功能能將資料轉化為兩位主持人以「一正一反」方式討論的內容？",
+      "back": "Critique 或 Debate 模式的 Audio Overview。"
+    },
+    {
+      "front": "對於職場工作者，NotebookLM 最能解決的痛點是什麼？",
+      "back": "整理大量雜亂資料（如會議記錄、產業報告）並快速提取跨文件重點。"
+    },
+    {
+      "front": "「Saved and secure conversation history」確保了哪些隱私與便利？",
+      "back": "對話自動私密保存，在共享筆記本中對話僅自己可見。"
+    },
+    {
+      "front": "如果想要將 NotebookLM 作為外掛大腦長期經營，Elijah 建議建立幾個筆記本？",
+      "back": "5-10 個專屬筆記本。"
+    },
+    {
+      "front": "當使用者覺得生成的簡報某一頁不滿意時，現在可以怎麼做？",
+      "back": "直接點選該頁並輸入指令修改，不需重新生成整份簡報。"
+    },
+    {
+      "front": "哪個功能可以產生包含題目、選項、正確答案與原文解釋的評量？",
+      "back": "Quizzes (測驗)。"
+    },
+    {
+      "front": "NotebookLM 是否需要信用卡或 API Key 才能開始使用免費版？",
+      "back": "不需要，僅需 Google 帳號即可。"
+    },
+    {
+      "front": "在 Studio 面板中，使用者可以一邊聽 Podcast 一邊做什麼來提升效率？",
+      "back": "同時瀏覽心智圖（Mind Map）或審閱學習指南（Study Guide）。"
+    },
+    {
+      "front": "Google 官方目前將 NotebookLM 整合到了哪一個主要的 AI 應用程式分頁中？",
+      "back": "Gemini App 的「Notebooks」類別。"
+    },
+    {
+      "front": "什麼樣的場景最適合使用 NotebookLM 的「雜誌風格 (Magazine Style)」報告？",
+      "back": "需要視覺化長篇摘要文件的場景。"
+    },
+    {
+      "front": "關於 NotebookLM 的優點，哪一項能最有效防止 AI 憑空捏造資訊？",
+      "back": "資料來源透明化，強制關聯到上傳的來源段落。"
+    },
+    {
+      "front": "若要處理 100 份以上的論文，應如何配合「壓縮術」操作？",
+      "back": "分批上傳產出多份 Study Guide，再將這些 Guide 合併為總綱。 "
+    },
+    {
+      "front": "在 API 自動化流程中，哪一種 Artifact 的失敗率最高？",
+      "back": "Audio、Video 與 Slide Deck。"
+    }
+  ]
+}
