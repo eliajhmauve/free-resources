@@ -1,6 +1,22 @@
 {
   "resources": [
     {
+      "date": "2026-04-29",
+      "slug": "taiwan-accelerators",
+      "title": "台灣創業加速器全景｜2026 八大加速器選擇指南",
+      "type": "guide",
+      "file": "index.html",
+      "description": "AppWorks、台大創創、Garage+、StarFab、林口新創園、TTA、Startup@Taipei、SparkLabs Taipei 八大加速器深度比較。三維度交叉：盤點 / 比較表 / 實戰建議 + NotebookLM 6 媒體版本"
+    },
+    {
+      "date": "2026-04-29",
+      "slug": "taiwan-accelerators",
+      "title": "台灣創業加速器全景 心智圖｜2026",
+      "type": "mindmap",
+      "file": "mindmap.html",
+      "description": "8 大加速器 / 五大類別（民間/學界/非營利/公部門/企業）/ 申請 5 步驟 / 進階玩法 / 5 大踩坑互動心智圖"
+    },
+    {
       "date": "2026-04-27",
       "slug": "notebooklm-2026-guide",
       "title": "NotebookLM 2026 完整指南｜一份資料七種輸出 + 5 個 Power User 玩法",
