@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>洞察數位科技面試速成｜公司情報 + AI 工程新手包</title>
+<meta name="description" content="洞察數位科技工程師面試完整指南：六大服務模組、四個自家 AI 產品（拓荒者/生產者/追蹤者/建造者）、AI 工程基礎（LLM/RAG/Agent）、自我介紹 4 段腳本、反問面試官 5 題。">
+<meta property="og:title" content="洞察數位科技面試速成｜公司情報 + AI 工程新手包">
+<meta property="og:description" content="新手一週準備洞察數位科技工程師面試，附 NotebookLM 6 媒體版本。">
+<meta property="og:image" content="cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Noto Sans TC","Microsoft JhengHei",sans-serif;background:#fff;color:#1a2540;line-height:1.7;-webkit-font-smoothing:antialiased}
+.brand-bar{background:#000;color:#fff;padding:10px 0;text-align:center;font-size:13px;letter-spacing:1px}
+.brand-bar a{color:#e94560;text-decoration:none;font-weight:600;margin-left:8px}
+.wrap{max-width:720px;margin:0 auto;padding:0 24px}
+.hero{padding:48px 0 32px;border-bottom:1px solid #eaeaea}
+.tag{display:inline-block;background:#fff5f6;color:#e94560;padding:4px 12px;border-radius:20px;font-size:13px;font-weight:600;margin-bottom:16px}
+h1{font-size:32px;line-height:1.3;font-weight:700;margin-bottom:12px;color:#000}
+.sub{font-size:17px;color:#5a6275;margin-bottom:8px}
+.meta{font-size:13px;color:#9aa0b0;margin-top:8px}
+section{padding:36px 0;border-bottom:1px solid #f0f0f0}
+section:last-child{border-bottom:0}
+h2{font-size:24px;font-weight:700;margin-bottom:20px;color:#000}
+h3{font-size:18px;font-weight:600;margin-bottom:10px;color:#1a2540}
+p{margin-bottom:14px;color:#3a4255}
+code{background:#f5f5f7;padding:2px 6px;border-radius:4px;font-size:13.5px;color:#c11d76;font-family:"SFMono-Regular",Consolas,monospace}
+.what-card{background:#fafbfd;border-left:4px solid #e94560;padding:18px 20px;border-radius:8px;margin-top:12px}
+.step-card,.adv-card{background:#fff;border:1px solid #eaeaea;border-radius:12px;padding:20px 22px;margin-bottom:14px;display:flex;gap:16px;align-items:flex-start}
+.num{flex-shrink:0;width:36px;height:36px;background:#e94560;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px}
+.step-content,.adv-content{flex:1}
+.step-content h3,.adv-content h3{margin-bottom:6px}
+.scene{display:inline-block;background:#fff5f6;color:#e94560;padding:2px 10px;border-radius:12px;font-size:12px;font-weight:600;margin-bottom:6px}
+.prod-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:8px}
+.prod-card{border:1px solid #eaeaea;border-radius:10px;padding:16px 18px;background:#fff}
+.prod-card h4{font-size:15px;font-weight:700;color:#000;margin-bottom:6px}
+.prod-card .prod-tag{font-size:12px;color:#e94560;font-weight:600;margin-bottom:8px}
+.prod-card p{font-size:13.5px;line-height:1.6;color:#3a4255;margin-bottom:8px}
+.prod-card .prod-tech{font-size:12.5px;color:#5a6275;background:#fafbfd;padding:6px 10px;border-radius:6px;margin-top:6px}
+.compare-table{width:100%;border-collapse:collapse;margin-top:12px;font-size:13.5px}
+.compare-table th,.compare-table td{border:1px solid #eaeaea;padding:10px 12px;text-align:left;vertical-align:top}
+.compare-table th{background:#fafbfd;font-weight:700;color:#000}
+.compare-table td:first-child{font-weight:600;color:#000;background:#fafbfd}
+.trap-list{list-style:none;padding:0}
+.trap-list li{padding:14px 18px;background:#fff8f0;border-left:3px solid #f59e0b;border-radius:6px;margin-bottom:10px;font-size:14.5px}
+.trap-list strong{color:#b45309}
+.trap-list em{font-style:normal;color:#1a2540;display:block;margin-top:4px}
+.qa-list{list-style:none;padding:0}
+.qa-list li{padding:16px 18px;background:#fafbfd;border-left:3px solid #e94560;border-radius:6px;margin-bottom:12px}
+.qa-list strong{color:#000;display:block;margin-bottom:8px}
+.qa-list em{font-style:normal;color:#3a4255;display:block;font-size:14.5px}
+.source-list{list-style:none;padding:0}
+.source-list li{padding:10px 0;border-bottom:1px dashed #eaeaea;font-size:14px}
+.source-list li:last-child{border-bottom:0}
+.source-list a{color:#1a2540;text-decoration:none;font-weight:500}
+.source-list a:hover{color:#e94560;text-decoration:underline}
+.source-list .src-tag{display:inline-block;background:#f0f1f5;color:#5a6275;padding:1px 8px;border-radius:8px;font-size:11.5px;margin-right:8px;font-weight:500}
+.cta-box{background:#000;color:#fff;border-radius:14px;padding:28px 28px;margin-top:24px;text-align:center}
+.cta-box h3{color:#fff;font-size:18px;margin-bottom:8px}
+.cta-box p{color:#c5c8d6;font-size:14px;margin-bottom:16px}
+.cta-box a.threads-btn{display:inline-block;background:#fff;color:#000;padding:12px 28px;border-radius:24px;text-decoration:none;font-weight:700;font-size:14px}
+.cta-box a.threads-btn:hover{background:#e94560;color:#fff}
+.nlm-pack{background:#f0f7ff;border:1px solid #c2dcff;border-radius:12px;padding:20px;margin-top:16px}
+.nlm-pack h3{color:#0b4a8f;margin-bottom:8px;font-size:17px}
+.nlm-pack a{display:inline-block;background:#0b4a8f;color:#fff;padding:8px 18px;border-radius:6px;text-decoration:none;font-weight:600;font-size:13.5px;margin-top:8px}
+.cover-img{width:100%;border-radius:12px;margin-bottom:24px;display:block}
+footer{padding:32px 0 48px;text-align:center;color:#9aa0b0;font-size:13px}
+footer a{color:#e94560;text-decoration:none}
+@media(max-width:600px){
+  h1{font-size:26px}
+  h2{font-size:21px}
+  .prod-grid{grid-template-columns:1fr}
+  .compare-table{font-size:12.5px}
+  .compare-table th,.compare-table td{padding:8px}
+}
+</style>
+</head>
+<body>
+<div class="brand-bar">Elijah Sensei｜面試速成 ｜<a href="https://www.threads.net/@elijah.shi.sensei">@elijah.shi.sensei</a></div>
+
+<main class="wrap">
+
+<header class="hero">
+  <span class="tag">面試衝刺包 #2</span>
+  <h1>洞察數位科技面試｜公司情報 + AI 工程新手包</h1>
+  <p class="sub">針對洞察數位科技（Insightdigit）軟體 / AI 工程師職位。一週搞懂公司在做什麼、四個 AI 產品的定位、AI 工程必懂三件事、自我介紹怎麼講不卡。</p>
+  <p class="meta">2026-05-01 · 6 大服務 · 4 個自家 AI 產品 · 8 個面試常考題 · NotebookLM 6 媒體格式</p>
+  <img src="cover.png" alt="洞察數位科技面試準備封面" class="cover-img" style="margin-top:24px">
+</header>
+
+<section>
+  <h2>💡 這份在解什麼</h2>
+  <div class="what-card">
+    <p>新手最常的問題：「我什麼都不會，要怎麼準備？」<strong>答：先把『這家公司在做什麼』搞清楚，比刷 100 題演算法重要。</strong>因為面試官最愛問的是「為什麼想加入我們」，而不是「LeetCode 你刷幾題」。</p>
+    <p style="margin-bottom:0">這份替你濃縮了洞察數位科技的<strong>六大服務、四個自家 AI 產品、技術主張</strong>，加上 AI 工程必會的 LLM / RAG / Agent 基礎概念，最後給你<strong>自我介紹 4 段腳本</strong>跟<strong>反問面試官的 5 題清單</strong>。</p>
+  </div>
+</section>
+
+<section>
+  <h2>🏢 洞察數位 一頁速覽</h2>
+  <table class="compare-table">
+    <tr><th>項目</th><th>內容</th></tr>
+    <tr><td>歷史</td><td>10 年以上製作經驗</td></tr>
+    <tr><td>規模</td><td>400+ 案例、100+ 產業</td></tr>
+    <tr><td>定位</td><td>軟體開發 + 網站設計（隸屬集團，含行銷/電商分公司）</td></tr>
+    <tr><td>技術主張</td><td><strong>「絕非以眾多外掛、插件處理製作網站，而是以 coding 方式直接開發」</strong></td></tr>
+    <tr><td>核心團隊</td><td>各大知名公司出身的專案總監、業務總監、技術長</td></tr>
+    <tr><td>目標客戶</td><td>中小企業、品牌、新創、特定行業（醫療/法律/金融/房地產/餐飲/旅遊）</td></tr>
+    <tr><td>承諾</td><td>後續維護完全免費</td></tr>
+  </table>
+  <p style="margin-top:14px"><strong>🎯 面試金句：</strong>「我看到貴公司強調用 coding 而非套版，這跟我想真正深入學寫程式的方向一致。」</p>
+</section>
+
+<section>
+  <h2>🛠️ 六大服務模組</h2>
+  <div class="prod-grid">
+
+    <div class="prod-card">
+      <h4>網站開發 Web Design</h4>
+      <span class="prod-tag">客製建站 · 響應式 · 金流串接</span>
+      <p>強調品牌形象、SEO、電商功能。對接客戶整合行銷需求。</p>
+    </div>
+
+    <div class="prod-card">
+      <h4>軟體開發 Software Dev</h4>
+      <span class="prod-tag">客製軟體 · API 串接</span>
+      <p>客製軟體 + API 串接兩大主軸。流程：預約→諮詢→需求→開發→驗收→訓練。</p>
+    </div>
+
+    <div class="prod-card">
+      <h4>拓荒者 Pioneer</h4>
+      <span class="prod-tag">自家產品 · 爬蟲</span>
+      <p>網路爬蟲軟體：自定義爬取、資料清洗、即時更新、多格式導出。</p>
+      <p class="prod-tech">推測技術棧：Python (Scrapy/BeautifulSoup) 或 Node.js + 資料清洗管線</p>
+    </div>
+
+    <div class="prod-card">
+      <h4>生產者 Producer ⭐</h4>
+      <span class="prod-tag">自家產品 · AI 內容</span>
+      <p>AI 內容生產系統：自動生成部落格 / 產品描述 / 新聞稿 / 配圖。</p>
+      <p class="prod-tech">推測技術棧：LLM API（OpenAI/Anthropic）+ 圖片生成 + Prompt 工程系統</p>
+    </div>
+
+    <div class="prod-card">
+      <h4>追蹤者 Tracker</h4>
+      <span class="prod-tag">自家產品 · 行為追蹤</span>
+      <p>網站互動追蹤：IP 追蹤 + 使用者登錄資料追蹤 + Cookie 追蹤三大技術。</p>
+      <p class="prod-tech">推測技術棧：JS Tracking SDK + 後端事件處理 + 即時分析儀表板</p>
+    </div>
+
+    <div class="prod-card">
+      <h4>建造者 Builder</h4>
+      <span class="prod-tag">自家產品 · AI 建站</span>
+      <p>AI 自動生成網站：依需求 + 模板智能建站，深度學習持續優化。</p>
+      <p class="prod-tech">推測技術棧：Template Engine + LLM 內容生成 + 自動 SEO</p>
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <h2>🤖 AI 工程必會三件事</h2>
+
+  <div class="step-card">
+    <div class="num">1</div>
+    <div class="step-content">
+      <h3>LLM 是什麼（30 秒講完版）</h3>
+      <p>LLM = Large Language Model。<strong>本質就是強大的「下一個字預測機」</strong>，因為訓練資料夠大，能展現推理、寫程式、翻譯能力。代表：GPT、Claude、Gemini、Llama。</p>
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="num">2</div>
+    <div class="step-content">
+      <h3>RAG（檢索增強生成）</h3>
+      <p><strong>「讓 AI 在回答前先翻資料庫找相關資料，再根據找到的資料回答。」</strong>流程：文件切塊 → 向量化 → 存向量 DB → 用戶問題向量化 → 找最相似 N 個 → 塞 prompt → LLM 答。重點不是 AI 多聰明，是「翻得準不準」。</p>
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="num">3</div>
+    <div class="step-content">
+      <h3>AI Agent（ReAct 循環）</h3>
+      <p>能自己規劃 + 執行多步驟任務的 AI。核心循環：<strong>Reason 思考 → Act 行動 → Observe 觀察 → 回到 Reason</strong>。差別：一般 LLM 你問一句它答一句，Agent 給它目標它自己分解步驟、呼叫工具、檢查結果。</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>🎯 面試官最可能問的 8 題</h2>
+  <ul class="qa-list">
+    <li><strong>Q1. 為什麼想加入洞察數位？</strong><em>「我看了你們官網，最吸引我的是兩件事：第一，你們強調 coding 而非套版，工程文化扎實。第二，你們同時做客製案件跟四個 AI 產品，能接觸端對端開發。我自己大量用 AI 工具開發小工具，方向很合。」</em></li>
+    <li><strong>Q2. 你對我們四個產品的看法？</strong><em>每個產品準備：解決什麼痛點、你會怎麼改進、市場競品有誰。例如生產者競品：Jasper / Copy.ai / Notion AI。建造者競品：Wix ADI / Durable / 10Web。</em></li>
+    <li><strong>Q3. 客製案件 vs 自家產品開發你想做哪個？</strong><em>誠實答：「短期適合先做客製累積經驗，需求明確、有 deadline 能快速成長。長期希望參與 AI 自家產品線，特別是生產者或建造者。」</em></li>
+    <li><strong>Q4. 你怎麼用 AI 工具寫程式？</strong><em>「我大量用 Claude / Cursor / Copilot 加速開發。AI 給的不是寫好的程式碼，是設計思路跟 boilerplate。我會自己讀懂、修改、debug，不會盲信。AI 不能理解業務邏輯，那塊還是工程師責任。」</em></li>
+    <li><strong>Q5. 你接過什麼專案？</strong><em>新手版：誠實但不貶低。「目前在做 X 專案，用了 Y 技術。雖然規模不大，但完整跑過從需求到部署。」如果什麼都沒做過：「這段時間在密集學基礎，正在做 side project，預計 X 月完成。」</em></li>
+    <li><strong>Q6. 你怎麼處理需求不清楚的客戶？</strong><em>「我會做三件事：把需求拆成 user story 跟客戶確認、做 mockup 或流程圖讓客戶看到具體樣貌、分階段交付每階段都有 demo。即使溝通有落差也能早期修正。」</em></li>
+    <li><strong>Q7. RAG 跟 Fine-tuning 差別？</strong><em>「RAG 給 context，模型本身不變，新資料容易加。Fine-tuning 改模型本身，貴又難維護。99% 場景用 RAG 解，特殊風格才用 fine-tune。」</em></li>
+    <li><strong>Q8. 期望薪水？</strong><em>新手：「根據 104 跟我朋友打聽，這個職位新手約 4-5 萬，我覺得 4.5 萬左右合理，具體看 onboarding 跟 benefit 整體。」</em></li>
+  </ul>
+</section>
+
+<section>
+  <h2>📝 自我介紹 90 秒範本（直接背）</h2>
+  <div class="adv-card">
+    <div class="num">1</div>
+    <div class="adv-content">
+      <span class="scene">10 秒</span>
+      <h3>身分定位</h3>
+      <p>「您好，我是 [姓名]，目前是 [背景]，主要技術方向是 [後端 Python / 前端 React / AI 應用 / 全端]。」</p>
+    </div>
+  </div>
+
+  <div class="adv-card">
+    <div class="num">2</div>
+    <div class="adv-content">
+      <span class="scene">30 秒</span>
+      <h3>技能強項 + 一個具體專案</h3>
+      <p>「我比較熟悉的是 X、Y、Z。最近做的一個小專案是 [具體專案 + 技術 + 心得]。雖然規模不大，但完整跑過從需求到部署的流程。」</p>
+    </div>
+  </div>
+
+  <div class="adv-card">
+    <div class="num">3</div>
+    <div class="adv-content">
+      <span class="scene">30 秒（最重要）</span>
+      <h3>你跟這份工作的連結</h3>
+      <p>「我看到貴公司有四個自家 AI 產品，特別是生產者跟建造者，這跟我練習 AI 應用方向高度重疊。我知道 LLM 整合不是接 API 就好，還要處理 prompt、cost、hallucination 這些細節。希望能在實際產品上把經驗深化。」</p>
+    </div>
+  </div>
+
+  <div class="adv-card">
+    <div class="num">4</div>
+    <div class="adv-content">
+      <span class="scene">20 秒</span>
+      <h3>你想從這份工作得到什麼</h3>
+      <p>「短期希望在客製案件累積完整產品經驗，從需求到部署的全流程都跑過。長期希望成為能獨立負責 AI 產品功能的工程師。」</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>❓ 必反問面試官的 5 題</h2>
+  <ol class="qa-list">
+    <li><strong>1. 工作內容</strong><em>「請問這個職位主要會接觸客製案件還是自家產品線？比例大概是？」</em></li>
+    <li><strong>2. 培訓 / Mentor</strong><em>「公司 onboarding 通常多久？前三個月新人會被分到什麼任務？我這個職位的 mentor 是什麼背景？」</em></li>
+    <li><strong>3. 技術棧</strong><em>「我看到貴公司強調 coding 而非套版，請問常用的技術棧大概是？」</em></li>
+    <li><strong>4. 產品方向</strong><em>「拓荒者、生產者、追蹤者、建造者這四個產品線，目前哪個是公司比較重押的方向？」</em></li>
+    <li><strong>5. 流程（最後問）</strong><em>「請問接下來的面試流程是？我什麼時候會收到結果？」</em></li>
+  </ol>
+  <p style="margin-top:14px"><strong>禁問：</strong>「員工福利？」「會不會 WFH？」「年假幾天？」這些等 offer 來後再問 HR。</p>
+</section>
+
+<section>
+  <h2>⚠️ 新手最常踩的 5 個雷</h2>
+  <ul class="trap-list">
+    <li><strong>❌ 完全沒看公司官網</strong><em>✅ 至少看完 services / agency / 四個產品頁。面試官會直接問「你看過我們什麼產品？」</em></li>
+    <li><strong>❌ 自我介紹講 5 分鐘流水帳</strong><em>✅ 控制 90 秒，4 段結構（身分 / 技能 / 跟工作連結 / 期待）。多餘細節等被問再講。</em></li>
+    <li><strong>❌ 隱瞞自己用 AI 寫程式</strong><em>✅ 大方承認！這是新世代工程師優勢。重點是說明你「會看懂、會修改、不盲信」。</em></li>
+    <li><strong>❌ 沒準備反問</strong><em>✅ 沒反問會被打負分。至少準備 4 題，最後一定要問「什麼時候收到結果」。</em></li>
+    <li><strong>❌ 期望薪水亂喊或不敢喊</strong><em>✅ 新手約 4-5 萬。直接給範圍 + 「具體看整體 package」。</em></li>
+  </ul>
+</section>
+
+<section>
+  <h2>📋 面試前一晚 Checklist</h2>
+  <div class="step-card">
+    <div class="num">✓</div>
+    <div class="step-content">
+      <p>看過官網所有頁面（services / agency / 四個產品頁）<br>
+      自我介紹腳本至少模擬 3 次<br>
+      想好要反問哪 4 題<br>
+      想好「為什麼想加入」「優缺點」「期望薪水」標準答案<br>
+      準備一個「最近做的專案」可以講 5 分鐘版本<br>
+      整理 GitHub 或作品集（即使作品很少也要有）<br>
+      確認交通路線、提早 15 分鐘到<br>
+      帶筆 + 紙 + 履歷一份備用</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>📚 延伸資源</h2>
+  <ul class="source-list">
+    <li><span class="src-tag">公司</span><a href="https://insightdigit.com/services/" target="_blank">洞察數位科技 服務介紹</a></li>
+    <li><span class="src-tag">公司</span><a href="https://insightdigit.com/agency/" target="_blank">洞察數位科技 關於我們</a></li>
+    <li><span class="src-tag">AI</span><a href="https://docs.anthropic.com/" target="_blank">Anthropic Claude 官方文件</a></li>
+    <li><span class="src-tag">AI</span><a href="https://platform.openai.com/docs" target="_blank">OpenAI 官方文件</a></li>
+    <li><span class="src-tag">面試</span><a href="https://www.techinterviewhandbook.org/" target="_blank">Tech Interview Handbook</a></li>
+    <li><span class="src-tag">薪資</span><a href="https://www.104.com.tw/" target="_blank">104 人力銀行 薪資查詢</a></li>
+  </ul>
+</section>
+
+<section>
+  <h2>📦 配套：NotebookLM 6 媒體版本</h2>
+  <div class="nlm-pack">
+    <h3>📓 完整 NotebookLM 知識包</h3>
+    <p>同樣內容做了 6 種媒體格式：<strong>簡報、Podcast、深度報告、資訊圖、閃卡、心智圖</strong>。通勤聽 podcast、面試前一晚滑簡報、做閃卡反射訓練。</p>
+    <a href="https://notebooklm.google.com/notebook/0b9795e5-89c2-42e7-a34f-8377eaff212c" target="_blank">→ 開啟 NotebookLM 完整版</a>
+  </div>
+</section>
+
+<section>
+  <div class="cta-box">
+    <h3>🔔 還有更多免費資源</h3>
+    <p>更多面試準備、AI 工具、開發筆記。追蹤 Threads，下次更新第一時間看到。</p>
+    <a class="threads-btn" href="https://www.threads.net/@elijah.shi.sensei" target="_blank">追蹤 @elijah.shi.sensei</a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  版本：v1.0 · 2026-05-01｜整理：Elijah Sensei｜<a href="https://www.threads.net/@elijah.shi.sensei">Threads</a>
+</footer>
+
+</body>
+</html>

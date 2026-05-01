@@ -1,6 +1,38 @@
 {
   "resources": [
     {
+      "date": "2026-05-01",
+      "slug": "interview-dsa",
+      "title": "軟體工程師面試速成｜Binary Tree + 白板題 7 天速成包",
+      "type": "guide",
+      "file": "index.html",
+      "description": "新手 7 天衝刺：二元樹 4 種 Traversal、高頻 10 題、Array/Hash/Linked List/Stack 必備題型、白板題 5 步驟口語腳本、萬用回答 5 句模板、5 個新手必踩雷。配 NotebookLM 6 媒體版本"
+    },
+    {
+      "date": "2026-05-01",
+      "slug": "interview-dsa",
+      "title": "軟體工程師面試速成 心智圖｜Binary Tree + 白板題",
+      "type": "mindmap",
+      "file": "mindmap.html",
+      "description": "一張圖看懂 7 天讀書計畫、高頻 10 題、其他必備題型、Big O 速查、萬用回答 5 句、5 步驟答題流程、新手 5 大踩雷"
+    },
+    {
+      "date": "2026-05-01",
+      "slug": "interview-insightdigit",
+      "title": "洞察數位科技面試速成｜公司情報 + AI 工程新手包",
+      "type": "guide",
+      "file": "index.html",
+      "description": "針對洞察數位科技軟體/AI 工程師職位：六大服務、四個自家 AI 產品（拓荒者/生產者/追蹤者/建造者）、AI 工程基礎（LLM/RAG/Agent）、自我介紹 4 段腳本、面試官 8 大題、必反問 5 題、面試前一晚 Checklist"
+    },
+    {
+      "date": "2026-05-01",
+      "slug": "interview-insightdigit",
+      "title": "洞察數位科技面試速成 心智圖｜公司情報 + AI 工程",
+      "type": "mindmap",
+      "file": "mindmap.html",
+      "description": "一張圖看懂洞察數位公司情報、六大服務、四個 AI 產品、AI 工程三件事、面試 8 大題、自我介紹 4 段、必反問 5 題"
+    },
+    {
       "date": "2026-04-29",
       "slug": "taiwan-accelerators",
       "title": "台灣創業加速器全景｜2026 八大加速器選擇指南",

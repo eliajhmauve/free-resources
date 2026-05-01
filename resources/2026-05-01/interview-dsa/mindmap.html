@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>軟體工程師面試速成 心智圖｜Binary Tree + 白板題</title>
+<meta name="description" content="一張圖看懂二元樹 + 工程師白板題完整準備：7 天計畫、4 種 Traversal、高頻 10 題、其他必備題型、萬用回答模板。">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Noto Sans TC","Microsoft JhengHei",sans-serif;background:#fff;color:#1a2540;line-height:1.6}
+.brand-bar{background:#000;color:#fff;padding:10px 0;text-align:center;font-size:13px;letter-spacing:1px}
+.brand-bar a{color:#e94560;text-decoration:none;font-weight:600;margin-left:8px}
+.wrap{max-width:1100px;margin:0 auto;padding:24px}
+.hero{padding:24px 0 16px;border-bottom:1px solid #eaeaea;margin-bottom:20px}
+.tag{display:inline-block;background:#fff5f6;color:#e94560;padding:4px 12px;border-radius:20px;font-size:13px;font-weight:600;margin-bottom:12px}
+h1{font-size:26px;line-height:1.3;font-weight:700;color:#000;margin-bottom:8px}
+.sub{font-size:15px;color:#5a6275}
+.mindmap-wrap{background:#fff;border:1px solid #eaeaea;border-radius:12px;padding:0;margin-bottom:16px;overflow:hidden}
+.mindmap-wrap > .markmap{width:100%;height:720px;display:block}
+.mindmap-wrap svg{width:100%;height:100%;display:block}
+.tip{background:#fafbfd;border-left:3px solid #e94560;padding:12px 18px;border-radius:6px;font-size:14px;color:#3a4255;margin-bottom:16px}
+.cta-box{background:#000;color:#fff;border-radius:14px;padding:24px;margin-top:24px;text-align:center}
+.cta-box h3{color:#fff;font-size:17px;margin-bottom:6px}
+.cta-box p{color:#c5c8d6;font-size:13.5px;margin-bottom:14px}
+.cta-box a.threads-btn{display:inline-block;background:#fff;color:#000;padding:10px 24px;border-radius:24px;text-decoration:none;font-weight:700;font-size:14px}
+.cta-box a.threads-btn:hover{background:#e94560;color:#fff}
+.back-link{display:inline-block;color:#e94560;text-decoration:none;font-size:14px;font-weight:600;margin-top:8px}
+footer{padding:24px 0 32px;text-align:center;color:#9aa0b0;font-size:13px}
+</style>
+</head>
+<body>
+<div class="brand-bar">Elijah Sensei｜面試速成 ｜<a href="https://www.threads.net/@elijah.shi.sensei">@elijah.shi.sensei</a></div>
+
+<main class="wrap">
+
+<header class="hero">
+  <span class="tag">心智圖 · 衝刺包 #1</span>
+  <h1>軟體工程師面試｜Binary Tree + 白板題 心智圖</h1>
+  <p class="sub">點節點可展開／收起。滑鼠拖移、滾輪縮放。手機可雙指縮放。</p>
+  <a class="back-link" href="index.html">← 回完整懶人包</a>
+</header>
+
+<div class="tip">💡 <strong>使用建議：</strong>面試前一晚把這張圖滑一遍，每個分支都要能口頭講出來。記不得哪塊就回懶人包補。</div>
+
+<div class="mindmap-wrap">
+<div class="markmap"><script type="text/template">
+---
+markmap:
+  colorFreezeLevel: 2
+  maxWidth: 320
+  initialExpandLevel: 2
+  duration: 500
+---
+
+# 工程師面試速成（Binary Tree + 白板題）
+
+## 1️⃣ 7 天讀書計畫
+### Day 1：二元樹基礎
+- 6 個必會名詞
+  - root / leaf / depth / height
+  - BST / balanced
+- 4 種 Traversal
+  - 中序（左→根→右）= BST 升冪
+  - 前序（根→左→右）
+  - 後序（左→右→根）
+  - 層序（BFS，用 Queue）
+### Day 2：高頻 5 題
+- 最大深度（LC 104）
+- 反轉樹（LC 226）
+- 路徑總和（LC 112）
+- LCA（LC 236）
+- 直徑（LC 543）
+### Day 3：Array + 雙指針
+- Two Sum
+- Best Time to Buy Stock
+- Move Zeroes
+- Container With Most Water
+### Day 4：Hash Table
+- Two Sum（hash 版）
+- Group Anagrams
+- Valid Anagram
+- Top K Frequent
+### Day 5：Linked List + Stack
+- 反轉 Linked List
+- 找中點（快慢指針）
+- Cycle 偵測（Floyd）
+- 括號配對
+### Day 6：模擬面試
+- 對著鏡子講 5 題
+- 練 5 步驟流程
+- 重點：講話不能停
+### Day 7：自介 + 反問
+- 90 秒自介背熟
+- 4 題反問清單
+- 看公司官網
+
+## 2️⃣ Binary Tree 高頻 10 題
+
+### Easy
+- #1 最大深度（LC 104）
+  - 遞迴：1 + max(左, 右)
+- #2 反轉樹（LC 226）
+  - 一行：交換 left / right
+- #3 判斷對稱（LC 101）
+- #4 同一棵樹（LC 100）
+- #5 路徑總和（LC 112）
+- #10 直徑（LC 543）
+  - 後序遍歷算左高+右高
+
+### Medium
+- #6 層序遍歷（LC 102）
+  - Queue + for 一層
+- #7 驗證 BST（LC 98）
+  - 傳上下界，或中序檢查升冪
+- #8 LCA（LC 236）
+  - 遞迴：左右子樹各找一次
+
+### Hard
+- #9 序列化反序列化（LC 297）
+  - 前序 + null 標記
+
+## 3️⃣ 工程師其他必備題型
+
+### Array / String（30%，最高頻）
+- 雙指針
+- 滑動視窗
+- 前綴和
+
+### Hash Table（25%）
+- 用空間換時間
+- O(n²) → O(n)
+- 計數 / 查找 / 分組
+
+### Linked List（15%）
+- 反轉
+- 快慢指針（找中點 / cycle）
+- Merge
+
+### Stack / Queue（10%）
+- 括號配對
+- BFS 遍歷
+- Monotonic Stack（進階）
+
+## 4️⃣ Big O 速查
+### BST 操作
+- 平均 O(log n)
+- 最壞 O(n)（退化）
+### Traversal
+- 永遠 O(n)
+- 不是 log n！
+### 遞迴空間
+- O(h) 樹高
+- 平衡 log n / 最壞 n
+### Hash Table
+- 查找 O(1) 平均
+### 排序
+- 一般 O(n log n)
+### Binary Search
+- O(log n)
+
+## 5️⃣ 萬用回答 5 句
+
+### 句 1：複述需求
+- 「我先確認一下需求…」
+- 問：input / output / 邊界 / 重複
+
+### 句 2：先暴力後優化
+- 「我先寫個暴力解，再來想怎麼優化」
+
+### 句 3：空間換時間
+- 「這裡可以用空間換時間，加個 hash table 降到 O(n)」
+
+### 句 4：驗證
+- 「讓我用一個小例子驗證一下」
+
+### 句 5：邊界
+- 「邊界情況我想想，空陣列、單一元素、全部相同…」
+
+## 6️⃣ 5 步驟答題流程
+
+### Step 1：複述 + 澄清（30 秒）
+- 確認 input / output
+- 問邊界條件
+
+### Step 2：舉例 + 畫圖（1 分鐘）
+- 寫小例子
+- 標思路
+
+### Step 3：講思路 + 複雜度（1-2 分鐘）
+- 先暴力解
+- 再優化方向
+- 估時間 / 空間
+
+### Step 4：寫 code + 邊寫邊講（5-10 分鐘）
+- 變數命名清楚
+- 加 1-2 行註解
+- 同步說在做什麼
+
+### Step 5：驗證 + edge case（2 分鐘）
+- 手動跑例子
+- 主動提邊界
+
+## 7️⃣ 5 個新手必踩雷
+
+### ❌ 沉默思考超過 30 秒
+- ✅ 卡住也持續講思路
+
+### ❌ 忘記檢查 null
+- ✅ 遞迴開頭先寫 if not node
+
+### ❌ 複雜度亂講 O(log n)
+- ✅ Traversal 永遠 O(n)
+
+### ❌ 只記答案不會講思路
+- ✅ 練「能講出每行在做什麼」
+
+### ❌ 不問澄清問題就開寫
+- ✅ 先問 3 個澄清問題
+</script></div>
+</div>
+
+<div class="cta-box">
+  <h3>🔔 還有更多免費資源</h3>
+  <p>面試準備、AI 工具、開發筆記，下次更新第一時間看到。</p>
+  <a class="threads-btn" href="https://www.threads.net/@elijah.shi.sensei" target="_blank">追蹤 @elijah.shi.sensei</a>
+</div>
+
+</main>
+
+<footer>
+  版本：v1.0 · 2026-05-01｜整理：Elijah Sensei
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/markmap-autoloader@0.18"></script>
+</body>
+</html>

@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>軟體工程師面試速成｜Binary Tree + 白板題 7 天速成包</title>
+<meta name="description" content="新手 7 天面試衝刺：二元樹 4 種 Traversal、高頻 10 題、工程師其他必備題型（Array/Hash/Linked List/Stack）、白板題口語腳本。能口頭講思路 > 能徒手寫完美程式碼。">
+<meta property="og:title" content="軟體工程師面試速成｜Binary Tree + 白板題 7 天速成包">
+<meta property="og:description" content="新手一週搞懂二元樹 + 工程師白板題萬用回答模板，附 NotebookLM 6 媒體版本。">
+<meta property="og:image" content="cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Noto Sans TC","Microsoft JhengHei",sans-serif;background:#fff;color:#1a2540;line-height:1.7;-webkit-font-smoothing:antialiased}
+.brand-bar{background:#000;color:#fff;padding:10px 0;text-align:center;font-size:13px;letter-spacing:1px}
+.brand-bar a{color:#e94560;text-decoration:none;font-weight:600;margin-left:8px}
+.wrap{max-width:720px;margin:0 auto;padding:0 24px}
+.hero{padding:48px 0 32px;border-bottom:1px solid #eaeaea}
+.tag{display:inline-block;background:#fff5f6;color:#e94560;padding:4px 12px;border-radius:20px;font-size:13px;font-weight:600;margin-bottom:16px}
+h1{font-size:32px;line-height:1.3;font-weight:700;margin-bottom:12px;color:#000}
+.sub{font-size:17px;color:#5a6275;margin-bottom:8px}
+.meta{font-size:13px;color:#9aa0b0;margin-top:8px}
+section{padding:36px 0;border-bottom:1px solid #f0f0f0}
+section:last-child{border-bottom:0}
+h2{font-size:24px;font-weight:700;margin-bottom:20px;color:#000}
+h3{font-size:18px;font-weight:600;margin-bottom:10px;color:#1a2540}
+p{margin-bottom:14px;color:#3a4255}
+code{background:#f5f5f7;padding:2px 6px;border-radius:4px;font-size:13.5px;color:#c11d76;font-family:"SFMono-Regular",Consolas,monospace}
+.what-card{background:#fafbfd;border-left:4px solid #e94560;padding:18px 20px;border-radius:8px;margin-top:12px}
+.step-card,.adv-card{background:#fff;border:1px solid #eaeaea;border-radius:12px;padding:20px 22px;margin-bottom:14px;display:flex;gap:16px;align-items:flex-start}
+.num{flex-shrink:0;width:36px;height:36px;background:#e94560;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px}
+.step-content,.adv-content{flex:1}
+.step-content h3,.adv-content h3{margin-bottom:6px}
+.scene{display:inline-block;background:#fff5f6;color:#e94560;padding:2px 10px;border-radius:12px;font-size:12px;font-weight:600;margin-bottom:6px}
+.q-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:8px}
+.q-card{border:1px solid #eaeaea;border-radius:10px;padding:16px 18px;background:#fff}
+.q-card h4{font-size:15px;font-weight:700;color:#000;margin-bottom:6px}
+.q-card .q-tag{font-size:12px;color:#e94560;font-weight:600;margin-bottom:8px}
+.q-card p{font-size:13.5px;line-height:1.6;color:#3a4255;margin-bottom:0}
+.compare-table{width:100%;border-collapse:collapse;margin-top:12px;font-size:13.5px}
+.compare-table th,.compare-table td{border:1px solid #eaeaea;padding:10px 12px;text-align:left;vertical-align:top}
+.compare-table th{background:#fafbfd;font-weight:700;color:#000}
+.compare-table td:first-child{font-weight:600;color:#000;background:#fafbfd}
+.trap-list{list-style:none;padding:0}
+.trap-list li{padding:14px 18px;background:#fff8f0;border-left:3px solid #f59e0b;border-radius:6px;margin-bottom:10px;font-size:14.5px}
+.trap-list strong{color:#b45309}
+.trap-list em{font-style:normal;color:#1a2540;display:block;margin-top:4px}
+.source-list{list-style:none;padding:0}
+.source-list li{padding:10px 0;border-bottom:1px dashed #eaeaea;font-size:14px}
+.source-list li:last-child{border-bottom:0}
+.source-list a{color:#1a2540;text-decoration:none;font-weight:500}
+.source-list a:hover{color:#e94560;text-decoration:underline}
+.source-list .src-tag{display:inline-block;background:#f0f1f5;color:#5a6275;padding:1px 8px;border-radius:8px;font-size:11.5px;margin-right:8px;font-weight:500}
+.cta-box{background:#000;color:#fff;border-radius:14px;padding:28px 28px;margin-top:24px;text-align:center}
+.cta-box h3{color:#fff;font-size:18px;margin-bottom:8px}
+.cta-box p{color:#c5c8d6;font-size:14px;margin-bottom:16px}
+.cta-box a.threads-btn{display:inline-block;background:#fff;color:#000;padding:12px 28px;border-radius:24px;text-decoration:none;font-weight:700;font-size:14px}
+.cta-box a.threads-btn:hover{background:#e94560;color:#fff}
+.nlm-pack{background:#f0f7ff;border:1px solid #c2dcff;border-radius:12px;padding:20px;margin-top:16px}
+.nlm-pack h3{color:#0b4a8f;margin-bottom:8px;font-size:17px}
+.nlm-pack a{display:inline-block;background:#0b4a8f;color:#fff;padding:8px 18px;border-radius:6px;text-decoration:none;font-weight:600;font-size:13.5px;margin-top:8px}
+.cover-img{width:100%;border-radius:12px;margin-bottom:24px;display:block}
+footer{padding:32px 0 48px;text-align:center;color:#9aa0b0;font-size:13px}
+footer a{color:#e94560;text-decoration:none}
+@media(max-width:600px){
+  h1{font-size:26px}
+  h2{font-size:21px}
+  .q-grid{grid-template-columns:1fr}
+  .compare-table{font-size:12.5px}
+  .compare-table th,.compare-table td{padding:8px}
+}
+</style>
+</head>
+<body>
+<div class="brand-bar">Elijah Sensei｜面試速成 ｜<a href="https://www.threads.net/@elijah.shi.sensei">@elijah.shi.sensei</a></div>
+
+<main class="wrap">
+
+<header class="hero">
+  <span class="tag">面試衝刺包 #1</span>
+  <h1>軟體工程師面試｜Binary Tree + 白板題 7 天速成</h1>
+  <p class="sub">給「全靠 AI 寫程式、演算法都還給老師」的新手。一週後上戰場，重點不是徒手寫完美 code，是能跟面試官口頭把思路講清楚。</p>
+  <p class="meta">2026-05-01 · 二元樹 + 高頻 10 題 + 工程師其他必備題型 · NotebookLM 6 媒體格式</p>
+  <img src="cover.png" alt="軟體工程師面試 Binary Tree 速成包封面" class="cover-img" style="margin-top:24px">
+</header>
+
+<section>
+  <h2>💡 這份在解什麼</h2>
+  <div class="what-card">
+    <p>新手最常的誤會：「白板題我寫不出來就完了」。<strong>錯。</strong>面試官 90% 不是在看你能不能寫到 bug-free，是在看你「會不會講思路 / 會不會問澄清問題 / 會不會討論複雜度」。</p>
+    <p style="margin-bottom:0">這份就是把「能上戰場開口」需要的東西，壓縮到一週能讀完。配了 NotebookLM 6 種媒體：通勤聽 podcast、看簡報、閃卡反射訓練、深度報告補完。讀完不是讓你變高手，是讓你<strong>不再因為沉默被 0 分</strong>。</p>
+  </div>
+</section>
+
+<section>
+  <h2>🗓️ 7 天速成計畫</h2>
+
+  <div class="step-card">
+    <div class="num">1</div>
+    <div class="step-content">
+      <h3>Day 1：二元樹基礎名詞 + 4 種 Traversal</h3>
+      <p>把 root / leaf / depth / height / BST / balanced 6 個名詞背熟，能口頭解釋。然後搞懂中序 / 前序 / 後序 / 層序 4 種訪問順序。重點：<strong>BST 中序 = 升冪排序</strong>。</p>
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="num">2</div>
+    <div class="step-content">
+      <h3>Day 2：Binary Tree 高頻 5 題</h3>
+      <p>最大深度（LC 104）/ 反轉（LC 226）/ 路徑總和（LC 112）/ LCA（LC 236）/ 直徑（LC 543）。重點：每題練「畫圖 + 口頭講思路」，不要只記答案。</p>
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="num">3</div>
+    <div class="step-content">
+      <h3>Day 3：Array + 雙指針 + 滑動視窗</h3>
+      <p>面試最高頻 30%。Two Sum / Best Time to Buy Stock / Move Zeroes / Container With Most Water。背一個雙指針模板能解 5 題。</p>
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="num">4</div>
+    <div class="step-content">
+      <h3>Day 4：Hash Table 5 題</h3>
+      <p>Two Sum、Group Anagrams、Valid Anagram、Contains Duplicate、Top K Frequent。記住一個原則：<strong>用空間換時間</strong>。把 O(n²) 暴力解降到 O(n) 就靠 hash table。</p>
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="num">5</div>
+    <div class="step-content">
+      <h3>Day 5：Linked List + Stack 經典</h3>
+      <p>反轉 Linked List、找中點（快慢指針）、Cycle 偵測、括號配對。這幾題是面試萬年標配，記住模板就好。</p>
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="num">6</div>
+    <div class="step-content">
+      <h3>Day 6：模擬面試（白板講解 5 題）</h3>
+      <p>找朋友當面試官，或對著鏡子講。重點不是寫對，是<strong>講話不能停</strong>。每題練「複述需求 → 舉例畫圖 → 講思路 → 寫 code → 驗證」5 步驟。</p>
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="num">7</div>
+    <div class="step-content">
+      <h3>Day 7：自我介紹腳本 + 反問清單</h3>
+      <p>背好 90 秒自我介紹（4 段結構）。準備好要反問面試官的 4 題。看一遍公司官網，找 1-2 個「打動你的點」當開場。</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>🌳 Binary Tree 高頻 10 題速覽</h2>
+  <div class="q-grid">
+
+    <div class="q-card">
+      <h4>#1 最大深度（LC 104）</h4>
+      <span class="q-tag">Easy · 必考</span>
+      <p>遞迴：base case 是 null 回 0，否則回 <code>1 + max(左, 右)</code>。時間 O(n) 空間 O(h)。</p>
+    </div>
+
+    <div class="q-card">
+      <h4>#2 反轉二元樹（LC 226）</h4>
+      <span class="q-tag">Easy · Max Howell 沒進 Google 那題</span>
+      <p>每個節點交換 left / right，遞迴處理子樹。一行就解。</p>
+    </div>
+
+    <div class="q-card">
+      <h4>#3 判斷對稱（LC 101）</h4>
+      <span class="q-tag">Easy</span>
+      <p>比對 left.left vs right.right、left.right vs right.left。用輔助函式遞迴。</p>
+    </div>
+
+    <div class="q-card">
+      <h4>#4 同一棵樹（LC 100）</h4>
+      <span class="q-tag">Easy</span>
+      <p>同步走兩棵樹，比結構與值。null 也要對齊。</p>
+    </div>
+
+    <div class="q-card">
+      <h4>#5 路徑總和（LC 112）</h4>
+      <span class="q-tag">Easy</span>
+      <p>每往下一層 target 減去當前節點值，到 leaf 看是否歸零。</p>
+    </div>
+
+    <div class="q-card">
+      <h4>#6 層序遍歷（LC 102）</h4>
+      <span class="q-tag">Medium · 高頻</span>
+      <p>用 Queue（BFS），記得每層處理完才下一層。<code>for _ in range(len(queue))</code> 是關鍵。</p>
+    </div>
+
+    <div class="q-card">
+      <h4>#7 驗證 BST（LC 98）</h4>
+      <span class="q-tag">Medium · 易踩坑</span>
+      <p>不能只看 left.val &lt; root &lt; right.val。要傳上下界，或中序遍歷後檢查升冪。</p>
+    </div>
+
+    <div class="q-card">
+      <h4>#8 LCA 最近共同祖先（LC 236）</h4>
+      <span class="q-tag">Medium · 必考</span>
+      <p>遞迴找：root 是 p 或 q 就回 root，左右子樹各找一次，兩邊都找到答案就是 root。</p>
+    </div>
+
+    <div class="q-card">
+      <h4>#9 序列化與反序列化（LC 297）</h4>
+      <span class="q-tag">Hard · 加分題</span>
+      <p>前序 + null 標記。新手講方向能加分，不一定要寫完。</p>
+    </div>
+
+    <div class="q-card">
+      <h4>#10 二元樹直徑（LC 543）</h4>
+      <span class="q-tag">Easy · 後序遍歷練習</span>
+      <p>後序遍歷算每節點「左高 + 右高」，全域記錄最大值。</p>
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <h2>📊 Big O 複雜度速查表（口頭被問必答）</h2>
+  <table class="compare-table">
+    <tr><th>操作</th><th>平均</th><th>最壞</th></tr>
+    <tr><td>BST 搜尋 / 插入 / 刪除</td><td>O(log n)</td><td>O(n)（退化成 linked list）</td></tr>
+    <tr><td>Traversal（任何順序）</td><td>O(n)</td><td>O(n)</td></tr>
+    <tr><td>遞迴空間（call stack）</td><td>O(h)</td><td>O(n)</td></tr>
+    <tr><td>Hash Table 查找</td><td>O(1)</td><td>O(n)（hash 衝突）</td></tr>
+    <tr><td>排序（一般）</td><td>O(n log n)</td><td>O(n²)（快排最壞）</td></tr>
+    <tr><td>Binary Search</td><td>O(log n)</td><td>O(log n)</td></tr>
+  </table>
+  <p style="margin-top:14px"><strong>口頭模板：</strong>「時間 O(n)，每個節點訪問一次。空間 O(h)，h 是樹高，平衡樹是 log n，最壞 n。」</p>
+</section>
+
+<section>
+  <h2>🎤 萬用回答 5 句模板</h2>
+  <div class="adv-card">
+    <div class="num">1</div>
+    <div class="adv-content">
+      <span class="scene">複述需求</span>
+      <h3>「我先確認一下需求…」</h3>
+      <p>每題都先問澄清問題：「input 是 X？output 是 Y？空陣列怎麼處理？重複元素呢？」</p>
+    </div>
+  </div>
+
+  <div class="adv-card">
+    <div class="num">2</div>
+    <div class="adv-content">
+      <span class="scene">先暴力後優化</span>
+      <h3>「我先寫個暴力解，再來想怎麼優化。」</h3>
+      <p>暴力解能讓面試官看到你能想到方向。優化是加分項不是必須。</p>
+    </div>
+  </div>
+
+  <div class="adv-card">
+    <div class="num">3</div>
+    <div class="adv-content">
+      <span class="scene">空間換時間</span>
+      <h3>「這裡可以用空間換時間，加個 hash table 降到 O(n)。」</h3>
+      <p>面試官最愛聽的句子之一。代表你懂取捨。</p>
+    </div>
+  </div>
+
+  <div class="adv-card">
+    <div class="num">4</div>
+    <div class="adv-content">
+      <span class="scene">驗證流程</span>
+      <h3>「讓我用一個小例子驗證一下。」</h3>
+      <p>寫完 code 後手動跑一遍輸入，能抓 70% 的小 bug。</p>
+    </div>
+  </div>
+
+  <div class="adv-card">
+    <div class="num">5</div>
+    <div class="adv-content">
+      <span class="scene">主動討論邊界</span>
+      <h3>「邊界情況我想想，空陣列、單一元素、全部相同…」</h3>
+      <p>主動提邊界，比被面試官提醒之後再補強得多。</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>⚠️ 新手最常踩的 5 個雷</h2>
+  <ul class="trap-list">
+    <li><strong>❌ 沉默思考超過 30 秒</strong><em>✅ 卡住也要持續講。「我在想要不要用遞迴…」「這題如果用 hash table 應該可以…」面試官比較怕沒反應，不怕你講錯。</em></li>
+    <li><strong>❌ 忘記檢查 null / 空陣列</strong><em>✅ 每個遞迴函式開頭都先寫 <code>if not node: return ...</code>。每個 array 操作前先想「空的會怎樣」。</em></li>
+    <li><strong>❌ 複雜度亂講 O(log n)</strong><em>✅ 不是任何操作都是 log n！traversal 永遠 O(n)。只有平衡 BST 的搜尋/插入/刪除才是 log n。</em></li>
+    <li><strong>❌ 只記答案不會講思路</strong><em>✅ 面試現場會緊張，背的程式碼會打結。練「能講出每行在做什麼」比背 code 重要 10 倍。</em></li>
+    <li><strong>❌ 不問澄清問題就開寫</strong><em>✅ 直接開寫顯得粗心。先問 3 個澄清問題，面試官會覺得你有產品思維。</em></li>
+  </ul>
+</section>
+
+<section>
+  <h2>📚 延伸資源</h2>
+  <ul class="source-list">
+    <li><span class="src-tag">題庫</span><a href="https://leetcode.com/" target="_blank">LeetCode</a> — 演算法題庫龍頭，新手按 Topic 練 Easy 30 題就有感</li>
+    <li><span class="src-tag">題庫</span><a href="https://neetcode.io/" target="_blank">NeetCode</a> — 把 LeetCode 高頻題分類整理，附影片講解</li>
+    <li><span class="src-tag">教材</span><a href="https://hello-algo.com/" target="_blank">Hello 演算法</a> — 中文免費電子書，圖解超清楚</li>
+    <li><span class="src-tag">影片</span><a href="https://www.youtube.com/c/NeetCode" target="_blank">NeetCode YouTube</a> — 用畫圖講解每題思路</li>
+    <li><span class="src-tag">面試</span><a href="https://www.techinterviewhandbook.org/" target="_blank">Tech Interview Handbook</a> — 軟體工程師面試準備全攻略</li>
+  </ul>
+</section>
+
+<section>
+  <h2>📦 配套：NotebookLM 6 媒體版本</h2>
+  <div class="nlm-pack">
+    <h3>📓 完整 NotebookLM 知識包</h3>
+    <p>同樣內容做了 6 種媒體格式：<strong>簡報、Podcast、深度報告、資訊圖、閃卡、心智圖</strong>。通勤聽 podcast、面試前一晚滑簡報、做閃卡反射訓練。</p>
+    <a href="https://notebooklm.google.com/notebook/3f15fd3e-7086-40ee-98b3-7bf402d72eaf" target="_blank">→ 開啟 NotebookLM 完整版</a>
+  </div>
+</section>
+
+<section>
+  <div class="cta-box">
+    <h3>🔔 還有更多免費資源</h3>
+    <p>更多面試準備、AI 工具、開發筆記。追蹤 Threads，下次更新第一時間看到。</p>
+    <a class="threads-btn" href="https://www.threads.net/@elijah.shi.sensei" target="_blank">追蹤 @elijah.shi.sensei</a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  版本：v1.0 · 2026-05-01｜整理：Elijah Sensei｜<a href="https://www.threads.net/@elijah.shi.sensei">Threads</a>
+</footer>
+
+</body>
+</html>
